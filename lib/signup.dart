@@ -140,7 +140,26 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                 ),
-
+                SizedBox(height: 30),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  child: TextFormField(
+                    controller: confirmPassword,
+                    obscureText: !showPassword2,
+                    decoration: InputDecoration(
+                      contentPadding:
+                      EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.grey,
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey)),
+                      label: Text("Confirm Password"),
+                      prefixIcon: Icon(Icons.password),
+                      hintText: "Please re-enter your password",
+       
               ],
             ),
           ),
