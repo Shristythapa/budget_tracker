@@ -16,6 +16,7 @@ class ForgetPasswordWidget extends StatefulWidget {
 }
 
 class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
+  final GlobalKey<FormState> _formKey=GlobalKey();
   @override
   Widget build(BuildContext context) {
     
@@ -72,14 +73,27 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
             
               Container(
                 child: Form(
-                  
+                  key:_formKey,
                   child: Column(
                     children: [
                       CustomTextField(
                         label: "",
                         hintText: "Email address",
                         bottomPadding: 30,
-                       
+                        validator:(val){
+                        final  emailValid =RegExp(
+                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+                            
+                            if (val ==null){
+                              return"Email field cannot be empty";
+                            }else if (val.isEmpty){
+                              return"Email field cannot be empty";
+                            }else if (emailValid.hasMatch(val)){
+                              return null;
+                            }else{
+                              return "Invalid email address";
+                            }
+                        },
 
                         ),
                         
@@ -90,7 +104,7 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
                 CustomButton(
                   title: "Reset",
                   onPressed: (){
-                   
+                    if (_formKey.currentState!.validate()) {
                       Navigator.push(
                       context,
                       MaterialPageRoute(builder: (context)=>OtpVerifyWidget())
@@ -107,7 +121,7 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
                     //   MaterialPageRoute(builder: (context)=>OtpVerifyWidget())
                     // );
                     // print("Reset");
-                  
+                  }
                   )
          ],
         ),
