@@ -9,6 +9,10 @@ class RegisterScreen extends StatefulWidget {
 }
 
 class _RegisterScreenState extends State<RegisterScreen> {
+  TextEditingController password = new TextEditingController();
+  TextEditingController confirmPassword = new TextEditingController();
+  bool showPassword = false;
+  bool showPassword2 = false;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -96,7 +100,44 @@ class _RegisterScreenState extends State<RegisterScreen> {
                             borderSide: BorderSide(color: Colors.grey)),
                         label: Text("Email"),
                         hintText: "Please enter your email",
-                        prefixIcon: Icon(Icons.accessibility_outlined)),
+                        prefixIcon: Icon(Icons.email)),
+                  ),
+                ),
+                SizedBox(height: 30),
+                Container(
+                  padding: EdgeInsets.symmetric(horizontal: 40),
+                  child: TextFormField(
+                    controller: password,
+                    obscureText: !showPassword,
+                    decoration: InputDecoration(
+                      contentPadding:
+                      EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                      enabledBorder: OutlineInputBorder(
+                        borderSide: BorderSide(
+                          color: Colors.grey,
+                        ),
+                      ),
+                      border: OutlineInputBorder(
+                          borderSide: BorderSide(color: Colors.grey)),
+                      label: Text("Password"),
+                      prefixIcon: Icon(Icons.password),
+                      hintText: "Please enter your password",
+                      suffixIcon: showPassword
+                          ? InkWell(
+                          onTap: () {
+                            setState(() {
+                              showPassword = !showPassword;
+                            });
+                          },
+                          child: Icon(Icons.panorama_fish_eye))
+                          : InkWell(
+                          onTap: () {
+                            setState(() {
+                              showPassword = !showPassword;
+                            });
+                          },
+                          child: Icon(Icons.remove_red_eye)),
+                    ),
                   ),
                 ),
 
