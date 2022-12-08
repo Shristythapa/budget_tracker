@@ -9,9 +9,10 @@ class CustomTextField extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final bool obscureText;
-  
+  final String? Function(String?)? validator;
 
- const CustomTextField({
+   CustomTextField({
+    Key? key,
     required this.label,
     required this.hintText,
     this.bottomPadding=10,
@@ -19,8 +20,12 @@ class CustomTextField extends StatelessWidget {
     this.prefixIcon,
     this.suffixIcon,
     this.obscureText=false,
+    this.validator,
+    
 
-  });
+  }): super(key: key);
+
+  
  
 
   @override
@@ -40,6 +45,7 @@ class CustomTextField extends StatelessWidget {
             )
           ),
            const SizedBox(height:12),
+           
           Container(
             height:41,
             // width:350,
@@ -48,31 +54,37 @@ class CustomTextField extends StatelessWidget {
               color:Colors.white,
               borderRadius: BorderRadius.circular(30),
             ),
-            child: TextField(
-              cursorColor: Colors.red,
-              maxLines: 1,
-              keyboardType: TextInputType.text,
-              obscureText:obscureText,
-              decoration:InputDecoration(
-                prefixIcon: prefixIcon,
-                border:InputBorder.none,
-                suffixIcon:suffixIcon,
-                
-                
-                // fillColor:Colors.transparent,
-                filled:true,
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal:20,
-                  vertical:13,
+            
+              child: TextFormField(
+                cursorColor: Colors.red,
+                keyboardType: TextInputType.emailAddress,
+                obscureText:obscureText,
+              
+                decoration:InputDecoration(
+                  prefixIcon: prefixIcon,
+                  suffixIcon:suffixIcon,
+                  border:InputBorder.none,
+
+                  // fillColor:Colors.transparent,
+                  filled:true,
+                  contentPadding: EdgeInsets.symmetric(
+                    horizontal:20,
+                    vertical:13,
+                  ),
+                 
+                  hintText:hintText,
+                  hintStyle:TextStyle(
+                    fontSize:20,
+                  )
+                  
                 ),
+              
+                validator:validator,
                
-                hintText:hintText,
-                hintStyle:TextStyle(
-                  color:Color(0xFFA39C9C),
-                )
                 
-              )
-            ),
+              ),
+             
+            
           ),
         ],
       ),
