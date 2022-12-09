@@ -277,7 +277,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         //     )
                         //     );
                         //   },
-                        
+                        child: Text(
+                          "Go to login",
+                          style: TextStyle(
+                              fontWeight: FontWeight.bold, color: Colors.blue),
+                        ),
                       )
                     ],
                   )
