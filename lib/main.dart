@@ -29,7 +29,10 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: RegisterScreen()
+        initialRoute: "/register",
+        routes: {
+          "/register":(context)=>RegisterScreen(),
+        },
     );
   }
 }
@@ -44,6 +47,7 @@ class _HomePageState extends State<HomePage> {
   int idx=0;
   List<Widget> home = [
     RegisterScreen(),
+
   ];
   @override
   Widget build(BuildContext context) {
