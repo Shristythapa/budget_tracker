@@ -264,7 +264,23 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     ),
                   ),
                   SizedBox(height: 20),
-            
+                  Row(
+                    children: [
+                      Text("Already have an account?"),
+                      SizedBox(
+                        width: 5,
+                      ),
+                      InkWell(
+                        //   onTap: () {
+                        //     Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        //       builder: (BuildContext context) => LoginScreen(),
+                        //     )
+                        //     );
+                        //   },
+                        
+                      )
+                    ],
+                  )
                 ],
               ),
             ),
