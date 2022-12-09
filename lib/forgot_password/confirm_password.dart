@@ -5,6 +5,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import '../common/custom_button.dart';
 import '../common/custom_icon.dart';
 import '../common/custom_textfield.dart';
+import 'otp_verifiacation_screen.dart';
 
 class ConfirmPAsswordWidget extends StatefulWidget {
   const ConfirmPAsswordWidget({super.key});
@@ -15,9 +16,14 @@ class ConfirmPAsswordWidget extends StatefulWidget {
 
 
 class _ConfirmPAsswordWidgetState extends State<ConfirmPAsswordWidget> {
+    final GlobalKey<FormState> _passKey=GlobalKey();
+    final GlobalKey<FormState> _confirmPassKey=GlobalKey();
+
  
  TextEditingController password=new TextEditingController();
+ TextEditingController confirmPassword=new TextEditingController();
  bool showPassword=false;
+ var confirmPass;
 
   @override
   Widget build(BuildContext context) {
@@ -51,7 +57,7 @@ class _ConfirmPAsswordWidgetState extends State<ConfirmPAsswordWidget> {
         crossAxisAlignment: CrossAxisAlignment.start,
          children: [
            Container(
-            //  width:245,
+             width:343,
             //  height:41,
              padding:EdgeInsets.only(top:50,bottom:20),
              child: Text(
@@ -64,87 +70,124 @@ class _ConfirmPAsswordWidgetState extends State<ConfirmPAsswordWidget> {
            ),
               SizedBox(height:10),
               Container(
-                height:41,
-                // margin: EdgeInsets.all(1),
-                decoration: BoxDecoration(
-              color:Colors.white,
-              borderRadius: BorderRadius.circular(30),
-            ),
-                child:TextFormField(
-                  
-                  controller:password,
-                  obscureText: !showPassword,
-                  decoration: InputDecoration(
-                    border:InputBorder.none,
-                    hintText:"New Password",
-                    
-                    suffixIcon: showPassword?
-                    InkWell(
-                      onTap: (){
-                        setState(() {
-                          showPassword = !showPassword;
-                        });
-                      },
-                      child:Icon(Icons.panorama_fish_eye)
-                    )
-                    :
-                    InkWell(
-                      onTap: (){
-                        setState(() {
-                          showPassword = !showPassword;
-                        });
-                      },
-                      child:Icon(Icons.remove_red_eye)
-                    ),
-                    filled:true,
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal:20,
-                  vertical:13,
-                ),
+                height:70,
+           
+                child:Form(
+                  key: _passKey,
+                  child: Column(
+                    children: [
+                      TextFormField(
+                        controller:password,
+                        obscureText: !showPassword,
+                         validator:(val){
+                        confirmPass=val;
+                        if(val==null || val.isEmpty){
+                          return "Password cannot be empty";
+                        }else if (val.length<6){
+                          return "Password must be at least 6 characters";
+                        }else{
+                          return null;
+                        }
 
+                      },
+                        decoration: InputDecoration(
+                          // border:InputBorder.none,
+                          border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                                  borderSide: BorderSide(color: Colors.white), 
+                              ),
+              
+                          hintText:"New Password",
+                          suffixIcon: showPassword?
+                          InkWell(
+                            onTap: (){
+                              setState(() {
+                                showPassword = !showPassword;
+                              });
+                            },
+                            child:Icon(Icons.panorama_fish_eye)
+                          )
+                          :
+                          InkWell(
+                            onTap: (){
+                              setState(() {
+                                showPassword = !showPassword;
+                              });
+                            },
+                            child:Icon(Icons.remove_red_eye)
+                          ),
+                          filled:true,
+                          fillColor: Colors.white,
+                          
+                      contentPadding: EdgeInsets.symmetric(
+                        horizontal:20,
+                        vertical:13,
+                      ),
+                
+                        ),
+                      ),
+                    ],
                   ),
                 )
 
               ),
-              SizedBox(height:20),
+              SizedBox(height:10),
               Container(
-                height:41,
-                // margin: EdgeInsets.all(1),
-                decoration: BoxDecoration(
-              color:Colors.white,
-              borderRadius: BorderRadius.circular(30),
-            ),
-                child:TextFormField(
-                  controller:password,
-                  obscureText: !showPassword,
-                  decoration: InputDecoration(
-                    border:InputBorder.none,
-                    hintText:"Confirm Password",
-                    
-                    suffixIcon: showPassword?
-                    InkWell(
-                      onTap: (){
-                        setState(() {
-                          showPassword = !showPassword;
-                        });
-                      },
-                      child:Icon(Icons.panorama_fish_eye)
-                    )
-                    :
-                    InkWell(
-                      onTap: (){
-                        setState(() {
-                          showPassword = !showPassword;
-                        });
-                      },
-                      child:Icon(Icons.remove_red_eye)
-                    ),
-                    filled:true,
-                contentPadding: EdgeInsets.symmetric(
-                  horizontal:20,
-                  vertical:13,
-                ),
+                height:70,
+                child:Form(
+                  key:_confirmPassKey,
+                  child: Column(
 
+                    children: [
+                      TextFormField(
+                        controller:confirmPassword,
+                        obscureText: !showPassword,
+                        validator:(val){
+                          if(val==null || val.isEmpty){
+                            return "Confirm password cannot be empty";
+                          }else if(val.length<6){
+                            return "Confirm password must be at least 6 characters";
+                          }else if(val!=confirmPass){
+                            return "Password doesn't match";
+                          }else{
+                            return null;
+                          }
+                        },
+                        decoration: InputDecoration(
+                           border: OutlineInputBorder(
+                                borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                                  borderSide: BorderSide(color: Colors.white), 
+                              ),
+                          hintText:"Confirm Password",
+
+                          suffixIcon: showPassword?
+                          InkWell(
+                            onTap: (){
+                              setState(() {
+                                showPassword = !showPassword;
+                              });
+                            },
+                            child:Icon(Icons.panorama_fish_eye)
+                          )
+                          :
+                          InkWell(
+                            onTap: (){
+                              setState(() {
+                                showPassword = !showPassword;
+                              });
+                            },
+                            child:Icon(Icons.remove_red_eye)
+                          ),
+                          filled:true,
+                          fillColor: Colors.white,
+                      contentPadding: EdgeInsets.symmetric(
+                        horizontal:20,
+                        vertical:13,
+                      ),
+
+                        ),
+                      ),
+                    ],
                   ),
                 )
 
@@ -153,6 +196,17 @@ class _ConfirmPAsswordWidgetState extends State<ConfirmPAsswordWidget> {
                 CustomButton(
                   title: "Confirm",
                   onPressed: (){
+                    if (_passKey.currentState!.validate() && _confirmPassKey.currentState!.validate()) {
+                      Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context)=>OtpVerifyWidget())
+                    );
+                      // ScaffoldMessenger.of(context).showSnackBar(
+                      //   SnackBar(
+                      //     content: Text("This is a reset"),
+                      //   ),
+                      // );
+                    }
                     // Navigator.push(
                     //   context,
                     //   MaterialPageRoute(builder: (context)=>),

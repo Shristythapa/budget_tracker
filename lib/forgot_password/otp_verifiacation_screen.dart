@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 
 import '../common/custom_button.dart';
 import '../common/custom_icon.dart';
 import 'confirm_password.dart';
-import 'forgot_password_screen.dart';
 
 
 class OtpVerifyWidget extends StatefulWidget {
@@ -64,38 +61,35 @@ class _OtpVerifyWidgetState extends State<OtpVerifyWidget> {
               ),
               ),
               SizedBox(height:30),
-
-               PinCodeTextField(
-  length: 4,
+              PinCodeTextField(
+  length: 5,
   obscureText: false,
   appContext: context,
   animationType: AnimationType.fade,
-  cursorColor: Colors.red,
-  mainAxisAlignment: MainAxisAlignment.start,
-
   pinTheme: PinTheme(
     shape: PinCodeFieldShape.box,
-    borderRadius: BorderRadius.circular(12),
-    fieldHeight: 50,
-    fieldWidth: 50,
-    fieldOuterPadding: EdgeInsets.only(right:10),
+    borderRadius: BorderRadius.circular(5),
+    fieldHeight: 58,
+    fieldWidth: 58,
     activeFillColor: Colors.white,
     activeColor: Colors.red,
-    inactiveColor:Colors.white,
-    inactiveFillColor:Colors.white,
-    selectedColor:Colors.red,
-    selectedFillColor:Colors.white,
-
+    inactiveColor: Colors.white,
+    inactiveFillColor: Colors.white,
+    selectedColor: Colors.red,
+    selectedFillColor: Colors.white,
   ),
   animationDuration: Duration(milliseconds: 300),
   enableActiveFill: true,
-  // errorAnimationController: errorController,
-  // controller: textEditingController,
+
   onCompleted: (v) {
     print("Completed");
   },
-  onChanged: (value) {},
+  onChanged: (value) {
+  
+  },
+
 ),
+
 SizedBox(height:20),
 
        CustomButton(

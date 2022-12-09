@@ -79,11 +79,11 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
                       CustomTextField(
                         label: "",
                         hintText: "Email address",
+                        prefixIcon: Icon(Icons.email),
                         bottomPadding: 30,
                         validator:(val){
                         final  emailValid =RegExp(
                           r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
-                            
                             if (val ==null){
                               return"Email field cannot be empty";
                             }else if (val.isEmpty){
