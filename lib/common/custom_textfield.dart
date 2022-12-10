@@ -47,26 +47,26 @@ class CustomTextField extends StatelessWidget {
            const SizedBox(height:12),
            
           Container(
-            height:41,
-            // width:350,
-            // margin:EdgeInsets.only(left:33,right: 33),
-            decoration: BoxDecoration(
-              color:Colors.white,
-              borderRadius: BorderRadius.circular(30),
-            ),
+            height:70,
+
             
               child: TextFormField(
-                cursorColor: Colors.red,
+
+                // cursorColor: Colors.red,
                 keyboardType: TextInputType.emailAddress,
                 obscureText:obscureText,
               
                 decoration:InputDecoration(
                   prefixIcon: prefixIcon,
                   suffixIcon:suffixIcon,
-                  border:InputBorder.none,
+                   border: OutlineInputBorder(
+                           borderRadius: BorderRadius.all(Radius.circular(20.0)),
+                            borderSide: BorderSide(color: Colors.white), 
+                          ),
 
                   // fillColor:Colors.transparent,
                   filled:true,
+                  fillColor:Colors.white,
                   contentPadding: EdgeInsets.symmetric(
                     horizontal:20,
                     vertical:13,
@@ -74,14 +74,13 @@ class CustomTextField extends StatelessWidget {
                  
                   hintText:hintText,
                   hintStyle:TextStyle(
-                    fontSize:20,
+                    fontSize:15,
                   )
-                  
+
                 ),
-              
+
                 validator:validator,
-               
-                
+
               ),
              
             
