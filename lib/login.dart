@@ -9,6 +9,22 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
+  bool changebutton = false;
+  final _formkey = GlobalKey<FormState>();
+  moveToHome(BuildContext context) async {
+    //value != null && value.isEmpty
+    ////if (value!.isEmpty)
+    if (_formkey.currentState!.validate())
+      setState(() {
+        changebutton = true;
+      });
+    await Future.delayed(Duration(seconds: 1));
+    //await Navigator.pushNamed(context, MyRoutes.homeRoute);
+    setState(() {
+      changebutton = false;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     // ignore: prefer_const_constructors
