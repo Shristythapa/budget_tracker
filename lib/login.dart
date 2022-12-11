@@ -9,21 +9,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  bool changebutton = false;
-  final _formkey = GlobalKey<FormState>();
-  moveToHome(BuildContext context) async {
-    //value != null && value.isEmpty
-    ////if (value!.isEmpty)
-    if (_formkey.currentState!.validate())
-      setState(() {
-        changebutton = true;
-      });
-    await Future.delayed(Duration(seconds: 1));
-    //await Navigator.pushNamed(context, MyRoutes.homeRoute);
-    setState(() {
-      changebutton = false;
-    });
-  }
+  final _formKey = GlobalKey<FormState>();
 
   @override
   Widget build(BuildContext context) {
@@ -68,54 +54,121 @@ class _LoginState extends State<Login> {
             height: 20,
           ),
           Container(
-              padding: const EdgeInsets.all(8.0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10.0),
-                color: Colors.transparent,
-              ),
-              child: Column(children: <Widget>[
+            padding: const EdgeInsets.all(8.0),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(10.0),
+              color: Colors.transparent,
+            ),
+            child: Column(
+              children: <Widget>[
                 Container(
                   padding: EdgeInsets.all(10.0),
                   decoration: const BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(
-                        color: Colors.grey,
+                      // border: Border(
+                      //   bottom: BorderSide(
+                      //     color: Colors.grey,
+                      //   ),
+                      // ),
                       ),
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      icon: Icon(Icons.person),
+                      hintText: 'What do people call you?',
+                      labelText: 'Username *',
                     ),
-                  ),
-                  child: const TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: "Username",
-                      hintStyle: TextStyle(color: Colors.grey),
-                    ),
+                    onSaved: (String? value) {
+                      // This optional block of code can be used to run
+                      // code when the user saves the form.
+                    },
+                    validator: (String? value) {
+                      if (value!.isEmpty) {
+                        return "It cannot be empty";
+                      }
+                      return (value != null && value.contains('@'))
+                          ? 'Do not use the @ char.'
+                          : null;
+                    },
                   ),
                 ),
                 Container(
                   padding: EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
-                    border: Border(
-                      bottom:
-                          BorderSide(color: Color.fromARGB(255, 243, 16, 16)),
+                      // border: Border(
+                      //   bottom: BorderSide(color: Colors.grey),
+                      // ),
+                      ),
+                  child: TextFormField(
+                    decoration: const InputDecoration(
+                      icon: Icon(Icons.person),
+                      hintText: 'Password',
+                      labelText: 'Password',
                     ),
+                    onSaved: (String? value) {
+                      // This optional block of code can be used to run
+                      // code when the user saves the form.
+                    },
+                    validator: (String? value) {
+                      if (value!.isEmpty) {
+                        return "It cannot be empty";
+                      }
+                      return (value != null && value.contains('@'))
+                          ? 'Do not use the @ char.'
+                          : null;
+                    },
                   ),
+                ),
+                const SizedBox(
+                  height: 20.0,
+                ),
+                const Center(
+                  child: Text(
+                    "Forgot Password?",
+                    style: TextStyle(color: Colors.pink),
+                  ),
+                ),
+                SizedBox(
+                  height: 20.0,
                 ),
                 Container(
-                  padding: EdgeInsets.all(10.0),
-                  decoration: const BoxDecoration(
-                    border: Border(
-                      bottom: BorderSide(color: Colors.grey),
-                    ),
+                  height: 50,
+                  width: 300,
+                  margin: EdgeInsets.symmetric(horizontal: 60),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Color.fromRGBO(49, 39, 79, 1),
                   ),
-                  child: TextField(
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: "Password",
-                      hintStyle: TextStyle(color: Colors.grey),
+                  child: ElevatedButton(
+                    onPressed: (() {
+                      // Navigator.of(context).pop();
+                      // Navigator.push(context, MaterialPageRoute(builder: (context)=> const haomepage()))
+                    }),
+                    child: Text(
+                      "Login",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    style: ElevatedButton.styleFrom(
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30.0),
+                      ),
+                      backgroundColor: Color.fromRGBO(49, 39, 79, 1),
+                      foregroundColor: Colors.white,
                     ),
                   ),
                 ),
-              ]))
+                const SizedBox(
+                  height: 20.0,
+                ),
+                const Center(
+                  child: Text(
+                    "Create Account",
+                    style: TextStyle(
+                      color: Colors.pink,
+                    ),
+                  ),
+                )
+              ],
+            ),
+          )
         ],
       ),
     );
