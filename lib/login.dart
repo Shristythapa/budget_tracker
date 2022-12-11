@@ -52,13 +52,12 @@ class _LoginState extends State<Login> {
             height: 20,
           ),
           Container(
-            padding: const EdgeInsets.all(8.0),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(10.0),
-              color: Colors.transparent,
-            ),
-            child: Column(
-              children: <Widget>[
+              padding: const EdgeInsets.all(8.0),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(10.0),
+                color: Colors.transparent,
+              ),
+              child: Column(children: <Widget>[
                 Container(
                   padding: EdgeInsets.all(10.0),
                   decoration: const BoxDecoration(
@@ -80,71 +79,12 @@ class _LoginState extends State<Login> {
                   padding: EdgeInsets.all(10.0),
                   decoration: BoxDecoration(
                     border: Border(
-                      bottom: BorderSide(color: Colors.grey),
-                    ),
-                  ),
-                  child: TextField(
-                    obscureText: true,
-                    obscuringCharacter: "*",
-                    decoration: InputDecoration(
-                      border: InputBorder.none,
-                      hintText: "Password",
-                      hintStyle: TextStyle(color: Colors.grey),
+                      bottom:
+                          BorderSide(color: Color.fromARGB(255, 243, 16, 16)),
                     ),
                   ),
                 ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                const Center(
-                  child: Text(
-                    "Forgot Password?",
-                    style: TextStyle(color: Colors.pink),
-                  ),
-                ),
-                SizedBox(
-                  height: 20.0,
-                ),
-                Container(
-                  height: 50,
-                  width: 300,
-                  margin: EdgeInsets.symmetric(horizontal: 60),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: Color.fromRGBO(49, 39, 79, 1),
-                  ),
-                  child: ElevatedButton(
-                    onPressed: (() {
-                      // Navigator.of(context).pop();
-                      // Navigator.push(context, MaterialPageRoute(builder: (context)=> const haomepage()))
-                    }),
-                    child: Text(
-                      "Login",
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    style: ElevatedButton.styleFrom(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(30.0),
-                      ),
-                      backgroundColor: Color.fromRGBO(49, 39, 79, 1),
-                      foregroundColor: Colors.white,
-                    ),
-                  ),
-                ),
-                const SizedBox(
-                  height: 20.0,
-                ),
-                const Center(
-                  child: Text(
-                    "Create Account",
-                    style: TextStyle(
-                      color: Colors.pink,
-                    ),
-                  ),
-                )
-              ],
-            ),
-          )
+              ]))
         ],
       ),
     );
