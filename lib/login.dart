@@ -100,6 +100,21 @@ class _LoginState extends State<Login> {
                     ),
                   ),
                 ),
+                Container(
+                  padding: EdgeInsets.all(10.0),
+                  decoration: const BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(color: Colors.grey),
+                    ),
+                  ),
+                  child: TextField(
+                    decoration: InputDecoration(
+                      border: InputBorder.none,
+                      hintText: "Password",
+                      hintStyle: TextStyle(color: Colors.grey),
+                    ),
+                  ),
+                ),
               ]))
         ],
       ),
