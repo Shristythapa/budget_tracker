@@ -38,41 +38,31 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Container(
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                    colors: [Colors.lightGreen, Colors.white])),
+                    begin: Alignment.topCenter,
+                    end: Alignment.bottomCenter,
+                    colors: [Colors.white, Colors.white60])),
             height: MediaQuery.of(context).size.height,
             width: double.infinity,
             child: Form(
               key: form,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Column(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
                         "Hello there",
+                        textAlign: TextAlign.left,
                         style: TextStyle(
                           fontSize: 30,
                           fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                          backgroundColor: Colors.teal,
+                          color: Colors.black87,
                         ),
                       ),
                       SizedBox(
                         height: 15,
                       ),
-                      Text(
-                        "Create an Account,Its free",
-                        style: TextStyle(
-                          fontSize: 15,
-                          color: Colors.blueAccent[700],
-                        ),
-                      ),
-                      SizedBox(
-                        height: 30,
-                      )
                     ],
                   ),
                   Padding(
@@ -81,6 +71,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   TextFormField(
                     controller: userName,
                     validator: (value) {
+
                       if (value == null || value.trim().isEmpty) {
                         return 'User Name is required';
                       }
@@ -150,7 +141,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         return "Password is required";
                       }
                       if (value.length < 6 || value.length > 10) {
-                        return "Plaese enter a password of 6 to 10 characters";
+                        return "Please enter a password of 6 to 10 characters";
                       }
                       return null; // null return garyo vane chai pass vako ho
                     },
@@ -252,7 +243,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         print("Invalid form");
                       }
                     },
-                    color: Colors.black26,
+                    color: Color(0xFF296157),
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(40)),
                     child: Text(
