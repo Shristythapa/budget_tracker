@@ -1,7 +1,8 @@
+import 'package:budget_tracker/landingpage.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const MyLandingPage());
 }
 
 class MyApp extends StatelessWidget {
