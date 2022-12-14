@@ -32,7 +32,34 @@ class _addListOfAccountState extends State<AddListOfAccount> {
                       onPressed:(
                           ) {},
                       child: const Text('No'),
+                    ),
+                    TextButton(
+                      onPressed:() {},
+                      child: const Text('Yes'),
+                    ),
+                  ],
+                ),
+              )
+          )
+        ],
+        toolbarHeight: MediaQuery.of(context).size.height / 100 * 20,
+        title: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  "List Of",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                ),
 
+            ],
+          ),
         ],
       ),
     );
