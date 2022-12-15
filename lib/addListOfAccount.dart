@@ -87,7 +87,26 @@ class _addListOfAccountState extends State<AddListOfAccount> {
                   )),
             ),
           ),
-          
+          Stack(
+            clipBehavior: Clip.none,
+            children: <Widget>[
+              Container(
+                color: Color(0xF9296157),
+                height: MediaQuery.of(context).size.height / 100 * 16,
+              ),
+              Positioned(
+                child: FloatingActionButton(
+                  child: Icon(Icons.add, size: 30),
+                  tooltip: "Add ",
+                  onPressed: () {},
+                  backgroundColor: Color(0xFFA95894E),
+                ),
+                right: 0,
+                left: 0,
+                top: -30,
+              ),
+            ],
+          ),
         ],
       ),
     );
