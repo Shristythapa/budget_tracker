@@ -70,7 +70,25 @@ class _addListOfAccountState extends State<AddListOfAccount> {
           ],
         ),
       ),
-
+      body: Column(
+        children: [
+          Container(
+            color: Colors.white,
+            height: MediaQuery.of(context).size.height / 100 * 7,
+          ),
+          Container(
+            color: Colors.white70,
+            height: MediaQuery.of(context).size.height / 100 * 57,
+            child: Container(
+              decoration: new BoxDecoration(
+                  color: Color(0XFFD9D9D9),
+                  borderRadius: new BorderRadius.vertical(
+                    top: Radius.circular(30),
+                  )),
+            ),
+          ),
+          
+        ],
       ),
     );
   }
