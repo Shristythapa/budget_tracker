@@ -57,10 +57,20 @@ class _addListOfAccountState extends State<AddListOfAccount> {
                     color: Colors.black87,
                   ),
                 ),
+                Text(
+                  "Accounts",
+                  style: TextStyle(
+                    fontSize: 30,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.black87,
+                  ),
+                )
+              ],
+            ),
+          ],
+        ),
+      ),
 
-            ],
-          ),
-        ],
       ),
     );
   }

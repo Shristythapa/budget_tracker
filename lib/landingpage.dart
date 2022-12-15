@@ -1,3 +1,4 @@
+import 'package:budget_tracker/addListOfAccount.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -14,7 +15,7 @@ class LandingPage extends StatelessWidget {
       theme: ThemeData(
           scaffoldBackgroundColor: Color.fromARGB(255, 161, 207, 245)),
       debugShowCheckedModeBanner: false,
-      home: MyLandingPage(),
+      home: AddListOfAccount(),
     );
   }
 }
