@@ -1,4 +1,5 @@
 import 'package:budget_tracker/login.dart';
+import 'package:budget_tracker/widgets/NavBar/sidebar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: Login());
+        home: loginScreen());
   }
 }
 
