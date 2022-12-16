@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
+import '../main_dashboard/dashboard.dart';
+
 class NavigationBodyScreen extends StatefulWidget {
   const NavigationBodyScreen({super.key});
 
@@ -27,43 +29,49 @@ class _NavigationBodyScreenState extends State<NavigationBodyScreen> {
                           topRight: Radius.circular(70),
                       )
                       ),
-                      
                       // width: 150,
                     ),
                     Positioned(
-                      child: Column(
-                        children: [
-                          Container(
-                             height: 85,
-                            width: 315,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFA95894E),
-                              borderRadius: BorderRadius.circular(10),
-                             
+                      child: GestureDetector(
+                        onTap:(){
+                          Navigator.push(
+                      context,
+                      MaterialPageRoute(builder: (context)=>DashboardScreen()));
+                          // print("Container");
+                        },
+                        child: Column(
+                          children: [
+                            Container(
+                               height: 85,
+                              width: 315,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFA95894E),
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                                  child: Row(
+                                    children: [
+                                      Padding(
+                                        padding: const EdgeInsets.only(top: 1,left: 20),
+                                        child: Icon(
+                                          Icons.home_filled,
+                                          size:60,
+                                        )
+                                      ),
+                                       Padding(
+                                        padding: const EdgeInsets.only(top: 10,left: 100),
+                                        child: Text(
+                                          "Income",
+                                          style: TextStyle(
+                            fontWeight:FontWeight.w400,
+                            fontSize: 25,
+                            )),
+                                      ),
+                                    ],
+                                  ),
+                      
                             ),
-            child: Row(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.only(top: 1,left: 20),
-                  child: Icon(
-                    Icons.home_filled,
-                    size:60,
-                  )
-                ),
-                 Padding(
-                  padding: const EdgeInsets.only(top: 10,left: 100),
-                  child: Text(
-                    "Income",
-                    style: TextStyle(
-                          fontWeight:FontWeight.w400,
-                          fontSize: 25,
-                          )),
-                ),
-              ],
-            ),
-
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                       right: 0,
                       left: 0,
@@ -80,7 +88,6 @@ class _NavigationBodyScreenState extends State<NavigationBodyScreen> {
                             decoration: BoxDecoration(
                               color: Color(0xFFA95894E),
                               borderRadius: BorderRadius.circular(10),
-                             
                             ),
             child: Row(
               children: [
@@ -110,8 +117,6 @@ class _NavigationBodyScreenState extends State<NavigationBodyScreen> {
                       left: 0,
                       top: 150,
                     ),
-                    
-
                      Positioned(
                       child: Column(
                         children: [
