@@ -31,6 +31,7 @@ environment:
 dependencies:
   firebase_core: ^2.4.0
   firebase_auth: ^4.2.0
+  cloud_firestore: ^4.2.0
   email_validator: '^2.1.16'
   flutter:
     sdk: flutter
