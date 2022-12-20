@@ -22,7 +22,7 @@ class _sidebarState extends State<sidebar> {
               clipBehavior: Clip.none,
               children: [
                 Container(
-                  height: 560,
+                  height: 780,
                   decoration: BoxDecoration(
                       color: Color(0xF9296157),
                       borderRadius: BorderRadius.only(
@@ -75,7 +75,7 @@ class _sidebarState extends State<sidebar> {
                   ),
                   right: 0,
                   left: 0,
-                  top: 30,
+                  top: 60,
                 ),
 
                 // second
@@ -124,7 +124,7 @@ class _sidebarState extends State<sidebar> {
                   ),
                   right: 0,
                   left: 0,
-                  top: 150,
+                  top: 190,
                 ),
                 Positioned(
                   child: GestureDetector(
@@ -170,7 +170,7 @@ class _sidebarState extends State<sidebar> {
                   ),
                   right: 0,
                   left: 0,
-                  top: 270,
+                  top: 320,
                 ),
 
                 Positioned(
@@ -217,7 +217,7 @@ class _sidebarState extends State<sidebar> {
                   ),
                   right: 0,
                   left: 0,
-                  top: 400,
+                  top: 460,
                 ),
 // button
                 Positioned(
@@ -248,7 +248,7 @@ class _sidebarState extends State<sidebar> {
                   ),
                   right: 0,
                   left: 0,
-                  top: 500,
+                  top: 590,
                 ),
               ],
             ),
