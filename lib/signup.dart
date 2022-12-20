@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -16,6 +17,27 @@ class _RegisterScreenState extends State<RegisterScreen> {
   bool showPassword = false;
   bool showPassword2 = false;
   final form = GlobalKey<FormState>();
+  final FirebaseAuth _auth = FirebaseAuth.instance;
+  Future<void> signup() async{
+    try{
+      final user = (await _auth.createUserWithEmailAndPassword(
+          email: email.text,
+          password: password.text
+      )).user;
+      if(user!=null){
+        print("User created");
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+              backgroundColor: Colors.green,
+              content: Text("Sign-Up Success"),
+            ));
+        // Navigator.of(context).pushReplacementNamed("/login");
+      }
+    }catch(e){
+      ScaffoldMessenger.of(context).showSnackBar(
+          SnackBar(content: Text(e.toString()),));
+    }
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -38,8 +60,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
           child: Container(
             decoration: const BoxDecoration(
                 gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
+                    begin: Alignment.topLeft,
+                    end: Alignment.bottomRight,
                     colors: [Colors.white, Colors.white60])),
             height: MediaQuery.of(context).size.height,
             width: double.infinity,
@@ -71,7 +93,6 @@ class _RegisterScreenState extends State<RegisterScreen> {
                   TextFormField(
                     controller: userName,
                     validator: (value) {
-
                       if (value == null || value.trim().isEmpty) {
                         return 'User Name is required';
                       }
@@ -83,11 +104,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                     decoration: InputDecoration(
                         contentPadding:
-                            EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                        EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.0),
                           borderSide:
-                              BorderSide(color: Colors.black87, width: 1.5),
+                          BorderSide(color: Colors.black87, width: 1.5),
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.0),
@@ -108,7 +129,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         return "Email is required";
                       }
                       if (!RegExp(
-                              r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+.[a-zA-Z]+")
+                          r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+.[a-zA-Z]+")
                           .hasMatch(value)) {
                         return "Please enter valid email";
                       }
@@ -116,11 +137,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     },
                     decoration: InputDecoration(
                         contentPadding:
-                            EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                        EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                         focusedBorder: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.0),
                           borderSide:
-                              BorderSide(color: Colors.black87, width: 1.5),
+                          BorderSide(color: Colors.black87, width: 1.5),
                         ),
                         border: OutlineInputBorder(
                           borderRadius: BorderRadius.circular(25.0),
@@ -141,14 +162,14 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         return "Password is required";
                       }
                       if (value.length < 6 || value.length > 10) {
-                        return "Please enter a password of 6 to 10 characters";
+                        return "Plaese enter a password of 6 to 10 characters";
                       }
                       return null; // null return garyo vane chai pass vako ho
                     },
                     obscureText: !showPassword,
                     decoration: InputDecoration(
                       contentPadding:
-                          EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                      EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25.0),
                         borderSide: BorderSide(color: Colors.black87, width: 1.5),
@@ -165,19 +186,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       hintText: "Please enter your password",
                       suffixIcon: showPassword
                           ? InkWell(
-                              onTap: () {
-                                setState(() {
-                                  showPassword = !showPassword;
-                                });
-                              },
-                              child: Icon(Icons.panorama_fish_eye))
+                          onTap: () {
+                            setState(() {
+                              showPassword = !showPassword;
+                            });
+                          },
+                          child: Icon(Icons.panorama_fish_eye))
                           : InkWell(
-                              onTap: () {
-                                setState(() {
-                                  showPassword = !showPassword;
-                                });
-                              },
-                              child: Icon(Icons.remove_red_eye)),
+                          onTap: () {
+                            setState(() {
+                              showPassword = !showPassword;
+                            });
+                          },
+                          child: Icon(Icons.remove_red_eye)),
                     ),
                   ),
                   SizedBox(height: 30),
@@ -195,7 +216,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     obscureText: !showPassword2,
                     decoration: InputDecoration(
                       contentPadding:
-                          EdgeInsets.symmetric(vertical: 0, horizontal: 10),
+                      EdgeInsets.symmetric(vertical: 0, horizontal: 10),
                       focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(25.0),
                         borderSide: BorderSide(color: Colors.black87, width: 1.5),
@@ -212,19 +233,19 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       hintText: "Please re-enter your password",
                       suffixIcon: showPassword2
                           ? InkWell(
-                              onTap: () {
-                                setState(() {
-                                  showPassword2 = !showPassword2;
-                                });
-                              },
-                              child: Icon(Icons.panorama_fish_eye))
+                          onTap: () {
+                            setState(() {
+                              showPassword2 = !showPassword2;
+                            });
+                          },
+                          child: Icon(Icons.panorama_fish_eye))
                           : InkWell(
-                              onTap: () {
-                                setState(() {
-                                  showPassword2 = !showPassword2;
-                                });
-                              },
-                              child: Icon(Icons.remove_red_eye)),
+                          onTap: () {
+                            setState(() {
+                              showPassword2 = !showPassword2;
+                            });
+                          },
+                          child: Icon(Icons.remove_red_eye)),
                     ),
                   ),
                   SizedBox(
@@ -238,7 +259,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text("Login Validation Success"),
                         ));
-                        Navigator.of(context).pushNamed("/dashboard");
+                        signup();
+                        // Navigator.of(context).pushNamed("/dashboard");
                       } else {
                         print("Invalid form");
                       }
@@ -262,12 +284,12 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         width: 5,
                       ),
                       InkWell(
-                        //   onTap: () {
-                        //     Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        //       builder: (BuildContext context) => LoginScreen(),
-                        //     )
-                        //     );
-                        //   },
+                        //     onTap: () {
+                        //       Navigator.of(context).pushReplacement(MaterialPageRoute(
+                        //         builder: (BuildContext context) => "/login",
+                        //       )
+                        //       );
+                        //     },
                         child: Text(
                           "Go to login",
                           style: TextStyle(

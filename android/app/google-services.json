@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "661428043064",
+    "firebase_url": "https://budegttracker-default-rtdb.firebaseio.com",
+    "project_id": "budegttracker",
+    "storage_bucket": "budegttracker.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:661428043064:android:37f8aa40dcf76f53e795cd",
+        "android_client_info": {
+          "package_name": "com.project.budget_tracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "661428043064-b2gvfs5nro9qabcickpu5jdgkf51qkoj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBlQN5ARppm8IYF3vCLBcO_fu0cOPP1xeI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "661428043064-b2gvfs5nro9qabcickpu5jdgkf51qkoj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
