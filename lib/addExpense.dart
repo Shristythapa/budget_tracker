@@ -13,6 +13,16 @@ class Expense extends StatefulWidget {
 }
 
 class _ExpenseState extends State<Expense> {
+  String dropdownvalue = 'Prime Bank';
+
+  // List of items in our dropdown menu
+  var items = [
+    'Prime Bank',
+    'Sidhhartha Bank',
+    'Himalayan Bank',
+    'Esewa',
+    'Cash',
+  ];
   TextEditingController email = new TextEditingController();
   TextEditingController password = new TextEditingController();
   TextEditingController date = new TextEditingController();
@@ -144,6 +154,33 @@ class _ExpenseState extends State<Expense> {
                             },
                             child: Icon(Icons.visibility_off))),
               ),
+            ),
+            SizedBox(
+              height: 10,
+              width: 1000,
+            ),
+            DropdownButton(
+              // Initial Value
+              value: dropdownvalue,
+
+              // Down Arrow Icon
+              icon: const Icon(Icons.keyboard_arrow_down),
+
+              // Array list of items
+              items: items.map((String items) {
+                return DropdownMenuItem(
+                  value: items,
+                  child: Text(items),
+                );
+              }).toList(),
+              // After selecting the desired option,it will
+              // change button value to selected value
+              onChanged: (String? newValue) {
+                setState(() {
+                  dropdownvalue = newValue!;
+                });
+              },
+              hint: Text("Account"),
             ),
             SizedBox(
               height: 20.0,
