@@ -1,3 +1,4 @@
+import 'package:budget_tracker/alert_dialogbox.dart';
 import 'package:flutter/material.dart';
 
 class ProfilePage extends StatelessWidget {
@@ -6,8 +7,7 @@ class ProfilePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xFF296157),
-      
+      backgroundColor: Color(0xFF296157),
       body: Stack(
         alignment: Alignment.center,
         children: [
@@ -27,8 +27,8 @@ class ProfilePage extends StatelessWidget {
                 ),
               ),
               Container(
-                width: MediaQuery.of(context).size.width/100*80,
-                height: MediaQuery.of(context).size.height/100*50,
+                width: MediaQuery.of(context).size.width / 100 * 50,
+                height: MediaQuery.of(context).size.height / 100 * 40,
                 padding: EdgeInsets.all(20),
                 margin: EdgeInsets.all(30),
                 decoration: BoxDecoration(boxShadow: [
@@ -37,8 +37,7 @@ class ProfilePage extends StatelessWidget {
                     // spreadRadius: .5,
                     // blurRadius: 2,
                   ),
-                ],
-                borderRadius: BorderRadius.circular(30)),
+                ], borderRadius: BorderRadius.circular(30)),
                 child: Column(
                   children: [
                     Container(
@@ -51,7 +50,7 @@ class ProfilePage extends StatelessWidget {
                         color: Colors.white,
                         image: DecorationImage(
                           fit: BoxFit.cover,
-                          image: AssetImage('images/profile.jpg'),
+                          image: AssetImage("assets/images/profile.jpg1.jpg"),
                         ),
                       ),
                     ),
@@ -60,39 +59,56 @@ class ProfilePage extends StatelessWidget {
                       height: 10,
                     ),
                     Text("rebecaa@Anderson"),
-                    
                     SizedBox(
                       height: 30,
                     ),
-                    
                   ],
                 ),
               ),
               Row(
-                      // crossAxisAlignment: CrossAxisAlignment.,
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: MediaQuery.of(context).size.width/100*30,
-                          height: MediaQuery.of(context).size.height/100*10,
-                          padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(30)),
-                            margin: EdgeInsets.only(right: 40),
-                            child: TextButton(
-                                onPressed: () {}, child: Text("Edit Account",style: TextStyle(color:Color(0xFF296157),fontSize: 17,fontWeight: FontWeight.bold )))),
-                        Container(
-                          width: MediaQuery.of(context).size.width/100*30,
-                          height: MediaQuery.of(context).size.height/100*10,
-                          padding: EdgeInsets.all(10),
-                            decoration: BoxDecoration(
-                                color: Colors.white,
-                                borderRadius: BorderRadius.circular(30)),
-                            child: TextButton(
-                                onPressed: () {}, child: Text("Logout",style: TextStyle(color:Color(0xFF296157),fontSize: 17 ,fontWeight:FontWeight.bold),))),
-                      ],
-                    )
+                // crossAxisAlignment: CrossAxisAlignment.,
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                      width: MediaQuery.of(context).size.width / 60 * 20,
+                      height: MediaQuery.of(context).size.height / 100 * 6,
+                      padding: EdgeInsets.all(10),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(30)),
+                      margin: EdgeInsets.only(right: 40),
+                      child: TextButton(
+                          onPressed: () {},
+                          child: Text("Edit Account",
+                              style: TextStyle(
+                                  color: Color(0xFF296157),
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold)))),
+                  Container(
+                      width: MediaQuery.of(context).size.width / 110 * 20,
+                      height: MediaQuery.of(context).size.height / 100 * 5,
+                      padding: EdgeInsets.all(3),
+                      decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(30)),
+                      child: TextButton(
+                          onPressed: () async{
+                            final action = await AlertDialogs.yesCancelDialog(context, 'Logout', 'Are you sure want to logout?');
+                            if (action == DialogsAction.yes) {
+                              
+                              
+                              
+                            }
+                          },
+                          child: Text(
+                            "Logout",
+                            style: TextStyle(
+                                color: Color(0xFF296157),
+                                fontSize: 17,
+                                fontWeight: FontWeight.bold),
+                          ))),
+                ],
+              )
             ],
           ),
           Padding(
