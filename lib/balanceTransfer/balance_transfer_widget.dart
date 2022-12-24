@@ -16,15 +16,13 @@ class BalanceTransferWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey[200],
       body:ListView(
         children: 
           [Form(
             key: _formKey,
             child: Container(
-              
-              margin:EdgeInsets.only(top:MediaQuery.of(context).viewPadding.top),
-              padding: EdgeInsets.symmetric(horizontal: 14.0),
+              // margin:EdgeInsets.only(top:MediaQuery.of(context).viewPadding.top),
+              padding: EdgeInsets.symmetric(horizontal: 14.0,vertical: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -39,7 +37,7 @@ class BalanceTransferWidget extends StatelessWidget {
                        fontWeight: FontWeight.w400,
                      )
                       ),
-                      SizedBox(height: 5,),
+                      SizedBox(height: 40,),
                       CustomTextField(
                         hintText: "Amount",
                         validator:(val){
@@ -56,11 +54,12 @@ class BalanceTransferWidget extends StatelessWidget {
                                 }
                             },
                         ),
-                        SizedBox(height: 5,),
+                        SizedBox(height: 10,),
           
                         CustomDropDown(hint: "Select account to transfer from",),
+                        SizedBox(height: 10,),
                         CustomDropDown(hint: "Select account to transfer to"),
-                        SizedBox(height: 60,),
+                        SizedBox(height: 80,),
                         CustomButton(
                           title: "Add",
                           onPressed: () {
@@ -72,6 +71,9 @@ class BalanceTransferWidget extends StatelessWidget {
                           SizedBox(height: 40,),
                           CustomButton(
                           title: "Cancel",
+                          onPressed: (){
+                            Navigator.pop(context);
+                          },
                           ),
                 ],
               ),
