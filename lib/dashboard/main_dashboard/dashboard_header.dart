@@ -12,13 +12,13 @@ class _DashboardHeaderState extends State<DashboardHeader> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:EdgeInsets.only(top:MediaQuery.of(context).viewPadding.top),
+      margin:EdgeInsets.only(top:MediaQuery.of(context).viewPadding.top+10),
       child:Row(
         children: [
           Icon(
             Icons.person_rounded,
             color:Color(0xFFA296157),
-            size:70
+            size:60
             ),
             SizedBox(width: 20,),
             Expanded(
@@ -48,7 +48,7 @@ class _DashboardHeaderState extends State<DashboardHeader> {
                      Icon(
                       Icons.menu_rounded,
                       color:Color(0xFFA296157),
-                      size:60
+                      size:50
                       ),
         ],
       ),

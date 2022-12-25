@@ -25,7 +25,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
               child: Column(
                 children: [
                   DashboardHeader(),
-                  SizedBox(height:30),
+                  SizedBox(height:60),
                   // DashboardBody(),
                 ],
               ),
