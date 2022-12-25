@@ -1,5 +1,5 @@
+import 'package:budget_tracer_practice/common/custom_button.dart';
 import 'package:flutter/material.dart';
-import '../common/custom_button.dart';
 import '../common/custom_icon.dart';
 import '../common/custom_textfield.dart';
 import 'otp_verifiacation_screen.dart';
@@ -19,31 +19,30 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
   final GlobalKey<FormState> _formKey=GlobalKey();
   @override
   Widget build(BuildContext context) {
-    
+
     return Scaffold(
-      backgroundColor: Color(0xFFA83D0E9),
+      backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color(0xFFA83D0E9),
+        backgroundColor: Colors.white,
         elevation:0,
-        
+
           //   children: [
 
               leading: Center(
-                
+
                 child: Container(
                   child: CustomIcon(
                     icon:Icons.arrow_back,
                     onPressed:(){},
                   ),
                 ),
-                
-                
+
               ),
 
       ),
       body:Container(
         padding: EdgeInsets.symmetric(
-          horizontal:25.0,
+          horizontal:14.0,
         ),
         child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -77,7 +76,6 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
                   child: Column(
                     children: [
                       CustomTextField(
-                        label: "",
                         hintText: "Email address",
                         prefixIcon: Icon(Icons.email),
                         bottomPadding: 30,
@@ -101,6 +99,7 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
                   ),
                 ),
               ),
+              SizedBox(height:20),
                 CustomButton(
                   title: "Reset",
                   onPressed: (){

@@ -1,10 +1,13 @@
+import 'package:budget_tracer_practice/common/custom_button.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 
-import '../common/custom_button.dart';
 import '../common/custom_icon.dart';
 import 'confirm_password.dart';
+import 'forgot_password_screen.dart';
 
 
 class OtpVerifyWidget extends StatefulWidget {
@@ -18,9 +21,9 @@ class _OtpVerifyWidgetState extends State<OtpVerifyWidget> {
 
   Widget build(BuildContext context) {
     return Scaffold(
-        backgroundColor: Color(0xFFA83D0E9),
+        backgroundColor: Colors.white,
       appBar: AppBar(
-        backgroundColor: Color(0xFFA83D0E9),
+        backgroundColor: Colors.white,
         elevation:0,
           //   children: [
               leading: Center(
@@ -37,7 +40,7 @@ class _OtpVerifyWidgetState extends State<OtpVerifyWidget> {
 
       ),
       body:Container(
-        padding:EdgeInsets.symmetric(horizontal: 25.0),
+        padding:EdgeInsets.symmetric(horizontal: 14.0),
         child:Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children:[
@@ -71,12 +74,12 @@ class _OtpVerifyWidgetState extends State<OtpVerifyWidget> {
     borderRadius: BorderRadius.circular(5),
     fieldHeight: 58,
     fieldWidth: 58,
-    activeFillColor: Colors.white,
-    activeColor: Colors.red,
-    inactiveColor: Colors.white,
-    inactiveFillColor: Colors.white,
-    selectedColor: Colors.red,
-    selectedFillColor: Colors.white,
+    activeFillColor: Color.fromARGB(248, 234, 236, 236),
+    activeColor: Colors.white,
+    inactiveColor: Color.fromARGB(248, 234, 236, 236),
+    inactiveFillColor: Color.fromARGB(255, 245, 241, 241),
+    selectedColor: Colors.white,
+    selectedFillColor: Color.fromARGB(248, 234, 236, 236),
   ),
   animationDuration: Duration(milliseconds: 300),
   enableActiveFill: true,

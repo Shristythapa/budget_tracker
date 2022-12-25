@@ -1,10 +1,9 @@
+import 'package:control_style/decorated_input_border.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 import '../common/custom_button.dart';
 import '../common/custom_icon.dart';
-import '../common/custom_textfield.dart';
 import 'otp_verifiacation_screen.dart';
 
 class ConfirmPAsswordWidget extends StatefulWidget {
@@ -28,15 +27,11 @@ class _ConfirmPAsswordWidgetState extends State<ConfirmPAsswordWidget> {
   @override
   Widget build(BuildContext context) {
     return  Scaffold(
-      backgroundColor: Color(0xFFA83D0E9),
       appBar: AppBar(
-        backgroundColor: Color(0xFFA83D0E9),
-        elevation:0,
-        
           //   children: [
 
               leading: Center(
-                
+
                 child: Container(
                   child: CustomIcon(
                     icon:Icons.arrow_back,
@@ -51,7 +46,7 @@ class _ConfirmPAsswordWidgetState extends State<ConfirmPAsswordWidget> {
       ),
       body:Container(
         padding: EdgeInsets.symmetric(
-          horizontal:25.0,
+          horizontal:14.0,
         ),
         child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,7 +66,6 @@ class _ConfirmPAsswordWidgetState extends State<ConfirmPAsswordWidget> {
               SizedBox(height:10),
               Container(
                 height:70,
-           
                 child:Form(
                   key: _passKey,
                   child: Column(
@@ -91,11 +85,21 @@ class _ConfirmPAsswordWidgetState extends State<ConfirmPAsswordWidget> {
 
                       },
                         decoration: InputDecoration(
-                          // border:InputBorder.none,
-                          border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                                  borderSide: BorderSide(color: Colors.white), 
-                              ),
+                          border: DecoratedInputBorder(
+                          child: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(30),
+                            borderSide: BorderSide(
+                                          width: 0, 
+                                          style: BorderStyle.none,
+                                      ),
+                          ),
+                          shadow:[
+                            BoxShadow(
+                              color: Color.fromARGB(255, 174, 175, 175),
+                              blurRadius: 12,
+                            )
+                          ],
+            ),
               
                           hintText:"New Password",
                           suffixIcon: showPassword?
@@ -154,10 +158,21 @@ class _ConfirmPAsswordWidgetState extends State<ConfirmPAsswordWidget> {
                           }
                         },
                         decoration: InputDecoration(
-                           border: OutlineInputBorder(
-                                borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                                  borderSide: BorderSide(color: Colors.white), 
+                            border: DecoratedInputBorder(
+                              child: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(30),
+                                borderSide: BorderSide(
+                                              width: 0, 
+                                              style: BorderStyle.none,
+                                          ),
                               ),
+                              shadow:[
+                                BoxShadow(
+                                  color: Color.fromARGB(255, 174, 175, 175),
+                                  blurRadius: 12,
+                                )
+                              ],
+                            ),
                           hintText:"Confirm Password",
 
                           suffixIcon: showPassword?
