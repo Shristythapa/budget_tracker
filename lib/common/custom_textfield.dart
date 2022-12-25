@@ -1,8 +1,9 @@
+import 'package:control_style/decorated_input_border.dart';
 import 'package:flutter/material.dart';
 
 
 class CustomTextField extends StatelessWidget {
-  final String label;
+  // final String label;
   final String hintText;
   final double bottomPadding;
   final TextInputType? textInputType;
@@ -13,7 +14,7 @@ class CustomTextField extends StatelessWidget {
 
    CustomTextField({
     Key? key,
-    required this.label,
+    // required this.label,
     required this.hintText,
     this.bottomPadding=10,
     this.textInputType,
@@ -25,69 +26,54 @@ class CustomTextField extends StatelessWidget {
 
   }): super(key: key);
 
-  
+
  
 
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin:EdgeInsets.only(bottom:bottomPadding),
-      child: Column(
-       crossAxisAlignment:CrossAxisAlignment.start,
-
-        children: [
-          Text(
-            label,
-            style:TextStyle(
-              fontSize:15,
-              fontWeight:FontWeight.normal,
-              color:Color(0xFFA39C9C),
-            )
-          ),
-           const SizedBox(height:12),
-           
-          Container(
-            height:70,
-
+            child: TextFormField(
             
-              child: TextFormField(
-
-                // cursorColor: Colors.red,
-                keyboardType: TextInputType.emailAddress,
-                obscureText:obscureText,
-              
-                decoration:InputDecoration(
-                  prefixIcon: prefixIcon,
-                  suffixIcon:suffixIcon,
-                   border: OutlineInputBorder(
-                           borderRadius: BorderRadius.all(Radius.circular(20.0)),
-                            borderSide: BorderSide(color: Colors.white), 
+              // cursorColor: Colors.red,
+              keyboardType: TextInputType.emailAddress,
+              obscureText:obscureText,
+            
+              decoration:InputDecoration(
+                prefixIcon: prefixIcon,
+                suffixIcon:suffixIcon,
+                 border: DecoratedInputBorder(
+              child: OutlineInputBorder(
+                borderRadius: BorderRadius.circular(30),
+                borderSide: BorderSide(
+                              width: 0, 
+                              style: BorderStyle.none,
                           ),
-
-                  // fillColor:Colors.transparent,
-                  filled:true,
-                  fillColor:Colors.white,
-                  contentPadding: EdgeInsets.symmetric(
-                    horizontal:20,
-                    vertical:13,
-                  ),
-                 
-                  hintText:hintText,
-                  hintStyle:TextStyle(
-                    fontSize:15,
-                  )
-
-                ),
-
-                validator:validator,
-
               ),
-             
+              shadow:[
+                BoxShadow(
+                  color: Color.fromARGB(255, 174, 175, 175),
+                  blurRadius: 12,
+                )
+              ],
+            ),
+                filled:true,
+                fillColor:Colors.white,
+                contentPadding: EdgeInsets.symmetric(
+                  horizontal:20,
+                  vertical:13,
+                ),
+               
+                hintText:hintText,
+                hintStyle:TextStyle(
+                  fontSize:15,
+                  color: Color.fromARGB(255, 194, 193, 193)
+                )
             
-          ),
-        ],
-      ),
-      
-    );
+              ),
+            
+              validator:validator,
+            
+            ),
+          );
   }
 }

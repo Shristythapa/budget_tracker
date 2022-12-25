@@ -14,13 +14,13 @@ class CustomButton extends StatelessWidget {
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        height:41,
+        height:45,
         // width:300,
         // margin:EdgeInsets.only(left:33,right:33),
         // padding: EdgeInsets.only(top: 20,bottom:20),
         decoration: BoxDecoration(
           
-           color: Color(0xFF495867),
+           color: Color(0xFF77ABA2),
           // color:Color.fromARGB(73, 88, 104,1),
           
           borderRadius: BorderRadius.vertical(top:Radius.circular(30),bottom:Radius.circular(30))
@@ -35,8 +35,8 @@ class CustomButton extends StatelessWidget {
                 title,
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize:16,
-                  fontWeight: FontWeight.normal,
+                  fontSize:18,
+                  fontWeight: FontWeight.bold,
                 ),
                 ),
             ),
