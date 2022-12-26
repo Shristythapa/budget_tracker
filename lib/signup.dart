@@ -265,7 +265,8 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         print("Invalid form");
                       }
                     },
-                    color: Color(0xFF296157),
+                    color: Color(0xFF296157)
+                    ,
                     shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(40)),
                     child: Text(
