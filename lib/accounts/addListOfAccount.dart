@@ -17,7 +17,7 @@ class _addListOfAccountState extends State<AddListOfAccount> {
             borderRadius: BorderRadius.vertical(
               bottom: Radius.circular(20),
             )),
-        backgroundColor: Color(0xFF296157),
+        backgroundColor:  Color.fromARGB(248, 133, 191, 180),
         actions: <Widget>[
           IconButton(
               icon: const Icon(Icons.cancel_outlined,size: 32,),
@@ -50,21 +50,14 @@ class _addListOfAccountState extends State<AddListOfAccount> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Text(
-                  "List Of",
+                  "My Accounts",
                   style: TextStyle(
                     fontSize: 30,
                     fontWeight: FontWeight.bold,
                     color: Colors.black87,
                   ),
                 ),
-                Text(
-                  "Accounts",
-                  style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
-                    color: Colors.black87,
-                  ),
-                )
+               
               ],
             ),
           ],
@@ -77,38 +70,61 @@ class _addListOfAccountState extends State<AddListOfAccount> {
             height: MediaQuery.of(context).size.height / 100 * 7,
           ),
           Container(
-            color: Colors.white70,
+            color: Colors.white,
             height: MediaQuery.of(context).size.height / 100 * 57,
             child: Container(
+              child: ListView(
+                children: [
+                    account()
+                ],
+              ),
               decoration: new BoxDecoration(
-                  color: Color(0XFFD9D9D9),
+                  color: Colors.white,
                   borderRadius: new BorderRadius.vertical(
                     top: Radius.circular(30),
                   )),
             ),
           ),
-          Stack(
+          Expanded(child: Stack(
             clipBehavior: Clip.none,
             children: <Widget>[
               Container(
-                color: Color(0xF9296157),
+                color: Color.fromARGB(248, 133, 191, 180),
                 height: MediaQuery.of(context).size.height / 100 * 16,
               ),
               Positioned(
                 child: FloatingActionButton(
-                  child: Icon(Icons.add, size: 30),
+                  child: Icon(Icons.add,color: Colors.black, size: 30),
                   tooltip: "Add ",
                   onPressed: () {},
-                  backgroundColor: Color(0xFFA95894E),
+                  backgroundColor: Colors.white,
                 ),
                 right: 0,
                 left: 0,
                 top: -30,
               ),
             ],
-          ),
+          ),)
         ],
       ),
     );
   }
+}
+
+Widget account(){
+  return SizedBox(
+    height: 100,
+    width: 100,
+    child: Card(
+      
+      color: Color(0xFFEFEFEF),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: [
+          Text("Cash",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),),
+          Text("Balance",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),)
+        ],
+      ),
+    ),
+  );
 }
