@@ -20,15 +20,11 @@ class _AccountDetailsState extends State<AccountDetails> {
 }
 
 class MyAccountDetails extends StatelessWidget {
-  
-
   TextEditingController amount = new TextEditingController(text: "20000");
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
-      
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -62,45 +58,52 @@ class MyAccountDetails extends StatelessWidget {
             ),
             TextFormField(
               controller: amount,
-              onChanged: (value) {
-                
-              },
+              onChanged: (value) {},
               readOnly: false,
               style: TextStyle(fontSize: 20),
               decoration: InputDecoration(
-                border:OutlineInputBorder(
-                  borderRadius: BorderRadius.all(Radius.circular(20))
-                )
-              ),
-             
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
             ElevatedButton(
-                onPressed: () {
-                 
-                },
+                onPressed: () {},
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF77ABA2),
                   foregroundColor: Colors.white,
-                  padding: EdgeInsets.symmetric(horizontal: 90.0, vertical: 15.0),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 90.0, vertical: 15.0),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0)),
                 ),
-                child: Text("Update", style: TextStyle(fontSize: 25),)),
-            ElevatedButton(onPressed: () {
-      
-            },
-             style: ElevatedButton.styleFrom(
+                child: Text(
+                  "Update",
+                  style: TextStyle(fontSize: 25),
+                )),
+            ElevatedButton(
+                onPressed: () => showDialog<String>(
+                      context: context,
+                      builder: (BuildContext context) => AlertDialog(
+                        title: const Text('Do you sure want to delete?'),
+                        
+                          ),
+                        ],
+                      ),
+                    ),
+                style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF77ABA2),
                   foregroundColor: Colors.white,
-                  
-                  padding: EdgeInsets.symmetric(horizontal: 90.0, vertical: 15.0),
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 90.0, vertical: 15.0),
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0)),
                 ),
-             child: Text("Delete", style: TextStyle(fontSize: 25),)),
-             SizedBox(
+                child: Text(
+                  "Delete",
+                  style: TextStyle(fontSize: 25),
+                )),
+            SizedBox(
               height: 50,
-             )
+            )
           ],
         ),
       ),
