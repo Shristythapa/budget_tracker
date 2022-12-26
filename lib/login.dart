@@ -1,9 +1,13 @@
 // import 'dart:ui';
 
+import 'package:budget_tracker/common/custom_button.dart';
+import 'package:control_style/decorated_input_border.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+
+import 'common/custom_textfield.dart';
 // import 'package:flutter_class/screens/homescreen.dart';
 
 class loginScreen extends StatefulWidget {
@@ -16,7 +20,7 @@ class loginScreen extends StatefulWidget {
 class _LoginScreenState extends State<loginScreen> {
   TextEditingController email = new TextEditingController();
   TextEditingController password = new TextEditingController();
-  bool hidePassword = true;
+ bool showPassword=false;
   final form = GlobalKey<FormState>();
   // final FirebaseAuth _auth = FirebaseAuth.instance;
   Future<void> login() async {
@@ -44,155 +48,148 @@ class _LoginScreenState extends State<loginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xff21254A),
-      body: Form(
-        key: form,
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            // Image.asset(
-            //   // "assets/images/logo.png",
-            //   height: 100,
-            //   width: 100,
-            // ),
-            const SizedBox(
-              height: 20,
-            ),
-            Padding(
-                padding: EdgeInsets.symmetric(horizontal: 20.0),
-                child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: <Widget>[
-                      
-                      Text("Hello there, \nWelcome back",
-                          style: TextStyle(
-                            fontSize: 30,
-                            color: Color.fromARGB(255, 247, 245, 245),
-                            fontWeight: FontWeight.bold,
-                          ))
-                    ])),
-            const SizedBox(
-              height: 20,
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              child: TextFormField(
-                controller: email,
-                validator: (String? value) {
-                  if (value == null || value == "") {
-                    return "Username is required";
-                  }
-
-                  return null;
-                },
-                decoration: InputDecoration(
-                    hintText: "Username", prefixIcon: Icon(Icons.person)),
-              ),
-            ),
-            Container(
-              margin: EdgeInsets.all(10),
-              child: TextFormField(
-                controller: password,
-                validator: (String? value) {
-                  if (value == null || value == "") {
-                    return "Password is required";
-                  }
-                  return null;
-                },
-                obscureText: hidePassword,
-                decoration: InputDecoration(
-                    hintText: "Enter your password",
-                    prefixIcon: Icon(Icons.password),
-                    suffixIcon: !hidePassword
-                        ? InkWell(
-                            onTap: () {
-                              setState(() {
-                                hidePassword = !hidePassword;
-                              });
-                            },
-                            child: Icon(Icons.visibility))
-                        : InkWell(
-                            onTap: () {
-                              setState(() {
-                                hidePassword = !hidePassword;
-                              });
-                            },
-                            child: Icon(Icons.visibility_off))),
-              ),
-            ),
-            const SizedBox(
-              height: 20.0,
-            ),
-            const Center(
-              child: Text(
-                "Forgot Password?",
-                style: TextStyle(color: Colors.pink),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            Container(
-              height: 50,
-              width: 300,
-              margin: EdgeInsets.symmetric(horizontal: 60),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: Color.fromRGBO(49, 39, 79, 1),
-              ),
-              child: ElevatedButton(
-                onPressed: (() {
-                  if (form.currentState!.validate()) {
-                    login();
-                  } else {
-                    print("Fail");
-                  }
-                }),
-                child: Text(
-                  "Login",
-                  style: TextStyle(color: Colors.white),
+      body: SingleChildScrollView(
+        child: Container(
+          margin:EdgeInsets.only(top:MediaQuery.of(context).viewPadding.top),
+          padding: EdgeInsets.symmetric(horizontal: 14),
+          child: Form(
+            key: form,
+            child: Column(
+              children: [
+                Padding(
+                    padding: EdgeInsets.only(top: 60.0,bottom:50,),
+                    child: Column(
+                        children: <Widget>[
+                          Text("Hello there, \nWelcome back",
+                              style: TextStyle(
+                                fontSize: 32,
+                                fontWeight: FontWeight.w500,
+                                // color: Color.fromARGB(255, 247, 245, 245),
+                              ))
+                        ])),
+                const SizedBox(
+                  height: 20,
                 ),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
+                  Container(
+                    height: 70,
+                    child: CustomTextField(
+                              hintText: "Email address",
+                              prefixIcon: Icon(Icons.email),
+                              bottomPadding: 30,
+                              validator:(val){
+                              final  emailValid =RegExp(
+                                r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
+                                  if (val ==null){
+                                    return"Email field cannot be empty";
+                                  }else if (val.isEmpty){
+                                    return"Email field cannot be empty";
+                                  }else if (emailValid.hasMatch(val)){
+                                    return null;
+                                  }else{
+                                    return "Invalid email address";
+                                  }
+                              },
+                              ),
                   ),
-                  backgroundColor: Color.fromRGBO(49, 39, 79, 1),
-                  foregroundColor: Colors.white,
+                  SizedBox(height:10),
+      
+                            Container(
+                              height: 70,
+                              child: TextFormField(
+                              controller:password,
+                              obscureText: !showPassword,
+                               validator:(val){
+                              if(val==null || val.isEmpty){
+                                return "Password cannot be empty";
+                              }else if (val.length<6){
+                                return "Password must be at least 6 characters";
+                              }else{
+                                return null;
+                              }
+      
+                          },
+                              decoration: InputDecoration(
+                                border: DecoratedInputBorder(
+                                child: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(30),
+                                  borderSide: BorderSide(
+                                                width: 0, 
+                                                style: BorderStyle.none,
+                                            ),
+                                ),
+                                shadow:[
+                                  BoxShadow(
+                                    color: Color.fromARGB(255, 174, 175, 175),
+                                    blurRadius: 12,
+                                  )
+                                ],
+                                 ),
+                  
+                                hintText:" Password",
+                                hintStyle:TextStyle(
+                                  fontSize:15,
+                                  color: Color.fromARGB(255, 194, 193, 193)
+                                ),
+                                prefixIcon: Icon(Icons.lock),
+                                suffixIcon: showPassword?
+                                InkWell(
+                                  onTap: (){
+                                    setState(() {
+                                      showPassword = !showPassword;
+                                    });
+                                  },
+                                  child:Icon(Icons.panorama_fish_eye)
+                                )
+                                :
+                                InkWell(
+                                  onTap: (){
+                                    setState(() {
+                                      showPassword = !showPassword;
+                                    });
+                                  },
+                                  child:Icon(Icons.remove_red_eye)
+                                ),
+                                filled:true,
+                                fillColor: Colors.white,
+                                
+                          contentPadding: EdgeInsets.symmetric(
+                              horizontal:20,
+                              vertical:13,
+                          ),
+                              ),
+                          ),
+                            ),
+        
+                const SizedBox(
+                  height: 20.0,
                 ),
-              ),
-            ),
-            SizedBox(
-              height: 20.0,
-            ),
-            Container(
-              height: 50,
-              width: 300,
-              margin: EdgeInsets.symmetric(horizontal: 60),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(50),
-                color: Color.fromRGBO(49, 39, 79, 1),
-              ),
-              child: ElevatedButton(
-                onPressed: (() {
-                  // Navigator.of(context).push(MaterialPageRoute(
-                  //   builder: (BuildContext context) => RegisterScreen(),
-                  // ));
-                  Navigator.of(context).pushReplacementNamed("/register");
-                }),
-                child: Text(
-                  "Register",
-                  style: TextStyle(color: Colors.white),
-                ),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
+                const Center(
+                  child: Text(
+                    "Forgot Password?",
+                    style: TextStyle(color: Colors.pink),
                   ),
-                  backgroundColor: Color.fromRGBO(49, 39, 79, 1),
-                  foregroundColor: Colors.white,
                 ),
-              ),
+                SizedBox(
+                  height: 20.0,
+                ),
+                CustomButton(
+                  title: "Login",
+                   onPressed: (() {
+                      if (form.currentState!.validate()) {
+                        login();
+                      } else {
+                        print("Fail");
+                      }
+                    }),
+                  ),
+                SizedBox(height: 30.0,),
+                CustomButton(
+                  title: "Register",
+                      //  Navigator.of(context).pushReplacementNamed("/register");
+      
+                  ),            ],
             ),
-          ],
+          ),
         ),
       ),
     );
