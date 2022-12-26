@@ -20,7 +20,11 @@ class CustomButton extends StatelessWidget {
         // padding: EdgeInsets.only(top: 20,bottom:20),
         decoration: BoxDecoration(
           
+<<<<<<< HEAD
            color: Color(0xFFA77ABA2),
+=======
+           color: Color(0xFF77ABA2),
+>>>>>>> password
           // color:Color.fromARGB(73, 88, 104,1),
           
           borderRadius: BorderRadius.vertical(top:Radius.circular(30),bottom:Radius.circular(30))
