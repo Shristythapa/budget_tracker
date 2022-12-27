@@ -1,5 +1,7 @@
-import 'package:control_style/decorated_input_border.dart';
+
+import 'package:budget_tracer_practice/testScreen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/cupertino.dart';
 
 
 import '../common/custom_button.dart';
@@ -85,7 +87,7 @@ class _ConfirmPAsswordWidgetState extends State<ConfirmPAsswordWidget> {
 
                       },
                         decoration: InputDecoration(
-                          border: DecoratedInputBorder(
+                          border: DecorationInputBorder(
                           child: OutlineInputBorder(
                             borderRadius: BorderRadius.circular(30),
                             borderSide: BorderSide(
@@ -158,7 +160,7 @@ class _ConfirmPAsswordWidgetState extends State<ConfirmPAsswordWidget> {
                           }
                         },
                         decoration: InputDecoration(
-                            border: DecoratedInputBorder(
+                            border: DecorationInputBorder(
                               child: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(30),
                                 borderSide: BorderSide(
