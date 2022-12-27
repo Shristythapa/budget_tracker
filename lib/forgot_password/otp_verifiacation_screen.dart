@@ -1,13 +1,10 @@
-import 'package:budget_tracer_practice/common/custom_button.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 
+import '../common/custom_button.dart';
 import '../common/custom_icon.dart';
 import 'confirm_password.dart';
-import 'forgot_password_screen.dart';
 
 
 class OtpVerifyWidget extends StatefulWidget {
@@ -54,8 +51,6 @@ class _OtpVerifyWidgetState extends State<OtpVerifyWidget> {
                 )
                 ),
             ),
-            // SizedBox(height:15),
-            
             Text(
               "Please enter 5 digit OTP code",
               style:TextStyle(
@@ -123,7 +118,7 @@ SizedBox(height:20),
                       style:TextStyle(
                         color:Colors.red),
                       ),
-                    
+
                   ]
                 )
                 ),

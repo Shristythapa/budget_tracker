@@ -1,5 +1,5 @@
-import 'package:budget_tracer_practice/common/custom_button.dart';
 import 'package:flutter/material.dart';
+import '../common/custom_button.dart';
 import '../common/custom_icon.dart';
 import '../common/custom_textfield.dart';
 import 'otp_verifiacation_screen.dart';

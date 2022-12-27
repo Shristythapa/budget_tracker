@@ -1,16 +1,9 @@
-// import 'dart:ui';
-import 'dart:io';
 import 'dart:async';
-import 'package:budget_tracer_practice/common/custom_button.dart';
 import 'package:control_style/decorated_input_border.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 
+import 'common/custom_button.dart';
 import 'common/custom_textfield.dart';
-
-// import 'package:flutter_class/screens/homescreen.dart';
 
 class loginScreen extends StatefulWidget {
   const loginScreen({super.key});

@@ -33,11 +33,10 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
             child: TextFormField(
-            
               // cursorColor: Colors.red,
               keyboardType: TextInputType.emailAddress,
               obscureText:obscureText,
-            
+
               decoration:InputDecoration(
                 prefixIcon: prefixIcon,
                 suffixIcon:suffixIcon,
@@ -68,7 +67,7 @@ class CustomTextField extends StatelessWidget {
                   fontSize:15,
                   color: Color.fromARGB(255, 194, 193, 193)
                 )
-            
+
               ),
             
               validator:validator,
