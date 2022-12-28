@@ -1,5 +1,5 @@
-
 import 'package:budget_tracker/dashboard/main_dashboard/dashboard_screen.dart';
+import 'package:budget_tracker/dashboard/main_dashboard/sidebar.dart';
 import 'package:budget_tracker/landingpage.dart';
 import 'package:flutter/material.dart';
 
@@ -17,11 +17,9 @@ class MyApp extends StatelessWidget {
       debugShowMaterialGrid: false,
       title: 'Flutter Demo',
       theme: ThemeData(
-        
         primarySwatch: Colors.blue,
       ),
       home: DashboardScreen(),
     );
   }
 }
-
