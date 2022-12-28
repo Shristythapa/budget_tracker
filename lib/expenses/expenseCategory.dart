@@ -176,7 +176,59 @@ class _ExpenseCatogeryState extends State<ExpenseCatogery> {
                       //   height: 100,
                       //   width: 50,
                       // ),
-                     
+                      Card(
+                        margin: EdgeInsets.all(10),
+                        elevation: 8,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: Size(150, 50),
+                            primary: Color(0XFFD9D9D9),
+                            onPrimary: Colors.black87,
+                            padding: EdgeInsets.all(25),
+                          ),
+                          child: Text(
+                            'Gift',
+                            style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onPressed: () {},
+                        ),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: MediaQuery.of(context).size.height / 100 * 3,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Card(
+                        margin: EdgeInsets.all(10),
+                        elevation: 8,
+                        child: ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                            minimumSize: Size(150, 50),
+                            primary: Color(0XFFD9D9D9),
+                            onPrimary: Colors.black87,
+                            padding: EdgeInsets.all(25),
+                          ),
+                          child: Text(
+                            'Stationary',
+                            style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 15,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          onPressed: () {},
+                        ),
+                      ),
+                      // SizedBox(
+                      //   height: 100,
+                      //   width: 50,
+                      // ),
+                    
                     ],
                   ),
                 ],
