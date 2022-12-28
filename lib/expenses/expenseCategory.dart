@@ -32,7 +32,24 @@ class _ExpenseCatogeryState extends State<ExpenseCatogery> {
                           )),
                     ],
                   ),
-        
+                  SizedBox(height: MediaQuery.of(context).size.height / 100 * 3),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Choose Expense Category",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                          fontSize: 25,
+                          color: Color(0xFF4F4F4F),
+                        ),
+                      ),
+                      SizedBox(
+                        height: MediaQuery.of(context).size.height / 100 * 5,
+                      ),
+                    ],
+                  ),
+
               )),
         ),
       ),

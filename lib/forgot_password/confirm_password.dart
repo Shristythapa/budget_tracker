@@ -1,8 +1,5 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-
-
 import '../common/custom_button.dart';
 import '../common/custom_icon.dart';
 import 'otp_verifiacation_screen.dart';
@@ -41,7 +38,6 @@ class _ConfirmPAsswordWidgetState extends State<ConfirmPAsswordWidget> {
                     },
                   ),
                 ),
-
               ),
 
       ),
