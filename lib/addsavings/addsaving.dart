@@ -28,7 +28,32 @@ class _addsavingState extends State<addsaving> {
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
       color: Color(0xFFD9D9D9),
-     
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(100.0),
+          child: AppBar(
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.vertical(
+              bottom: Radius.circular(20),
+            )),
+            backgroundColor: Color(0xFF296157),
+            title: Padding(
+              padding: EdgeInsets.only(top: 30),
+              child: Text(
+                "Add Account",
+                style: TextStyle(
+                  fontWeight: FontWeight.w100,
+                  color: Color.fromARGB(255, 37, 37, 37),
+                  fontSize: 25,
+                ),
+              ),
+            ),
+           
+          ),
+        ),
+      
+      ),
     );
   }
 }
