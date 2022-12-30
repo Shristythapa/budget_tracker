@@ -49,7 +49,17 @@ class _addsavingState extends State<addsaving> {
                 ),
               ),
             ),
-           
+            actions: [
+              Padding(
+                padding: EdgeInsets.only(top: 20),
+                child: Icon(
+                  Icons.cancel_outlined,
+                  color: Color.fromARGB(255, 37, 37, 37),
+                  size: 33,
+                ),
+              ),
+              Text("       ")
+            ],
           ),
         ),
       
