@@ -62,7 +62,15 @@ class _addsavingState extends State<addsaving> {
             ],
           ),
         ),
-      
+        body: Container(
+          width: MediaQuery.of(context).size.width,
+          height: MediaQuery.of(context).size.height,
+          color: Color(0xFFD9D9D9),
+          child: Padding(
+            padding: EdgeInsets.all(40),
+          
+          ),
+        ),
       ),
     );
   }
