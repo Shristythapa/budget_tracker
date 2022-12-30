@@ -107,6 +107,24 @@ class _addsavingState extends State<addsaving> {
                       height: MediaQuery.of(context).size.height / 100 * 8,
                       width: MediaQuery.of(context).size.width / 100 * 8,
                     ),
+                    Container(
+                      height: 50,
+                      width: 300,
+                      child: ElevatedButton(
+                          onPressed: (() {}),
+                          child: Text("Add", style: TextStyle(
+                            fontSize: 25
+                          ),),
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Color(0xFF95894E),
+                              foregroundColor: Colors.black,
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(20)))),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height / 100 * 8,
+                      width: MediaQuery.of(context).size.width / 100 * 8,
+                    ),
                     
                   ],
                 ),
