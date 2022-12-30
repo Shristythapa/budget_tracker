@@ -72,7 +72,30 @@ class _addsavingState extends State<addsaving> {
                 child: ConstrainedBox(
               constraints: BoxConstraints(maxWidth: 600),
               child: SingleChildScrollView(
-                
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height / 100 * 8,
+                      width: MediaQuery.of(context).size.width / 100 * 8,
+                    ),
+                    TextFormField(
+                      keyboardType: TextInputType.text,
+                      decoration: InputDecoration(
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(10.0),
+                          ),
+                          hintText: "Account Name",
+                          hintStyle: TextStyle(color: Colors.black),
+                          fillColor: Colors.white),
+                    ),
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height / 100 * 8,
+                      width: MediaQuery.of(context).size.width / 100 * 8,
+                    ),
+                    
+                  ],
+                ),
               ),
             )),
           ),
