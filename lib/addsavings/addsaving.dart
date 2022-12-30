@@ -68,7 +68,13 @@ class _addsavingState extends State<addsaving> {
           color: Color(0xFFD9D9D9),
           child: Padding(
             padding: EdgeInsets.all(40),
-          
+            child: Form(
+                child: ConstrainedBox(
+              constraints: BoxConstraints(maxWidth: 600),
+              child: SingleChildScrollView(
+                
+              ),
+            )),
           ),
         ),
       ),
