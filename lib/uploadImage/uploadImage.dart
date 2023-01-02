@@ -87,6 +87,38 @@ class _PictureUploadState extends State<PictureUpload> {
                   ),
                 ),
               ),
+              Padding(
+                 padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                child: Container(
+                  width:MediaQuery.of(context).size.height*0.6,
+                  height:50,
+                  child: ElevatedButton(onPressed:() {
+                    
+                  }, 
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF296157),
+                    foregroundColor: Color(0XFFFFFFFF)
+                  ),
+                  child: Text("Upload Image",style: TextStyle(fontSize:20),)),
+                ),
+              ),
+               Padding(
+                 padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                 child: Container(
+                  width:MediaQuery.of(context).size.height*0.6,
+                  height:50,
+                  child: ElevatedButton(onPressed:() {
+                    
+                  }, 
+                  style: ElevatedButton.styleFrom(
+                    backgroundColor: Color(0xFF77ABA2),
+                    foregroundColor: Color(0XFFFFFFFF)
+                  ),
+                  child: Text("Cancel",style: TextStyle(fontSize:20),)),
+                             ),
+               )
              
             ],
           ),
