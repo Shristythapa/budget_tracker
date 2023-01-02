@@ -39,6 +39,54 @@ class _PictureUploadState extends State<PictureUpload> {
                   ),
                 ),
               ),
+               Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 219, 220, 220),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.person,
+                        color: Color.fromARGB(255, 158, 158, 158),
+                        size: 24.0,
+                      ),
+                      SizedBox(width: 20),
+                      Expanded(
+                          child: Text(
+                        "Rin Okumura",
+                      ))
+                    ],
+                  ),
+                ),
+              ),
+              Padding(
+                padding:
+                    const EdgeInsets.symmetric(horizontal: 20, vertical: 30),
+                child: Container(
+                  padding: EdgeInsets.all(20),
+                  decoration: BoxDecoration(
+                      color: Color.fromARGB(255, 219, 220, 220),
+                      borderRadius: BorderRadius.all(Radius.circular(20))),
+                  child: Row(
+                    children: [
+                      Icon(
+                        Icons.mail,
+                        color: Color.fromARGB(255, 158, 158, 158),
+                        size: 24.0,
+                      ),
+                      SizedBox(width: 20),
+                      Expanded(
+                          child: Text(
+                        "rin@gmail.com",
+                      ))
+                    ],
+                  ),
+                ),
+              ),
              
             ],
           ),
