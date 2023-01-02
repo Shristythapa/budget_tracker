@@ -1,5 +1,5 @@
 import 'package:budget_tracer_practice/login.dart';
-import 'package:budget_tracer_practice/viewIncome/view_income_screen.dart';
+import 'package:budget_tracer_practice/income/viewIncome/view_income_screen.dart';
 import 'package:flutter/material.dart';
 
 

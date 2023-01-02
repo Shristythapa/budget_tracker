@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-import '../../common/custom_date_picker.dart';
-import '../../common/custom_icon.dart';
-import '../common/custom_box.dart';
+import '../../../common/custom_date_picker.dart';
+import '../../../common/custom_icon.dart';
+import '../../common/custom_box.dart';
 
 class IncomeWidget extends StatefulWidget {
    IncomeWidget({super.key});
