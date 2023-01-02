@@ -116,7 +116,7 @@ class _addsavingState extends State<addsaving> {
                             fontSize: 25
                           ),),
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF95894E),
+                              backgroundColor: Color.fromARGB(255, 41, 97, 87),
                               foregroundColor: Colors.black,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20)))),
@@ -132,7 +132,7 @@ class _addsavingState extends State<addsaving> {
                           onPressed: (() {}),
                           child: Text("Cancel",style: TextStyle(fontSize: 25),),
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF95894E),
+                              backgroundColor: Color.fromARGB(255, 41, 97, 87),
                               foregroundColor: Colors.black,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20)))),
