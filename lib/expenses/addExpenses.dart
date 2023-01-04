@@ -175,4 +175,36 @@ SizedBox(
                 hint: Text("Account"),
               ),
             ),
+SizedBox(
+              height: 20.0,
+            ),
+            Container(
+              height: 50,
+              width: 300,
+              margin: EdgeInsets.symmetric(horizontal: 60),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: Color.fromRGBO(49, 39, 79, 1),
+              ),
+              child: ElevatedButton(
+                onPressed: (() {
+                  if (form.currentState!.validate()) {
+                    Add();
+                  } else {
+                    print("Fail");
+                  }
+                }),
+                child: Text(
+                  "Add",
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  backgroundColor: Color(0xFF296157),
+                  foregroundColor: Colors.white,
+                ),
+              ),
+            ),
 
