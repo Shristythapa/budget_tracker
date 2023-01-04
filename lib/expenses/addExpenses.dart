@@ -78,3 +78,28 @@ class _ExpenseState extends State<Expense> {
                     prefixIcon: Icon(Icons.description)),
               ),
             ),
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              child: DateTimePicker(
+                initialValue: '',
+                firstDate: DateTime(2000),
+                lastDate: DateTime(2100),
+                dateLabelText: 'Date',
+                onChanged: (val) => print(val),
+                validator: (val) {
+                  print(val);
+                  return null;
+                },
+                onSaved: (val) => print(val),
+                // locale: Locale("en", "CN"),
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    hintText: "Date",
+                    prefixIcon: Icon(Icons.date_range)),
+              ),
+            ),
+
