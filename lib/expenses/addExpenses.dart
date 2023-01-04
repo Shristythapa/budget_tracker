@@ -123,4 +123,56 @@ const SizedBox(
                 ),
               ),
             ),
+SizedBox(
+              height: 10,
+              width: 1000,
+            ),
+            Container(
+              margin: EdgeInsets.symmetric(horizontal: 60),
+              width: double.infinity,
+              decoration: BoxDecoration(
+                  color: Colors.grey, borderRadius: BorderRadius.circular(20)),
+              child: DropdownButton(
+                value: dropdownvalue,
+                icon: const Icon(Icons.keyboard_arrow_down),
+                items: items.map((String items) {
+                  return DropdownMenuItem(
+                    value: items,
+                    child: Text(items),
+                  );
+                }).toList(),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    dropdownvalue = newValue!;
+                  });
+                },
+                hint: Text("Account"),
+              ),
+            ),
+            SizedBox(
+              height: 10,
+              width: 1000,
+            ),
+            Container(
+              width: double.infinity,
+              margin: EdgeInsets.symmetric(horizontal: 60),
+              decoration: BoxDecoration(
+                  color: Colors.grey, borderRadius: BorderRadius.circular(20)),
+              child: DropdownButton(
+                value: selectionvalue,
+                icon: const Icon(Icons.keyboard_arrow_down),
+                items: categories.map((String items) {
+                  return DropdownMenuItem(
+                    value: items,
+                    child: Text(items),
+                  );
+                }).toList(),
+                onChanged: (String? newValue) {
+                  setState(() {
+                    selectionvalue = newValue!;
+                  });
+                },
+                hint: Text("Account"),
+              ),
+            ),
 
