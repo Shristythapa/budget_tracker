@@ -64,7 +64,15 @@ class _IncomeCategoryState extends State<IncomeCategory> {
                         ),
                         child: Text(
                           'Salary',
-                         
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                   
           ),
         ),
       ),
