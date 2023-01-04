@@ -82,8 +82,19 @@ class _IncomeCategoryState extends State<IncomeCategory> {
                           onPrimary: Colors.black87,
                           padding: EdgeInsets.all(25),
                         ),
-                        ,
-          ),
+                        child: Text(
+                          'Free Lancing',
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 15,
+                              fontWeight: FontWeight.bold),
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                  ],
+                ),
+               
         ),
       ),
     );
