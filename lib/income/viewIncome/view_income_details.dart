@@ -121,7 +121,7 @@ class _incomeState extends State<income> {
                     border: InputBorder.none),
               ),
             ),
-const SizedBox(
+            const SizedBox(
               height: 35,
             ),
             Container(
@@ -142,7 +142,7 @@ const SizedBox(
                   controller: food,
                   decoration: InputDecoration(
                       hintText: "                                       20000",
-                     border: InputBorder.none)),
+                      border: InputBorder.none)),
             ),
             const SizedBox(
               height: 40,
@@ -169,7 +169,7 @@ const SizedBox(
                           "                                     Himalayan Bank",
                       border: InputBorder.none)),
             ),
-const SizedBox(
+            const SizedBox(
               height: 40,
               width: 100,
             ),
@@ -194,3 +194,73 @@ const SizedBox(
                       suffixIcon: Icon(Icons.arrow_drop_down),
                       border: InputBorder.none)),
             ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Container(
+              height: 50,
+              width: 300,
+              margin: EdgeInsets.symmetric(horizontal: 60),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: Color.fromRGBO(49, 39, 79, 1),
+              ),
+              child: ElevatedButton(
+                onPressed: (() {
+                  //   if (form.currentState!.validate()) {
+                  //     Delete();
+                  //   } else {
+                  //     print("");
+                  //   }
+                }),
+                child: Text(
+                  "Delete",
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  backgroundColor: Color.fromARGB(255, 119, 171, 162),
+                  foregroundColor: Colors.white,
+                ),
+              ),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            Container(
+              height: 50,
+              width: 300,
+              margin: EdgeInsets.symmetric(horizontal: 60),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: Color.fromRGBO(49, 39, 79, 1),
+              ),
+              child: ElevatedButton(
+                onPressed: (() {
+                  //   if (form.currentState!.validate()) {
+                  //     Delete();
+                  //   } else {
+                  //     print("");
+                  //   }
+                }),
+                child: Text(
+                  "Update",
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  backgroundColor: Color.fromARGB(255, 119, 171, 162),
+                  foregroundColor: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
