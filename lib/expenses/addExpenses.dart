@@ -102,7 +102,7 @@ class _ExpenseState extends State<Expense> {
                     prefixIcon: Icon(Icons.date_range)),
               ),
             ),
-const SizedBox(
+            const SizedBox(
               height: 10,
             ),
             Container(
@@ -123,7 +123,7 @@ const SizedBox(
                 ),
               ),
             ),
-SizedBox(
+            SizedBox(
               height: 10,
               width: 1000,
             ),
@@ -175,7 +175,7 @@ SizedBox(
                 hint: Text("Account"),
               ),
             ),
-SizedBox(
+            SizedBox(
               height: 20.0,
             ),
             Container(
@@ -207,4 +207,35 @@ SizedBox(
                 ),
               ),
             ),
-
+            SizedBox(
+              height: 20.0,
+            ),
+            Container(
+              height: 50,
+              width: 300,
+              margin: EdgeInsets.symmetric(horizontal: 60),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(50),
+                color: Color.fromRGBO(49, 39, 79, 1),
+              ),
+              child: ElevatedButton(
+                onPressed: (() {}),
+                child: Text(
+                  "Cancel",
+                  style: TextStyle(color: Colors.white),
+                ),
+                style: ElevatedButton.styleFrom(
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(30.0),
+                  ),
+                  backgroundColor: Color(0xFF296157),
+                  foregroundColor: Colors.white,
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
