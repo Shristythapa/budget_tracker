@@ -102,4 +102,25 @@ class _ExpenseState extends State<Expense> {
                     prefixIcon: Icon(Icons.date_range)),
               ),
             ),
+const SizedBox(
+              height: 10,
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              child: TextFormField(
+                controller: password,
+                validator: (String? value) {
+                  if (value == null || value == "") {
+                    return "Amount is required";
+                  }
+                  return null;
+                },
+                decoration: InputDecoration(
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8)),
+                  hintText: "Amount",
+                  prefixIcon: Icon(Icons.monetization_on),
+                ),
+              ),
+            ),
 
