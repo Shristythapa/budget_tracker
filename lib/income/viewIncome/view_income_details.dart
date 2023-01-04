@@ -96,4 +96,28 @@ class _incomeState extends State<income> {
                       hintText: "                                     Salary",
                       border: InputBorder.none)),
             ),
-            
+            SizedBox(
+              height: 30,
+            ),
+            Container(
+              decoration: BoxDecoration(
+                color: Color.fromARGB(255, 225, 223, 223),
+                borderRadius: BorderRadius.circular(30),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.5),
+                    spreadRadius: 5,
+                    blurRadius: 7,
+                    offset: Offset(0, 3), // changes position of shadow
+                  ),
+                ],
+              ),
+              margin: EdgeInsets.all(10),
+              child: TextFormField(
+                controller: food,
+                decoration: InputDecoration(
+                    hintText: "                          2022/02/03",
+                    prefixIcon: Icon(Icons.date_range),
+                    border: InputBorder.none),
+              ),
+            ),
