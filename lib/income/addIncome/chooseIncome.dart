@@ -44,7 +44,14 @@ class _IncomeCategoryState extends State<IncomeCategory> {
                         color: Color(0xFF4F4F4F),
                       ),
                     ),
-                    
+                    SizedBox(
+                      height: MediaQuery.of(context).size.height / 100 * 5,
+                    ),
+                  ],
+                ),
+               
+              ],
+            ),
           ),
         ),
       ),
