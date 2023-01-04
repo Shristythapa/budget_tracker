@@ -1,7 +1,7 @@
+import 'package:budget_tracer_practice/expenses/food.dart';
 import 'package:budget_tracer_practice/login.dart';
 import 'package:flutter/material.dart';
 import 'dart:io';
-
 
 void main() {
   runApp(const MyApp());
@@ -27,7 +27,6 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: loginScreen());
+        home: food());
   }
 }
-
