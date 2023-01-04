@@ -94,7 +94,27 @@ class _IncomeCategoryState extends State<IncomeCategory> {
                     ),
                   ],
                 ),
-               
+                SizedBox(height: MediaQuery.of(context).size.height/100*5,),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children:[
+                    Card(
+                      margin: EdgeInsets.all(10),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(140, 30),
+                          primary: Colors.white,
+                        ),
+                        child: FloatingActionButton(
+                          child:Icon(Icons.add,
+                            size: 40,color: Colors.black87,),
+                          tooltip: "Add Category",
+                          backgroundColor: Color(0XFFF6F6F6),
+                          onPressed: (){
+
+                          },
+                        
+          ),
         ),
       ),
     );
