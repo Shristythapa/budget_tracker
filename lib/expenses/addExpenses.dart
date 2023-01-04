@@ -57,4 +57,24 @@ class _ExpenseState extends State<Expense> {
                             fontWeight: FontWeight.bold,
                           ))
                     ])),
-            
+            const SizedBox(
+              height: 20,
+            ),
+            Container(
+              margin: EdgeInsets.all(10),
+              child: TextFormField(
+                controller: email,
+                validator: (String? value) {
+                  if (value == null || value == "") {
+                    return "Title is required";
+                  }
+
+                  return null;
+                },
+                decoration: InputDecoration(
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(8)),
+                    hintText: "Title",
+                    prefixIcon: Icon(Icons.description)),
+              ),
+            ),
