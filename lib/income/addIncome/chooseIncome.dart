@@ -72,7 +72,17 @@ class _IncomeCategoryState extends State<IncomeCategory> {
                         onPressed: () {},
                       ),
                     ),
-                   
+                    Card(
+                      margin: EdgeInsets.all(10),
+                      elevation: 8,
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          minimumSize: Size(150, 50),
+                          primary: Color(0XFFD9D9D9),
+                          onPrimary: Colors.black87,
+                          padding: EdgeInsets.all(25),
+                        ),
+                        ,
           ),
         ),
       ),
