@@ -1,7 +1,8 @@
 import 'package:budget_tracer_practice/expenses/viewExpenses/expense_screen.dart';
 import 'package:budget_tracer_practice/login.dart';
 import 'package:flutter/material.dart';
-import 'dart:io';
+
+import 'expenses/delete_expenses_screen.dart';
 
 
 void main() {
@@ -28,7 +29,7 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
-        home: ExpenseScreen());
+        home: DeleteExpensesScreen());
   }
 }
 
