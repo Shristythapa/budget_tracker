@@ -1,3 +1,4 @@
+import 'package:budget_tracer_practice/landingpage.dart';
 import 'package:flutter/material.dart';
 
 import 'login.dart';
@@ -17,6 +18,12 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
+        initialRoute: "/landingPage",
+        routes: {
+          "/landingPage":(BuildContext context) => LandingPage(),
+          "/login":(BuildContext context) => loginScreen(),
+          //"/signup":(BuildContext context) =>
+        },
         home: loginScreen());
   }
 }
