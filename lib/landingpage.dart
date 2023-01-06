@@ -1,4 +1,5 @@
 
+import 'package:budget_tracer_practice/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -36,7 +37,7 @@ class _MyLandingPageState extends State<MyLandingPage> {
       alignment: Alignment.center,
       decoration: BoxDecoration(
         image: DecorationImage(
-            image: AssetImage("images/landing.jpg"), fit: BoxFit.cover),
+            image: AssetImage("assets/images/landing.jpg"), fit: BoxFit.cover),
       ),
       child: Column(
         children: [
@@ -58,11 +59,11 @@ class _MyLandingPageState extends State<MyLandingPage> {
                 )
               ),
               onPressed: () {
-                // Navigator.of(context).pop();
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => const Signup()),
-                // );
+                Navigator.of(context).pop();
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => const RegisterScreen()),
+                );
               },
               child: Text(
                 "Join Now",
@@ -83,11 +84,8 @@ class _MyLandingPageState extends State<MyLandingPage> {
                 ),
               ),
               onTap: () {
-                // Navigator.of(context).pop();
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(builder: (context) => const ),
-                // );
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, '/signup');  
               },
             )),
           )

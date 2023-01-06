@@ -1,12 +1,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.project.budget_tracker">
-<<<<<<< HEAD
 
     
     <uses-permission android:name="android.permission.INTERNET" /> // add this line
-=======
-    <uses-permission android:name="android.permission.INTERNET" />
->>>>>>> signup
    <application
         android:label="budget_tracker"
         android:name="${applicationName}"

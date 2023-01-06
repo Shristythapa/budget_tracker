@@ -180,7 +180,9 @@ class _LoginScreenState extends State<loginScreen> {
                 SizedBox(height: 30.0,),
                 CustomButton(
                   title: "Register",
-                      //  Navigator.of(context).pushReplacementNamed("/register");
+                  onPressed: () {
+                     Navigator.pushNamed(context, '/signup');  
+                  },
 
                   ),            ],
             ),

@@ -1,5 +1,6 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 
 class RegisterScreen extends StatefulWidget {
@@ -285,12 +286,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         width: 5,
                       ),
                       InkWell(
-                        //     onTap: () {
-                        //       Navigator.of(context).pushReplacement(MaterialPageRoute(
-                        //         builder: (BuildContext context) => "/login",
-                        //       )
-                        //       );
-                        //     },
+                            onTap: () {
+                              Navigator.pop(context);
+                              Navigator.pushNamed(context, '/login');  
+                            },
                         child: Text(
                           "Go to login",
                           style: TextStyle(
