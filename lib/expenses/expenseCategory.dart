@@ -21,7 +21,23 @@ class ExpenseCatgery extends StatelessWidget {
             // do something
           },
         ),
-       
+        title: const Text('Choose Expense Category',
+          style: TextStyle(color: Colors.black87),),
+        backgroundColor: Colors.transparent,
+        elevation: 0.0,
+      ),
+
+      body: Padding(
+        padding: const EdgeInsets.all(17.0),
+        // implement GridView.builder
+        child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 180,
+                childAspectRatio: (1.2 / .7),
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20),
+            itemCount: myProducts.length,
+           
     );
   }
 }
