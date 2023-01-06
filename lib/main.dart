@@ -1,8 +1,13 @@
+<<<<<<< HEAD
+import 'package:budget_tracer_practice/expenses/viewExpenses/expense_screen.dart';
+=======
 import 'package:budget_tracer_practice/expenses/addExpenses.dart';
 import 'package:budget_tracer_practice/expenses/viewExpense.dart';
+>>>>>>> fdd371e3a062e7f7a68444cb69796371a52b75c6
 import 'package:budget_tracer_practice/login.dart';
 import 'package:flutter/material.dart';
-import 'dart:io';
+
+import 'expenses/delete_expenses_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -28,6 +33,10 @@ class MyApp extends StatelessWidget {
           // is not restarted.
           primarySwatch: Colors.blue,
         ),
+<<<<<<< HEAD
+        home: DeleteExpensesScreen());
+=======
         home: Expense());
+>>>>>>> fdd371e3a062e7f7a68444cb69796371a52b75c6
   }
 }
