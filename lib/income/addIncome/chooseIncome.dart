@@ -38,7 +38,22 @@ class ExpenseCatgery extends StatelessWidget {
                 mainAxisSpacing: 20),
             itemCount: myProducts.length,
             itemBuilder: (BuildContext ctx, index) {
-             
+              return GestureDetector(
+                onTap: (){
+                  print("${myProducts[index]["name"]} Clicked");
+                },
+                child: Container(
+                  alignment: Alignment.center,
+                  decoration: BoxDecoration(
+                      color: Color(0XFFD9D9D9),
+                      borderRadius: BorderRadius.circular(15)),
+                  child: Text(
+                    myProducts[index]["name"],
+                    style: TextStyle(color: Colors.black87, fontSize: 20),
+                  ),
+                ),
+              );
+            }),
       ),
     );
   }
