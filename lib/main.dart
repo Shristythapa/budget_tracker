@@ -1,5 +1,7 @@
-import 'package:budget_tracer_practice/landingpage.dart';
+﻿import 'package:budget_tracer_practice/landingpage.dart';
+import 'package:budget_tracer_practice/signup.dart';
 import 'package:flutter/material.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'login.dart';
 
@@ -22,7 +24,7 @@ class MyApp extends StatelessWidget {
         routes: {
           "/landingPage":(BuildContext context) => LandingPage(),
           "/login":(BuildContext context) => loginScreen(),
-          //"/signup":(BuildContext context) =>
+          "/signup":(BuildContext context) => RegisterScreen()
         },
         home: loginScreen());
   }

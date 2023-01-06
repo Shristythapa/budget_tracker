@@ -29,9 +29,17 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  firebase_core: ^2.4.0
+  firebase_auth: ^4.2.0
+  email_validator: '^2.1.16'
   flutter:
     sdk: flutter
 
+<<<<<<< HEAD
+=======
+
+
+>>>>>>> signup
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.2

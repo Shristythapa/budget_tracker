@@ -1,6 +1,10 @@
 {
   "project_info": {
     "project_number": "661428043064",
+<<<<<<< HEAD
+=======
+    "firebase_url": "https://budegttracker-default-rtdb.firebaseio.com",
+>>>>>>> signup
     "project_id": "budegttracker",
     "storage_bucket": "budegttracker.appspot.com"
   },
