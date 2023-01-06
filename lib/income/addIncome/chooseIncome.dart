@@ -27,7 +27,18 @@ class ExpenseCatgery extends StatelessWidget {
         elevation: 0.0,
       ),
 
-      
+      body: Padding(
+        padding: const EdgeInsets.all(17.0),
+        // implement GridView.builder
+        child: GridView.builder(
+            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 180,
+                childAspectRatio: (1.2 / .7),
+                crossAxisSpacing: 20,
+                mainAxisSpacing: 20),
+            itemCount: myProducts.length,
+            itemBuilder: (BuildContext ctx, index) {
+             
       ),
     );
   }
