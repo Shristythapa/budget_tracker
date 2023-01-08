@@ -65,9 +65,21 @@ class MySavingsDetails extends StatelessWidget {
                   border: OutlineInputBorder(
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
+            ElevatedButton(
+                onPressed: () {},
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF77ABA2),
+                  foregroundColor: Colors.white,
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 90.0, vertical: 15.0),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                ),
+                child: Text(
+                  "Update",
+                  style: TextStyle(fontSize: 25),
+                )),
           
-        
-            )
           ],
         ),
       ),
