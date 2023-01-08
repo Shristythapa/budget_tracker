@@ -85,7 +85,17 @@ class _addListOfSavingsState extends State<AddListOfSavings> {
                   )),
             ),
           ),
-      
+         Expanded(child: Stack( 
+            clipBehavior: Clip.none,
+            children: <Widget>[
+              Container(
+                color: Color.fromARGB(248, 133, 191, 180),
+                height: MediaQuery.of(context).size.height / 100 * 16,
+              ),
+          
+            ],
+          ),)
+        ],
       ),
     );
   }
