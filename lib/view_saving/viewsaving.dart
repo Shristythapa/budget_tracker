@@ -96,7 +96,21 @@ class MySavingsDetails extends StatelessWidget {
                         ],
                       ),
                     ),
-            
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Color(0xFF77ABA2),
+                  foregroundColor: Colors.white,
+                  padding:
+                      EdgeInsets.symmetric(horizontal: 90.0, vertical: 15.0),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0)),
+                ),
+                child: Text(
+                  "Delete",
+                  style: TextStyle(fontSize: 25),
+                )),
+            SizedBox(
+              height: 50,
+            )
           ],
         ),
       ),
