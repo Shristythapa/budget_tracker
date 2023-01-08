@@ -63,48 +63,13 @@ class _addListOfSavingsState extends State<AddListOfSavings> {
           ],
         ),
       ),
-      
+      body: Column(
         children: [
           Container(
             color: Colors.white,
             height: MediaQuery.of(context).size.height / 100 * 7,
           ),
-          Container(
-            color: Colors.white,
-            height: MediaQuery.of(context).size.height / 100 * 57,
-            child: Container(
-              child: ListView(
-                children: [
-                    account()
-                ],
-              ),
-              decoration: new BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: new BorderRadius.vertical(
-                    top: Radius.circular(30),
-                  )),
-            ),
-          ),
-          Expanded(child: Stack(
-            clipBehavior: Clip.none,
-            children: <Widget>[
-              Container(
-                color: Color.fromARGB(248, 133, 191, 180),
-                height: MediaQuery.of(context).size.height / 100 * 16,
-              ),
-              Positioned(
-                child: FloatingActionButton(
-                  child: Icon(Icons.add,color: Colors.black, size: 30),
-                  tooltip: "Add ",
-                  onPressed: () {},
-                  backgroundColor: Colors.white,
-                ),
-                right: 0,
-                left: 0,
-                top: -30,
-              ),
-            ],
-          ),)
+        
         ],
       ),
     );
