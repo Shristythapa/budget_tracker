@@ -43,7 +43,7 @@ class _addListOfSavingsState extends State<AddListOfSavings> {
           )
         ],
         toolbarHeight: MediaQuery.of(context).size.height / 100 * 20,
-      
+        title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
             Column(
@@ -63,7 +63,7 @@ class _addListOfSavingsState extends State<AddListOfSavings> {
           ],
         ),
       ),
-      body: Column(
+      
         children: [
           Container(
             color: Colors.white,
