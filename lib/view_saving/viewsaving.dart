@@ -24,7 +24,7 @@ class MySavingsDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
@@ -46,7 +46,7 @@ class MySavingsDetails extends StatelessWidget {
 
         // other stuff
       ),
-      body: Container(
+     
         margin: EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
@@ -114,6 +114,6 @@ class MySavingsDetails extends StatelessWidget {
           ],
         ),
       ),
-    );
+
   }
 }
