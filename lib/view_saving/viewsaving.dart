@@ -19,11 +19,12 @@ class _SavingsDetailsState extends State<SavingsDetails> {
   }
 }
 
+class MySavingsDetails extends StatelessWidget {
   TextEditingController amount = new TextEditingController(text: "20000");
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return Container();
       appBar: AppBar(
         backgroundColor: Colors.transparent,
         elevation: 0,
