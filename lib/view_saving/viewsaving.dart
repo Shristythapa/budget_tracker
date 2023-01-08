@@ -12,11 +12,13 @@ class SavingsDetails extends StatefulWidget {
 class _SavingsDetailsState extends State<SavingsDetails> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      home: MySavingsDetails(),
+    );
   }
 }
 
-class MySavingsDetails extends StatelessWidget {
   TextEditingController amount = new TextEditingController(text: "20000");
 
   @override
