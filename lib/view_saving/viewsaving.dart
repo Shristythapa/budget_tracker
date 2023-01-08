@@ -46,12 +46,12 @@ class MySavingsDetails extends StatelessWidget {
 
         // other stuff
       ),
-     
+      body: Container(
         margin: EdgeInsets.all(20),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
+          
             Text(
               "For Travel",
               style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
@@ -114,6 +114,6 @@ class MySavingsDetails extends StatelessWidget {
           ],
         ),
       ),
-
+    );
   }
 }
