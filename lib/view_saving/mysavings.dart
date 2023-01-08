@@ -69,8 +69,23 @@ class _addListOfSavingsState extends State<AddListOfSavings> {
             color: Colors.white,
             height: MediaQuery.of(context).size.height / 100 * 7,
           ),
-        
-        ],
+          Container(
+            color: Colors.white,
+            height: MediaQuery.of(context).size.height / 100 * 57,
+            child: Container(
+              child: ListView(
+                children: [
+                    account()
+                ],
+              ),
+              decoration: new BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: new BorderRadius.vertical(
+                    top: Radius.circular(30),
+                  )),
+            ),
+          ),
+      
       ),
     );
   }
