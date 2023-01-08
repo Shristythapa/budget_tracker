@@ -30,30 +30,43 @@ class ExpenseCatgery extends StatelessWidget {
       body: Padding(
         padding: const EdgeInsets.all(17.0),
         // implement GridView.builder
-        child: GridView.builder(
-            gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
-                maxCrossAxisExtent: 180,
-                childAspectRatio: (1.2 / .7),
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 20),
-            itemCount: myProducts.length,
-            itemBuilder: (BuildContext ctx, index) {
-              return GestureDetector(
-                onTap: (){
-                  print("${myProducts[index]["name"]} Clicked");
-                },
-                child: Container(
-                  alignment: Alignment.center,
-                  decoration: BoxDecoration(
-                      color: Color(0XFFD9D9D9),
-                      borderRadius: BorderRadius.circular(15)),
-                  child: Text(
-                    myProducts[index]["name"],
-                    style: TextStyle(color: Colors.black87, fontSize: 20),
+        child: GridView.count(
+          children: [
+            ...myProducts.map((e) =>  Container(
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  color: Color(0XFFD9D9D9),
+                  borderRadius: BorderRadius.circular(15)),
+              child: Text(
+                e["name"],
+                style: TextStyle(color: Colors.black87, fontSize: 20),
+              ),
+            ),),
+            InkWell(
+              onTap: (){
+
+              },
+              child: Stack(
+                children: [
+                  Container(
+                      alignment: Alignment.center,
+                      decoration: BoxDecoration(
+                          color: Color(0XFFD9D9D9),
+                          shape: BoxShape.circle),
+                      child: Icon(Icons.add)
                   ),
-                ),
-              );
-            }),
+                  // Align(
+                  //   alignment: Alignment.bottomCenter,
+                  //     child: Text('Add Category'))
+                ],
+              ),
+            ),
+
+          ],
+          crossAxisCount: 2,
+          childAspectRatio: (1.2 / .7),
+          crossAxisSpacing: 20,
+          mainAxisSpacing: 20,),
       ),
     );
   }
