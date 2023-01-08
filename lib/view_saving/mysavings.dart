@@ -92,7 +92,17 @@ class _addListOfSavingsState extends State<AddListOfSavings> {
                 color: Color.fromARGB(248, 133, 191, 180),
                 height: MediaQuery.of(context).size.height / 100 * 16,
               ),
-          
+              Positioned(
+                child: FloatingActionButton(
+                  child: Icon(Icons.add,color: Colors.black, size: 30),
+                  tooltip: "Add ",
+                  onPressed: () {},
+                  backgroundColor: Colors.white,
+                ),
+                right: 0,
+                left: 0,
+                top: -30,
+              ),
             ],
           ),)
         ],
