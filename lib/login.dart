@@ -1,4 +1,6 @@
 import 'dart:async';
+import 'package:budget_tracer_practice/forgot_password/forgot_password_screen.dart';
+import 'package:budget_tracer_practice/forgot_password/forgot_password_widget.dart';
 import 'package:control_style/decorated_input_border.dart';
 import 'package:flutter/material.dart';
 
@@ -43,6 +45,7 @@ class _LoginScreenState extends State<loginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child: Container(
           margin:EdgeInsets.only(top:MediaQuery.of(context).viewPadding.top),
@@ -158,10 +161,16 @@ class _LoginScreenState extends State<loginScreen> {
                 const SizedBox(
                   height: 20.0,
                 ),
-                const Center(
-                  child: Text(
-                    "Forgot Password?",
-                    style: TextStyle(color: Colors.pink),
+                 Center(
+                  child: GestureDetector(
+                    onTap: () {
+                      Navigator.pop(context);
+                      Navigator.push(context,  MaterialPageRoute(builder: (context) => ForgotPasswordScreen()));
+                    },
+                    child: Text(
+                      "Forgot Password?",
+                      style: TextStyle(color: Colors.pink),
+                    ),
                   ),
                 ),
                 SizedBox(

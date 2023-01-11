@@ -1,5 +1,7 @@
 
+import 'package:budget_tracer_practice/login.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
 
@@ -38,6 +40,15 @@ class _RegisterScreenState extends State<RegisterScreen> {
       ScaffoldMessenger.of(context).showSnackBar(
           SnackBar(content: Text(e.toString()),));
     }
+  }
+  @override
+  void initState() {
+    Firebase.initializeApp().whenComplete(() { 
+      print("completed");
+      setState(() {});
+    });
+    // TODO: implement initState
+    super.initState();
   }
   @override
   Widget build(BuildContext context) {
@@ -288,7 +299,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       InkWell(
                             onTap: () {
                               Navigator.pop(context);
-                              Navigator.pushNamed(context, '/login');  
+                              Navigator.push(context,  MaterialPageRoute(builder: (context) => const loginScreen())); 
                             },
                         child: Text(
                           "Go to login",
