@@ -1,8 +1,7 @@
 
 import 'package:budget_tracer_practice/signup.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 
 class LandingPage extends StatelessWidget {
   const LandingPage({super.key});

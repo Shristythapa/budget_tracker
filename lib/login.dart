@@ -1,7 +1,10 @@
 import 'dart:async';
+import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_screen.dart';
 import 'package:budget_tracer_practice/forgot_password/forgot_password_screen.dart';
 import 'package:budget_tracer_practice/forgot_password/forgot_password_widget.dart';
+import 'package:budget_tracer_practice/signup.dart';
 import 'package:control_style/decorated_input_border.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import 'common/custom_button.dart';
@@ -19,27 +22,28 @@ class _LoginScreenState extends State<loginScreen> {
   TextEditingController password = new TextEditingController();
  bool showPassword=false;
   final form = GlobalKey<FormState>();
-  // final FirebaseAuth _auth = FirebaseAuth.instance;
+   final FirebaseAuth _auth = FirebaseAuth.instance;
   Future<void> login() async {
-    // try{
-    //   final user = (await _auth.signInWithEmailAndPassword(
-    //       email: email.text,
-    //       password: password.text)
-    //   ).user;
-    //   if(user!=null){
-    //     ScaffoldMessenger.of(context).showSnackBar(
-    //         SnackBar(
-    //             backgroundColor: Colors.green,
-    //             content: Text("Login Success"))
-    //     );
+    try{
+    
+      final user = (await _auth.signInWithEmailAndPassword(
+          email: email.text,
+          password: password.text)
+      ).user;
+      if(user!=null){
+        ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(
+                backgroundColor: Colors.green,
+                content: Text("Login Success"))
+        );
 
-    //     Navigator.of(context).pushReplacementNamed("/home");
-    //   }
-    // }catch(e){
-    //   ScaffoldMessenger.of(context).showSnackBar(
-    //     SnackBar(content: Text(e.toString()))
-    //   );
-    // }
+        Navigator.push(context,  MaterialPageRoute(builder: (context) => const DashboardScreen ()));
+      }
+    }catch(e){
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text(e.toString()))
+      );
+    }
   }
 
   @override
@@ -179,18 +183,22 @@ class _LoginScreenState extends State<loginScreen> {
                 CustomButton(
                   title: "Login",
                    onPressed: (() {
-                      if (form.currentState!.validate()) {
-                        login();
-                      } else {
-                        print("Fail");
-                      }
+                     Navigator.pop(context);
+                     Navigator.push(context,  MaterialPageRoute(builder: (context) => const DashboardScreen()));
+                      // if (form.currentState!.validate()) {
+                      //   DashboardScreen ();
+
+                      // } else {
+                      //   print("Fail");
+                      // }
                     }),
                   ),
                 SizedBox(height: 30.0,),
                 CustomButton(
                   title: "Register",
                   onPressed: () {
-                     Navigator.pushNamed(context, '/signup');  
+                     Navigator.pop(context);
+                     Navigator.push(context,  MaterialPageRoute(builder: (context) => const RegisterScreen()));
                   },
 
                   ),            ],

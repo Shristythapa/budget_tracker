@@ -1,4 +1,5 @@
-﻿import 'package:budget_tracer_practice/landingpage.dart';
+﻿
+import 'package:budget_tracer_practice/landingpage.dart';
 import 'package:budget_tracer_practice/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
         title: 'Flutter Demo',
         theme: ThemeData(
-          primarySwatch: Colors.blue,
+        
         ),
         initialRoute: "/landingPage",
         routes: {
