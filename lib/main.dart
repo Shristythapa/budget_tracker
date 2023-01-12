@@ -1,4 +1,7 @@
 ﻿
+import 'package:budget_tracer_practice/balanceTransfer/balance_transfer_screen.dart';
+import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_screen.dart';
+import 'package:budget_tracer_practice/dashboard/main_dashboard/sidebar.dart';
 import 'package:budget_tracer_practice/landingpage.dart';
 import 'package:budget_tracer_practice/signup.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +31,10 @@ class MyApp extends StatelessWidget {
         routes: {
           "/landingPage":(BuildContext context) => LandingPage(),
           "/login":(BuildContext context) => loginScreen(),
-          "/signup":(BuildContext context) => RegisterScreen()
+          "/signup":(BuildContext context) => RegisterScreen(),
+          "/main_homePage":(BuildContext context) => DashboardScreen(),
+          "/side_Bar":(BuildContext context) => sidebar(),
+          "/transfer_Balance":(BuildContext context) => BalanceTransferScreen()
         },
         home: loginScreen());
   }
