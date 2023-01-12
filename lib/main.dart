@@ -1,4 +1,4 @@
-﻿﻿
+﻿
 import 'package:budget_tracer_practice/balanceTransfer/balance_transfer_screen.dart';
 import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_screen.dart';
 import 'package:budget_tracer_practice/dashboard/main_dashboard/sidebar.dart';
@@ -8,6 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'login.dart';
+
+import 'package:budget_tracer_practice/expenses/viewExpenses/expense_screen.dart';
+import 'package:budget_tracer_practice/login.dart';
+import 'package:flutter/material.dart';
+
+import 'expenses/delete_expenses_screen.dart';
+
 
 void main() async{
    WidgetsFlutterBinding.ensureInitialized();
@@ -27,6 +34,7 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
         
         ),
+
         initialRoute: "/landingPage",
         routes: {
           "/landingPage":(BuildContext context) => LandingPage(),
@@ -36,6 +44,8 @@ class MyApp extends StatelessWidget {
           "/side_Bar":(BuildContext context) => sidebar(),
           "/transfer_Balance":(BuildContext context) => BalanceTransferScreen()
         },
-        home: loginScreen());
+
+        home: DeleteExpensesScreen());
+
   }
 }
