@@ -1,4 +1,4 @@
-﻿
+﻿﻿
 import 'package:budget_tracer_practice/balanceTransfer/balance_transfer_screen.dart';
 import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_screen.dart';
 import 'package:budget_tracer_practice/dashboard/main_dashboard/sidebar.dart';
@@ -39,4 +39,3 @@ class MyApp extends StatelessWidget {
         home: loginScreen());
   }
 }
-
