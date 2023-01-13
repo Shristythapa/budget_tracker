@@ -19,33 +19,38 @@ class _CustomBoxState extends State<CustomBox> {
   @override
   Widget build(BuildContext context) {
     return Container(
-      
+   margin: EdgeInsets.only(bottom: 20),
+
       decoration: BoxDecoration(
         borderRadius: BorderRadius.all(Radius.circular(12)),
         color: Colors.grey[300],
       ),
-      padding: EdgeInsets.symmetric(horizontal: 30,vertical:20),
-      child: Row(
-        children: [
-          Expanded(
-            child: Text(
-              widget.title,
+      child: Container(
+              padding: EdgeInsets.symmetric(horizontal: 30,vertical:25),
+        child: Row(
+          children: [
+            Expanded(
+              child: Text(
+                widget.title,
+                 style:TextStyle(
+                  fontSize:16,
+                  fontWeight:FontWeight.w400,
+                )
+              ),
+            ),
+            Text(
+              widget.rs,
                style:TextStyle(
-                fontSize:16,
-                fontWeight:FontWeight.w400,
-              )
-            ),
-          ),
-          Text(
-            widget.rs,
-             style:TextStyle(
-                fontSize:16,
-                fontWeight:FontWeight.w400,
-              )
-            ),
-           
-        ],
+                  fontSize:16,
+                  fontWeight:FontWeight.w400,
+                )
+              ),
+          ],
+
+        ),
       ),
+
     );
+
   }
 }
