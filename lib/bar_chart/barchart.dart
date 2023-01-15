@@ -41,7 +41,20 @@ class BarChart extends StatelessWidget {
         measureFn: (BarChartModel series, _)=> series.financial,
         colorFn: (BarChartModel series, _)=> series.color,
       ),
-    
+    ];
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("Bar Chart"),
+        centerTitle: true,
+        backgroundColor: Colors.green[700],
+
+      ),
+      body: Container(
+        padding: EdgeInsets.symmetric(horizontal: 10,vertical: 30),
+        child: charts.BarChart(
+          series,
+          animate: true,
+        ),
       ),
     );
   }
