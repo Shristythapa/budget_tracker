@@ -3,14 +3,14 @@ import 'package:pie_chart/pie_chart.dart';
 
 enum LegendShape { circle, rectangle }
 
-class ReportCategoryBody extends StatefulWidget {
-  const ReportCategoryBody({super.key});
+class ExpenseCategoryBody extends StatefulWidget {
+  const ExpenseCategoryBody({super.key});
 
   @override
-  State<ReportCategoryBody> createState() => _ReportCategoryBodyState();
+  State<ExpenseCategoryBody> createState() => _ExpenseCategoryBodyState();
 }
 
-class _ReportCategoryBodyState extends State<ReportCategoryBody> {
+class _ExpenseCategoryBodyState extends State<ExpenseCategoryBody> {
   Map<String, double> dataMap = {
     "Food": 4,
     "Rent": 3,

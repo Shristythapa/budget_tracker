@@ -1,8 +1,9 @@
-
+import 'package:budget_tracer_practice/category/income_category_body.dart';
+import 'package:budget_tracer_practice/expenses/expenseCategory.dart';
 import 'package:flutter/material.dart';
 
 import '../common/custom_date_picker.dart';
-import 'report_category_body.dart';
+import 'expense_category_body.dart';
 import 'report_header.dart';
 
 class CustomBottomNavigation extends StatefulWidget {
@@ -19,8 +20,8 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
     Center(
       child: Text("Overall"),
     ),
-    ReportCategoryBody(),
-    ReportCategoryBody(),
+    ExpenseCategoryBody(),
+    IncomeCategoryBody(),
   ];
 
   @override
