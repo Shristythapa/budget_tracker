@@ -1,4 +1,5 @@
 
+import 'package:budget_tracer_practice/login.dart';
 import 'package:budget_tracer_practice/signup.dart';
 import 'package:flutter/material.dart';
 
@@ -74,7 +75,9 @@ class _MyLandingPageState extends State<MyLandingPage> {
             padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
             child: Center(
                 child: InkWell(
+                
               child: Text(
+                
                 "Already have an account?",
                 style: TextStyle(
                   fontSize: 20,
@@ -84,7 +87,7 @@ class _MyLandingPageState extends State<MyLandingPage> {
               ),
               onTap: () {
                 Navigator.of(context).pop();
-                Navigator.pushNamed(context, '/signup');  
+                Navigator.push(context,MaterialPageRoute(builder: (context) => const loginScreen() ));  
               },
             )),
           )

@@ -1,3 +1,4 @@
+import 'package:budget_tracer_practice/income/addincome.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -33,10 +34,10 @@ class _NavigationBodyScreenState extends State<NavigationBodyScreen> {
               Positioned(
                 child: GestureDetector(
                   onTap: () {
-                    //     Navigator.push(
-                    // context,
-                    // MaterialPageRoute(builder: (context)=>DashboardScreen()));
-                    // print("Container");
+                        Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context)=>Income()));
+                    print("Container");
                   },
                   child: Column(
                     children: [
@@ -80,6 +81,7 @@ class _NavigationBodyScreenState extends State<NavigationBodyScreen> {
                       ),
                     ],
                   ),
+
                 ),
                 right: 0,
                 left: 0,

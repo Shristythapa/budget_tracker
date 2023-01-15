@@ -42,7 +42,8 @@ class MyApp extends StatelessWidget {
           "/signup":(BuildContext context) => RegisterScreen(),
           "/main_homePage":(BuildContext context) => DashboardScreen(),
           "/side_Bar":(BuildContext context) => sidebar(),
-          "/transfer_Balance":(BuildContext context) => BalanceTransferScreen()
+          "/transfer_Balance":(BuildContext context) => BalanceTransferScreen(),
+          
           
         },
 

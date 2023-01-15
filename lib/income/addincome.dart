@@ -1,5 +1,6 @@
 
 
+import 'package:budget_tracer_practice/dashboard/navigation/navigation_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -237,7 +238,10 @@ class _IncomeState extends State<Income> {
                 color: Color.fromRGBO(49, 39, 79, 1),
               ),
               child: ElevatedButton(
-                onPressed: (() {}),
+                onPressed: (() {
+                  Navigator.pop(context);
+                   Navigator.push(context,MaterialPageRoute(builder: (context) => const NavigationScreen() ));  
+                }),
                 child: Text(
                   "Cancel",
                   style: TextStyle(color: Colors.white),

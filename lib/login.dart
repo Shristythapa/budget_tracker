@@ -183,14 +183,14 @@ class _LoginScreenState extends State<loginScreen> {
                 CustomButton(
                   title: "Login",
                    onPressed: (() {
-                     Navigator.pop(context);
+                     
+                      if (form.currentState!.validate()) {
+                        Navigator.pop(context);
                      Navigator.push(context,  MaterialPageRoute(builder: (context) => const DashboardScreen()));
-                      // if (form.currentState!.validate()) {
-                      //   DashboardScreen ();
 
-                      // } else {
-                      //   print("Fail");
-                      // }
+                      } else {
+                        print("Fail");
+                      }
                     }),
                   ),
                 SizedBox(height: 30.0,),

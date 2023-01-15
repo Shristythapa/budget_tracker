@@ -1,3 +1,4 @@
+import 'package:budget_tracer_practice/login.dart';
 import 'package:flutter/material.dart';
 import '../common/custom_button.dart';
 import '../common/custom_icon.dart';
@@ -33,7 +34,10 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
                 child: Container(
                   child: CustomIcon(
                     icon:Icons.arrow_back,
-                    onPressed:(){},
+                    onPressed:(){
+                        Navigator.of(context).pop();
+                Navigator.push(context,MaterialPageRoute(builder: (context) => const loginScreen() ));  
+                    },
                   ),
                 ),
 
