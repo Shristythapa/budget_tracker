@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:charts_flutter_new/flutter.dart' as charts;
-import 'chart.dart';
+import 'income_chart.dart';
 
 class BarChart extends StatelessWidget {
   BarChart({Key? key}) : super(key: key);
