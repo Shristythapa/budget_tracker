@@ -14,8 +14,6 @@ class BarChartNavigation extends StatefulWidget {
 
 class _BarChartNavigationState extends State<BarChartNavigation> {
   int idx = 0;
-  // List<Widget> HomeScreen=[Text("Hello world")];
-  // List<Widget> buttom=[Text("bottom")];
   List<Widget> BarChartScreen = [
     Center(
       child: Text("Bar Chart Overall"),
@@ -92,9 +90,4 @@ class _BarChartNavigationState extends State<BarChartNavigation> {
           BarChartScreen[idx],
         ]));
   }
-  //  @override
-  // void dispose() {
-  //   _tabController.dispose();
-  //   super.dispose();
-  // }
 }
