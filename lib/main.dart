@@ -1,25 +1,30 @@
-﻿
-import 'package:budget_tracer_practice/balanceTransfer/balance_transfer_screen.dart';
+﻿import 'package:budget_tracer_practice/balanceTransfer/balance_transfer_screen.dart';
 import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_screen.dart';
 import 'package:budget_tracer_practice/dashboard/main_dashboard/sidebar.dart';
 import 'package:budget_tracer_practice/landingpage.dart';
 import 'package:budget_tracer_practice/signup.dart';
+import 'package:budget_tracer_practice/viewmodels/auth_viewmodel.dart';
+import 'package:budget_tracer_practice/viewmodels/global_ui_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'package:loader_overlay/loader_overlay.dart';
+import 'package:provider/provider.dart';
 
 import 'login.dart';
-
-import 'package:budget_tracer_practice/expenses/viewExpenses/expense_screen.dart';
-import 'package:budget_tracer_practice/login.dart';
-import 'package:flutter/material.dart';
-
 import 'expenses/delete_expenses_screen.dart';
 
-
-void main() async{
-   WidgetsFlutterBinding.ensureInitialized();
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  runApp(const MyApp());
+  await Firebase.initializeApp(
+    options: FirebaseOptions(
+      apiKey: "AIzaSyBlQN5ARppm8IYF3vCLBcO_fu0cOPP1xeI",
+      appId: "1:661428043064:android:37f8aa40dcf76f53e795cd",
+      messagingSenderId: "661428043064",
+      projectId: "budegttracker",
+    ),
+  );
+  runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
@@ -28,25 +33,39 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-        title: 'Flutter Demo',
-        theme: ThemeData(
-        
+    return MultiProvider(
+      providers: [
+        ChangeNotifierProvider(create: (_) => GlobalUIViewModel()),
+        ChangeNotifierProvider(create: (_) => AuthViewModel()),
+      ],
+      child: GlobalLoaderOverlay(
+        useDefaultLoading: false,
+        overlayWidget: Center(),
+        child: Consumer<GlobalUIViewModel>(
+          builder: (context, loader, child) {
+            if (loader.isLoading) {
+              context.loaderOverlay.show();
+            } else {
+              context.loaderOverlay.hide();
+            }
+            return MaterialApp(
+                debugShowCheckedModeBanner: false,
+                title: 'Flutter Demo',
+                theme: ThemeData(),
+                initialRoute: "/landingPage",
+                routes: {
+                  "/landingPage": (BuildContext context) => LandingPage(),
+                  "/login": (BuildContext context) => loginScreen(),
+                  "/signup": (BuildContext context) => RegisterScreen(),
+                  "/main_homePage": (BuildContext context) => DashboardScreen(),
+                  "/side_Bar": (BuildContext context) => sidebar(),
+                  "/transfer_Balance": (BuildContext context) =>
+                      BalanceTransferScreen()
+                },
+                home: DeleteExpensesScreen());
+          },
         ),
-
-        initialRoute: "/landingPage",
-        routes: {
-          "/landingPage":(BuildContext context) => LandingPage(),
-          "/login":(BuildContext context) => loginScreen(),
-          "/signup":(BuildContext context) => RegisterScreen(),
-          "/main_homePage":(BuildContext context) => DashboardScreen(),
-          "/side_Bar":(BuildContext context) => sidebar(),
-          "/transfer_Balance":(BuildContext context) => BalanceTransferScreen()
-          
-        },
-
-        home: DeleteExpensesScreen());
-
+      ),
+    );
   }
 }
