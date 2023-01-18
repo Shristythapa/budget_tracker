@@ -35,7 +35,13 @@ class BarChart extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     List<charts.Series<BarChartModel, String>> series =[
-   
+      charts.Series(
+        id:"financial",
+        data: data,
+        domainFn: (BarChartModel series, _)=>series.date,
+        measureFn: (BarChartModel series, _)=> series.financial,
+        colorFn: (BarChartModel series, _)=> series.color,
+      ),
     ];
     return Scaffold(
       appBar: AppBar(
