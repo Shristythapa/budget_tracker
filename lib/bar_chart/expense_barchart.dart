@@ -18,7 +18,16 @@ class BarChart extends StatelessWidget {
       color: charts.ColorUtil.fromDartColor(Color(0xFFB6ADCA)),
 
     ),
-  
+    BarChartModel(
+      date: "2022-Dec",
+      financial: 100,
+      color: charts.ColorUtil.fromDartColor(Color(0xFFB6ADCA)),
+    ),
+    BarChartModel(
+      date: "2022-Jan",
+      financial: 100,
+      color: charts.ColorUtil.fromDartColor(Color(0xFFB6ADCA)),
+    ),
 
 
   ];
