@@ -9,10 +9,7 @@ import 'package:budget_tracer_practice/main.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
 
-<<<<<<< HEAD
-=======
 // import 'package:budget_tracker/main.dart';
->>>>>>> expenses
 
 void main() {
   testWidgets('Counter increments smoke test', (WidgetTester tester) async {
