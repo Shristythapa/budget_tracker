@@ -37,7 +37,7 @@ class BarChart extends StatelessWidget {
     List<charts.Series<BarChartModel, String>> series =[
    
     ];
-    return Container();
+    return Scaffold(
       appBar: AppBar(
         title: const Text("Bar Chart"),
         centerTitle: true,
