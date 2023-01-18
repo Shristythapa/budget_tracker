@@ -5,7 +5,7 @@ import 'expense_chart.dart';
 
 class BarChart extends StatelessWidget {
   BarChart({Key? key}) : super(key: key);
-
+  final List<BarChartModel> data= [
     BarChartModel(
       date: "2022-Oct",
       financial: 250,
@@ -18,16 +18,7 @@ class BarChart extends StatelessWidget {
       color: charts.ColorUtil.fromDartColor(Color(0xFFB6ADCA)),
 
     ),
-    BarChartModel(
-      date: "2022-Dec",
-      financial: 100,
-      color: charts.ColorUtil.fromDartColor(Color(0xFFB6ADCA)),
-    ),
-    BarChartModel(
-      date: "2022-Jan",
-      financial: 100,
-      color: charts.ColorUtil.fromDartColor(Color(0xFFB6ADCA)),
-    ),
+  
 
 
   ];
