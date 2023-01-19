@@ -3,6 +3,7 @@ import 'package:budget_tracer_practice/login.dart';
 import 'package:budget_tracer_practice/income/viewIncome/view_income_screen.dart';
 import 'package:flutter/material.dart';
 
+import 'income/addIncome/addincome.dart';
 import 'income/addIncome/chooseIncome.dart';
 
 void main() {
@@ -20,6 +21,6 @@ class MyApp extends StatelessWidget {
         theme: ThemeData(
           primarySwatch: Colors.blue,
         ),
-        home: IncomeCategory());
+        home: Income());
   }
 }
