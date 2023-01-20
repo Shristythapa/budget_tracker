@@ -1,34 +1,32 @@
+﻿import 'package:animated_theme_switcher/animated_theme_switcher.dart';
+import 'package:budget_tracker/theme%20Swatcher/theme_service.dart';
+import 'package:budget_tracker/theme%20Swatcher/userProfile.dart';
 import 'package:flutter/material.dart';
-import 'package:budget_tracker/userProfile.dart';
 
-void main() {
-  runApp(MaterialApp(
-    debugShowCheckedModeBanner: false,
-    home: ProfilePage(),
-  ));
+
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final themeService = await ThemeService.instance;
+  var initTheme = themeService.initial;
+  runApp(MyApp(theme: initTheme));
 }
 
 class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+  MyApp({required this.theme});
 
-  // This widget is the root of your application.
+  final ThemeData theme;
+
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
-      ),
-      home:  ProfilePage(),
+    return ThemeProvider(
+      initTheme: theme,
+      builder: (_, theme) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: theme,
+          home: userprofile(),
+        );
+      },
     );
   }
 }
