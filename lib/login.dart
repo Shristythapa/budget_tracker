@@ -1,6 +1,4 @@
 import 'dart:async';
-import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_body.dart';
-import 'package:budget_tracer_practice/forgot_password/forgot_password_screen.dart';
 import 'package:budget_tracer_practice/signup.dart';
 import 'package:control_style/decorated_input_border.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -8,6 +6,8 @@ import 'package:flutter/material.dart';
 
 import 'common/custom_button.dart';
 import 'common/custom_textfield.dart';
+import 'dashboard/main_dashboard/dashboard_body.dart';
+import 'forgot_password/forgot_password_screen.dart';
 
 class loginScreen extends StatefulWidget {
   const loginScreen({super.key});
