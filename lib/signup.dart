@@ -1,9 +1,10 @@
 
-import 'package:budget_tracer_practice/login.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
-
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import 'login.dart';
+import 'models/user_model.dart';
+import 'viewmodels/auth_viewmodel.dart';
+import 'viewmodels/global_ui_viewmodel.dart';
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -19,41 +20,45 @@ class _RegisterScreenState extends State<RegisterScreen> {
   TextEditingController confirmPassword = new TextEditingController();
   bool showPassword = false;
   bool showPassword2 = false;
-  final form = GlobalKey<FormState>();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  Future<void> signup() async{
-    try{
-      final user = (await _auth.createUserWithEmailAndPassword(
-          email: email.text,
-          password: password.text
-      )).user;
-      if(user!=null){
-        print("User created");
-        ScaffoldMessenger.of(context).showSnackBar(
-            SnackBar(
-              backgroundColor: Colors.green,
-              content: Text("Sign-Up Success"),
-            ));
-        // Navigator.of(context).pushReplacementNamed("/login");
-      }
-    }catch(e){
-      ScaffoldMessenger.of(context).showSnackBar(
-          SnackBar(content: Text(e.toString()),));
-    }
-  }
+  final _formKey = GlobalKey<FormState>();
+  late GlobalUIViewModel _ui;
+  late AuthViewModel _auth;
+
   @override
   void initState() {
-    Firebase.initializeApp().whenComplete(() { 
-      print("completed");
-      setState(() {});
-    });
-    // TODO: implement initState
+    _ui = Provider.of<GlobalUIViewModel>(context, listen: false);
+    _auth = Provider.of<AuthViewModel>(context, listen: false);
     super.initState();
   }
+
+
+  void signup() async{
+    if(_formKey.currentState == null || !_formKey.currentState!.validate()){
+      return;
+    }
+    _ui.loadState(true);
+    try{
+      await _auth.signup(
+          UserModel(
+              email: email.text,
+              password: password.text,
+              username: userName.text,
+          )).then((value) {
+        // Navigator.of(context).pushReplacementNamed("/dashboard");
+      })
+          .catchError((e){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
+      });
+    }catch(err){
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(err.toString())));
+    }
+    _ui.loadState(false);
+  }
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      resizeToAvoidBottomInset: false,
       backgroundColor: Colors.white54,
       appBar: AppBar(
         elevation: 0,
@@ -78,7 +83,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
             height: MediaQuery.of(context).size.height,
             width: double.infinity,
             child: Form(
-              key: form,
+              key: _formKey,
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -267,7 +272,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     minWidth: 1300,
                     height: 60,
                     onPressed: () {
-                      if (form.currentState!.validate()) {
+                      if (_formKey.currentState!.validate()) {
                         ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                           content: Text("Login Validation Success"),
                         ));
@@ -297,10 +302,10 @@ class _RegisterScreenState extends State<RegisterScreen> {
                         width: 5,
                       ),
                       InkWell(
-                            onTap: () {
-                              Navigator.pop(context);
-                              Navigator.push(context,  MaterialPageRoute(builder: (context) => const loginScreen())); 
-                            },
+                        onTap: () {
+                          Navigator.pop(context);
+                          Navigator.push(context,  MaterialPageRoute(builder: (context) => const loginScreen()));
+                        },
                         child: Text(
                           "Go to login",
                           style: TextStyle(
