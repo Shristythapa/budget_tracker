@@ -1,15 +1,9 @@
-﻿import 'package:budget_tracer_practice/balanceTransfer/balance_transfer_screen.dart';
-import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_body.dart';
-import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_screen.dart';
-import 'package:budget_tracer_practice/dashboard/main_dashboard/sidebar.dart';
-import 'package:budget_tracer_practice/landingpage.dart';
-import 'package:budget_tracer_practice/signup.dart';
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 
+import 'income/addIncome/addincome.dart';
 import 'login.dart';
 
-import 'package:budget_tracer_practice/expenses/viewExpenses/expense_screen.dart';
 import 'package:budget_tracer_practice/login.dart';
 import 'package:flutter/material.dart';
 
@@ -43,6 +37,6 @@ class MyApp extends StatelessWidget {
 
         // },
 
-        home: DashboardBody());
+        home: Income());
   }
 }

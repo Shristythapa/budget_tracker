@@ -1,8 +1,7 @@
 
 
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+
 import 'package:date_time_picker/date_time_picker.dart';
 
 
@@ -24,6 +23,8 @@ class _IncomeState extends State<Income> {
     'Himalayan Bank',
     'Esewa',
     'Cash',
+
+
   ];
    var categories = [
     'Category',
@@ -110,7 +111,6 @@ class _IncomeState extends State<Income> {
                     hintText: "Date",
                     prefixIcon: Icon(Icons.date_range)),
               ),
-              
             ),
 
             const SizedBox(
