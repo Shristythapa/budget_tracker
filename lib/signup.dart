@@ -1,10 +1,11 @@
+import 'package:budget_tracer_practice/model/user_model.dart';
 import 'package:budget_tracer_practice/viewmodels/auth_viewmodel.dart';
 import 'package:budget_tracer_practice/viewmodels/global_ui_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'login.dart';
-import 'models/user_model.dart';
+
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);

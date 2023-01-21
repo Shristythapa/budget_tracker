@@ -1,7 +1,7 @@
+import 'package:budget_tracer_practice/model/user_model.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import '../models/user_model.dart';
 import '../repositories/auth_repositories.dart';
 import '../services/firebase_service.dart';
 
