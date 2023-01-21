@@ -1,15 +1,31 @@
 import 'package:budget_tracer_practice/model/account_model.dart';
+import 'package:budget_tracer_practice/services/firebase_service.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
 class AccountRepo {
   final FirebaseFirestore firestore = FirebaseFirestore.instance;
-
-
-  Future<void> createAccount(Account account) async {
-     Map<String, dynamic> jsonAccount = account.toJson();
+    
+     CollectionReference<Account> accref =
+      FirebaseService.db.collection("account").withConverter<Account>(
+            fromFirestore: (snapshot, _) {
+              return Account.fromFirebaseSnapshot(snapshot);
+            },
+            toFirestore: (model, _) => model.toJson(),
+          );
      
-      var result = await firestore.collection("Account").add(jsonAccount);
+
+  Future<void> createAccount({required Account account}) async {
+     Map<String, dynamic> jsonAccount = account.toJson();
+
+     
+      try{
+        await accref.add(account);
+
+      
+      }catch(err){
+        rethrow;
+      }
         
   }
   }

@@ -1,8 +1,10 @@
-﻿import 'package:budget_tracer_practice/balanceTransfer/balance_transfer_screen.dart';
+﻿import 'package:budget_tracer_practice/accounts/addAccount.dart';
+import 'package:budget_tracer_practice/balanceTransfer/balance_transfer_screen.dart';
 import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_body.dart';
 import 'package:budget_tracer_practice/dashboard/main_dashboard/sidebar.dart';
 import 'package:budget_tracer_practice/landingpage.dart';
 import 'package:budget_tracer_practice/signup.dart';
+import 'package:budget_tracer_practice/viewmodels/account_viewmodel.dart';
 import 'package:budget_tracer_practice/viewmodels/auth_viewmodel.dart';
 import 'package:budget_tracer_practice/viewmodels/global_ui_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -37,11 +39,11 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => GlobalUIViewModel()),
         ChangeNotifierProvider(create: (_) => AuthViewModel()),
-       // ChangeNotifierProvider(create: (_) => Acc)
+        ChangeNotifierProvider(create: (_)=> AccViewModel())
       ],
       child: GlobalLoaderOverlay(
         useDefaultLoading: false,
-        overlayWidget: Center(),
+        overlayWidget: Center(child: Image.asset("assets/images/loding.gif", height: 100, width: 100,),),
         child: Consumer<GlobalUIViewModel>(
           builder: (context, loader, child) {
             if (loader.isLoading) {
@@ -60,10 +62,10 @@ class MyApp extends StatelessWidget {
                   "/signup": (BuildContext context) => RegisterScreen(),
                   "/main_homePage": (BuildContext context) => DashboardBody(),
                   "/side_Bar": (BuildContext context) => sidebar(),
-                  "/transfer_Balance": (BuildContext context) =>
-                      BalanceTransferScreen()
+                  "/transfer_Balance": (BuildContext context) => BalanceTransferScreen(),
+                  "/add_account":(BuildContext context)=> AddMyAccount(),
                 },
-                home: DeleteExpensesScreen());
+                home: AddMyAccount());
           },
         ),
       ),

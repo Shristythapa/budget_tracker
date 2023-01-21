@@ -2,6 +2,8 @@
 //
 //     final account = accountFromJson(jsonString);
 
+import 'package:budget_tracer_practice/model/user_model.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:meta/meta.dart';
 import 'dart:convert';
 
@@ -31,4 +33,10 @@ class Account {
         "account_name": accountName,
         "balance_amount": balanceAmount,
     };
+     factory Account.fromFirebaseSnapshot(DocumentSnapshot<Map<String, dynamic>> json) => Account(
+    userId: json.id,
+    accountName: json["accountName"],
+    balanceAmount: json["balanceAmount"],
+ 
+  );
 }

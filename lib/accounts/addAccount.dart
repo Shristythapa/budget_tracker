@@ -9,17 +9,7 @@ import 'package:provider/provider.dart';
 
 import '../viewmodels/global_ui_viewmodel.dart';
 
-class AddAccount extends StatelessWidget {
-  const AddAccount({super.key});
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: AddMyAccount(),
-    );
-  }
-}
 
 class AddMyAccount extends StatefulWidget {
   const AddMyAccount({super.key});
@@ -42,16 +32,16 @@ class _AddMyAccountState extends State<AddMyAccount> {
   void initState() {
     _ui = Provider.of<GlobalUIViewModel>(context, listen: false);
     _auth = Provider.of<AuthViewModel>(context, listen: false);
-    _acc =Provider.of<AccViewModel>(context,listen: false);
+    _acc = Provider.of<AccViewModel>(context, listen: false);
     super.initState();
   }
   Future<void> addAccount() async{
-     _ui.loadState(true);
-    var user_id = _auth.user!.uid;
+    _ui.loadState(true);
+   var user_id = _auth.user!.uid;
     try{
       await _acc.addAccount(
         Account(
-          userId: user_id,
+          userId: "12",
           accountName: accountAmount.text,
           balanceAmount: int.parse(accountAmount.text)
           )
@@ -61,7 +51,7 @@ class _AddMyAccountState extends State<AddMyAccount> {
     }catch(err){
        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(err.toString())));
     }
-      _ui.loadState(false);
+     _ui.loadState(false);
 
   }
   @override
@@ -122,7 +112,7 @@ class _AddMyAccountState extends State<AddMyAccount> {
                       width: MediaQuery.of(context).size.width / 100 * 8,
                     ),
                     TextFormField(
-                      controller: accountAmount,
+                      controller: accountName,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -155,7 +145,9 @@ class _AddMyAccountState extends State<AddMyAccount> {
                       height: 50,
                       width: 300,
                       child: ElevatedButton(
-                          onPressed: (() {}),
+                          onPressed: (() {
+                            addAccount();
+                          }),
                           child: Text("Add", style: TextStyle(
                             fontSize: 25
                           ),),
