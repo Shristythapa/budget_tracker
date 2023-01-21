@@ -1,18 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
 
-class AddAccount extends StatelessWidget {
-  const AddAccount({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: addsaving(),
-    );
-  }
-}
+import '../models/saving_model.dart';
+import '../repositories/saving_repository.dart';
+import '../viewmodels/auth_viewmodel.dart';
+import '../viewmodels/global_ui_viewmodel.dart';
+import '../viewmodels/saving_viewmodel.dart';
 
 class addsaving extends StatefulWidget {
   const addsaving({super.key});
@@ -22,6 +15,41 @@ class addsaving extends StatefulWidget {
 }
 
 class _addsavingState extends State<addsaving> {
+  TextEditingController _accountNameController = new TextEditingController();
+  TextEditingController _amountController = new TextEditingController();
+  late GlobalUIViewModel _ui;
+  late SavingViewModel _savingViewModel;
+  late AuthViewModel _authViewModel;
+
+  void addsaving() async {
+    _ui.loadState(true);
+    try {
+      final SavingModel data = SavingModel(
+        accountname: _accountNameController.text,
+        amount: _amountController.text,
+        // userId: _authViewModel.loggedInUser!.id,
+      );
+      await SavingRepository().addSavings(saving: data);
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Saving added successfully")));
+      // Navigator.of(context).pop();
+    } catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Error")));
+    }
+    _ui.loadState(false);
+  }
+
+  @override
+  void initState() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      _ui = Provider.of<GlobalUIViewModel>(context, listen: false);
+      _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
+      _savingViewModel = Provider.of<SavingViewModel>(context, listen: false);
+    });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -80,6 +108,7 @@ class _addsavingState extends State<addsaving> {
                       width: MediaQuery.of(context).size.width / 100 * 8,
                     ),
                     TextFormField(
+                      controller: _accountNameController,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -94,6 +123,7 @@ class _addsavingState extends State<addsaving> {
                       width: MediaQuery.of(context).size.width / 100 * 8,
                     ),
                     TextFormField(
+                      controller: _amountController,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -111,10 +141,13 @@ class _addsavingState extends State<addsaving> {
                       height: 50,
                       width: 300,
                       child: ElevatedButton(
-                          onPressed: (() {}),
-                          child: Text("Add", style: TextStyle(
-                            fontSize: 25
-                          ),),
+                          onPressed: (() {
+                            addsaving();
+                          }),
+                          child: Text(
+                            "Add",
+                            style: TextStyle(fontSize: 25),
+                          ),
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Color.fromARGB(255, 41, 97, 87),
                               foregroundColor: Colors.black,
@@ -126,11 +159,14 @@ class _addsavingState extends State<addsaving> {
                       width: MediaQuery.of(context).size.width / 100 * 8,
                     ),
                     Container(
-                       height: 50,
+                      height: 50,
                       width: 300,
                       child: ElevatedButton(
                           onPressed: (() {}),
-                          child: Text("Cancel",style: TextStyle(fontSize: 25),),
+                          child: Text(
+                            "Cancel",
+                            style: TextStyle(fontSize: 25),
+                          ),
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Color.fromARGB(255, 41, 97, 87),
                               foregroundColor: Colors.black,

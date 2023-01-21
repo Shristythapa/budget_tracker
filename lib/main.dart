@@ -5,11 +5,13 @@ import 'package:budget_tracer_practice/landingpage.dart';
 import 'package:budget_tracer_practice/signup.dart';
 import 'package:budget_tracer_practice/viewmodels/auth_viewmodel.dart';
 import 'package:budget_tracer_practice/viewmodels/global_ui_viewmodel.dart';
+import 'package:budget_tracer_practice/viewmodels/saving_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
 
+import 'addsavings/addsaving.dart';
 import 'login.dart';
 import 'expenses/delete_expenses_screen.dart';
 
@@ -37,10 +39,17 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => GlobalUIViewModel()),
         ChangeNotifierProvider(create: (_) => AuthViewModel()),
+        ChangeNotifierProvider(create: (_) => SavingViewModel()),
       ],
       child: GlobalLoaderOverlay(
         useDefaultLoading: false,
-        overlayWidget: Center(),
+        overlayWidget: Center(
+          child: Image.asset(
+            "assets/images/loader1.gif",
+            height: 100,
+            width: 100,
+          ),
+        ),
         child: Consumer<GlobalUIViewModel>(
           builder: (context, loader, child) {
             if (loader.isLoading) {
@@ -52,17 +61,17 @@ class MyApp extends StatelessWidget {
                 debugShowCheckedModeBanner: false,
                 title: 'Flutter Demo',
                 theme: ThemeData(),
-                initialRoute: "/landingPage",
-                routes: {
-                  "/landingPage": (BuildContext context) => LandingPage(),
-                  "/login": (BuildContext context) => loginScreen(),
-                  "/signup": (BuildContext context) => RegisterScreen(),
-                  "/main_homePage": (BuildContext context) => DashboardBody(),
-                  "/side_Bar": (BuildContext context) => sidebar(),
-                  "/transfer_Balance": (BuildContext context) =>
-                      BalanceTransferScreen()
-                },
-                home: DeleteExpensesScreen());
+                // initialRoute: "/landingPage",
+                // routes: {
+                //   "/landingPage": (BuildContext context) => LandingPage(),
+                //   "/login": (BuildContext context) => loginScreen(),
+                //   "/signup": (BuildContext context) => RegisterScreen(),
+                //   "/main_homePage": (BuildContext context) => DashboardBody(),
+                //   "/side_Bar": (BuildContext context) => sidebar(),
+                //   "/transfer_Balance": (BuildContext context) =>
+                //       BalanceTransferScreen()
+                // },
+                home: addsaving());
           },
         ),
       ),

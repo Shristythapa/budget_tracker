@@ -11,6 +11,15 @@ class SavingRepository {
             },
             toFirestore: (model, _) => model.toJson(),
           );
+  Future<bool?> addSavings({required SavingModel saving}) async {
+    try {
+      final response = await savingRef.add(saving);
+      return true;
+    } catch (err) {
+      return false;
+      rethrow;
+    }
+  }
 
   // Future<List<QueryDocumentSnapshot<SavingModel>>> getAllSavings() async {
   //   try {
@@ -36,13 +45,4 @@ class SavingRepository {
   //   }
   // }
 
-  Future<bool?> addSavings({required SavingModel saving}) async {
-    try {
-      final response = await savingRef.add(saving);
-      return true;
-    } catch (err) {
-      return false;
-      rethrow;
-    }
-  }
 }
