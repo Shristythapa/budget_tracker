@@ -37,6 +37,7 @@ class MyApp extends StatelessWidget {
       providers: [
         ChangeNotifierProvider(create: (_) => GlobalUIViewModel()),
         ChangeNotifierProvider(create: (_) => AuthViewModel()),
+       // ChangeNotifierProvider(create: (_) => Acc)
       ],
       child: GlobalLoaderOverlay(
         useDefaultLoading: false,
