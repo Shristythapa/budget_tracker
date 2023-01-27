@@ -1,27 +1,33 @@
+import 'package:budget_tracer_practice/common/custom_dropdown.dart';
 import 'package:control_style/decorated_input_border.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/container.dart';
+import 'package:flutter/src/widgets/framework.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 
-import '../../common/custom_button.dart';
-import '../../common/custom_categoryDropDown.dart';
-import '../../common/custom_dropdown.dart';
-import '../../common/custom_textfield.dart';
+import '../common/custom_button.dart';
+import '../common/custom_categoryDropDown.dart';
+import '../common/custom_icon.dart';
+import '../common/custom_textfield.dart';
 
-class AddIncome extends StatefulWidget {
-  const AddIncome({super.key});
+class Income extends StatefulWidget {
+  const Income({super.key});
 
   @override
-  State<AddIncome> createState() => _AddIncomeState();
+  State<Income> createState() => _IncomeState();
 }
 
-class _AddIncomeState extends State<AddIncome> {
+class _IncomeState extends State<Income> {
   final _formKey = GlobalKey<FormState>();
 
+  String dropdownvalue = 'Prime Bank';
+  String selectionvalue = 'Category';
 
-  TextEditingController amount = new TextEditingController();
-  TextEditingController title = new TextEditingController();
+  TextEditingController email = new TextEditingController();
+  TextEditingController password = new TextEditingController();
   TextEditingController date = new TextEditingController();
 
+  final form = GlobalKey<FormState>();
   // final FirebaseAuth _auth = FirebaseAuth.instance;
   Future<void> Add() async {}
   @override
@@ -32,6 +38,7 @@ class _AddIncomeState extends State<AddIncome> {
         Form(
           key: _formKey,
           child: Container(
+            // margin:EdgeInsets.only(top:MediaQuery.of(context).viewPadding.top),
             padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 20),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,14 +52,12 @@ class _AddIncomeState extends State<AddIncome> {
                   height: 40,
                 ),
                 CustomTextField(
-                  controller: title,
                   hintText: "Title",
                 ),
                 SizedBox(
                   height: 40,
                 ),
                 CustomTextField(
-                  controller: amount,
                   hintText: "Amount",
                 ),
                 SizedBox(height: 40,),
@@ -107,6 +112,9 @@ class _AddIncomeState extends State<AddIncome> {
                 CustomButton(
                   title: "Add",
                   onPressed: () {
+                    if (_formKey.currentState!.validate()) {
+                      _formKey.currentState!.save();
+                    }
                   },
                 ),
                 SizedBox(

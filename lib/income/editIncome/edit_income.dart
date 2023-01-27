@@ -1,32 +1,38 @@
 import 'package:control_style/decorated_input_border.dart';
-import 'package:flutter/material.dart';
 import 'package:date_time_picker/date_time_picker.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter/src/widgets/placeholder.dart';
 
 import '../../common/custom_button.dart';
 import '../../common/custom_categoryDropDown.dart';
 import '../../common/custom_dropdown.dart';
 import '../../common/custom_textfield.dart';
 
-class AddIncome extends StatefulWidget {
-  const AddIncome({super.key});
+class EditIncome extends StatefulWidget {
+  const EditIncome({super.key});
 
   @override
-  State<AddIncome> createState() => _AddIncomeState();
+  State<EditIncome> createState() => _EditIncomeState();
 }
 
-class _AddIncomeState extends State<AddIncome> {
-  final _formKey = GlobalKey<FormState>();
-
-
-  TextEditingController amount = new TextEditingController();
+class _EditIncomeState extends State<EditIncome> {
+   TextEditingController amount = new TextEditingController();
   TextEditingController title = new TextEditingController();
   TextEditingController date = new TextEditingController();
 
-  // final FirebaseAuth _auth = FirebaseAuth.instance;
-  Future<void> Add() async {}
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+     return Scaffold(
+       appBar: AppBar(
+         leading: Icon(
+           Icons.arrow_back_ios_new_outlined,
+           color: Colors.black,
+           ),
+         elevation: 0,
+         backgroundColor: Colors.transparent,
+       ),
         body: ListView(
       children: [
         Form(
@@ -36,11 +42,6 @@ class _AddIncomeState extends State<AddIncome> {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Add Income",
-                    style: TextStyle(
-                      fontSize: 32,
-                      fontWeight: FontWeight.w400,
-                    )),
                 SizedBox(
                   height: 40,
                 ),
@@ -105,7 +106,7 @@ class _AddIncomeState extends State<AddIncome> {
                   height: 50,
                 ),
                 CustomButton(
-                  title: "Add",
+                  title: "Update",
                   onPressed: () {
                   },
                 ),
@@ -113,7 +114,7 @@ class _AddIncomeState extends State<AddIncome> {
                   height: 40,
                 ),
                 CustomButton(
-                  title: "Cancel",
+                  title: "Delete",
                   onPressed: () {
                     Navigator.pop(context);
                   },
