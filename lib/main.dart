@@ -12,20 +12,14 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
 
+import 'expenses/addExpenses.dart';
+import 'income/addincome.dart';
 import 'login.dart';
-import 'expenses/delete_expenses_screen.dart';
+
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp();
-  await Firebase.initializeApp(
-    options: FirebaseOptions(
-      apiKey: "AIzaSyBlQN5ARppm8IYF3vCLBcO_fu0cOPP1xeI",
-      appId: "1:661428043064:android:37f8aa40dcf76f53e795cd",
-      messagingSenderId: "661428043064",
-      projectId: "budegttracker",
-    ),
-  );
   runApp(MyApp());
 }
 
@@ -57,15 +51,18 @@ class MyApp extends StatelessWidget {
                 theme: ThemeData(),
                 initialRoute: "/landingPage",
                 routes: {
-                  "/landingPage": (BuildContext context) => LandingPage(),
+                  "/landingPage": (BuildContext context) => MyLandingPage(),
                   "/login": (BuildContext context) => loginScreen(),
                   "/signup": (BuildContext context) => RegisterScreen(),
                   "/main_homePage": (BuildContext context) => DashboardBody(),
                   "/side_Bar": (BuildContext context) => sidebar(),
                   "/transfer_Balance": (BuildContext context) => BalanceTransferScreen(),
                   "/add_account":(BuildContext context)=> AddMyAccount(),
-                },
-                home: AddMyAccount());
+                  "/add_expense":(BuildContext context)=>Expense(),
+                  "/add_income":(BuildContext context)=>Income(),
+
+                  
+                },);
           },
         ),
       ),

@@ -1,3 +1,5 @@
+import 'dart:async';
+
 import 'package:budget_tracer_practice/model/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -21,7 +23,7 @@ class AuthRepository{
           .createUserWithEmailAndPassword(
           email: user.email!, password: user.password!);
 
-      user.id = _uc.user!.uid;
+      user.userId = _uc.user!.uid;
       await FirebaseService.db.collection('users').add(user.toJson());
       return _uc;
     } catch (err) {
@@ -32,10 +34,15 @@ class AuthRepository{
 
   Future<UserCredential> login(String email, String password) async {
     try {
+      print(email);
       UserCredential _uc = await FirebaseService.firebaseAuth
           .signInWithEmailAndPassword(email: email, password: password);
+      print("USER DETAIL");
+      print(_uc.user?.uid);
+
       return _uc;
     } catch (err) {
+      print("REpo err :: $err");
       rethrow;
     }
   }
@@ -43,13 +50,13 @@ class AuthRepository{
   Future<UserModel> getUserDetail(String id) async {
     try {
       final response = await userRef
-          .where("id", isEqualTo: id).get();
+          .where("userId", isEqualTo: id).get();
 
       var user = response.docs.single.data();
       await userRef.doc(user.id).set(user);
 
       return user;
-    } catch (err) {
+    } catch (err) { 
       rethrow;
     }
   }

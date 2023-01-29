@@ -1,3 +1,4 @@
+import 'package:budget_tracer_practice/addsavings/addsaving.dart';
 import 'package:flutter/material.dart';
 
 class NavigationBodyScreen extends StatefulWidget {
@@ -141,25 +142,34 @@ class _NavigationBodyScreenState extends State<NavigationBodyScreen> {
                           ),
                         ],
                       ),
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 1, left: 20),
-                            child: ImageIcon(
-                              AssetImage("assets/images/expn.png"),
-                              size: 60,
-                              color: Colors.black,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).pop();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AddAccount()),
+              );
+                        },
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 1, left: 20),
+                              child: ImageIcon(
+                                AssetImage("assets/images/expn.png"),
+                                size: 60,
+                                color: Colors.black,
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10, left: 100),
-                            child: Text("Expenses",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 25,
-                                )),
-                          ),
-                        ],
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10, left: 100),
+                              child: Text("Expenses",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 25,
+                                  )),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],

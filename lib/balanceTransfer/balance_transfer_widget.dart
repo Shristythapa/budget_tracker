@@ -41,6 +41,7 @@ class BalanceTransferWidget extends StatelessWidget {
                       ),
                       SizedBox(height: 40,),
                       CustomTextField(
+                        controller: TextEditingController(),
                         hintText: "Amount",
                         validator:(val){
                             final  amountValid =RegExp(

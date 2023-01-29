@@ -1,3 +1,5 @@
+import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_body.dart';
+import 'package:budget_tracer_practice/dashboard/main_dashboard/sidebar.dart';
 import 'package:budget_tracer_practice/model/account_model.dart';
 import 'package:budget_tracer_practice/viewmodels/account_viewmodel.dart';
 import 'package:budget_tracer_practice/viewmodels/auth_viewmodel.dart';
@@ -41,7 +43,7 @@ class _AddMyAccountState extends State<AddMyAccount> {
     try{
       await _acc.addAccount(
         Account(
-          userId: "12",
+          userId: user_id,
           accountName: accountAmount.text,
           balanceAmount: int.parse(accountAmount.text)
           )
@@ -52,6 +54,11 @@ class _AddMyAccountState extends State<AddMyAccount> {
        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(err.toString())));
     }
      _ui.loadState(false);
+     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Task Added Sucessfully")));
+     Navigator.pop(context);
+    Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DashboardBody()));
 
   }
   @override
@@ -165,7 +172,13 @@ class _AddMyAccountState extends State<AddMyAccount> {
                        height: 50,
                       width: 300,
                       child: ElevatedButton(
-                          onPressed: (() {}),
+                          onPressed: (() {
+                            Navigator.pop(context);
+                             Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DashboardBody()),
+              );
+                          }),
                           child: Text("Cancel",style: TextStyle(fontSize: 25),),
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Color(0xFF95894E),
