@@ -1,4 +1,5 @@
 ﻿import 'package:budget_tracer_practice/accounts/addAccount.dart';
+import 'package:budget_tracer_practice/accounts/addListOfAccount.dart';
 import 'package:budget_tracer_practice/balanceTransfer/balance_transfer_screen.dart';
 import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_body.dart';
 import 'package:budget_tracer_practice/dashboard/main_dashboard/sidebar.dart';
@@ -57,9 +58,11 @@ class MyApp extends StatelessWidget {
                   "/main_homePage": (BuildContext context) => DashboardBody(),
                   "/side_Bar": (BuildContext context) => sidebar(),
                   "/transfer_Balance": (BuildContext context) => BalanceTransferScreen(),
+                  "/listOfAccount":(BuildContext context)=> AddListOfAccount(),
                   "/add_account":(BuildContext context)=> AddMyAccount(),
                   "/add_expense":(BuildContext context)=>Expense(),
                   "/add_income":(BuildContext context)=>Income(),
+                  "/dashboard":(BuildContext context)=>DashboardBody(),
 
                   
                 },);

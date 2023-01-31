@@ -1,3 +1,4 @@
+import 'package:budget_tracer_practice/accounts/addListOfAccount.dart';
 import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_body.dart';
 import 'package:budget_tracer_practice/dashboard/main_dashboard/sidebar.dart';
 import 'package:budget_tracer_practice/model/account_model.dart';
@@ -43,6 +44,7 @@ class _AddMyAccountState extends State<AddMyAccount> {
     try{
       await _acc.addAccount(
         Account(
+          accountId: "",
           userId: user_id,
           accountName: accountAmount.text,
           balanceAmount: int.parse(accountAmount.text)
@@ -58,7 +60,7 @@ class _AddMyAccountState extends State<AddMyAccount> {
      Navigator.pop(context);
     Navigator.push(
                 context,
-                MaterialPageRoute(builder: (context) => DashboardBody()));
+                MaterialPageRoute(builder: (context) => AddListOfAccount()));
 
   }
   @override
@@ -72,18 +74,19 @@ class _AddMyAccountState extends State<AddMyAccount> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(100.0),
           child: AppBar(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(20),
-            )),
+            // shape: RoundedRectangleBorder(
+            //     borderRadius: BorderRadius.vertical(
+            //   bottom: Radius.circular(20),
+            // )),
+            // backgroundColor: Color.fromARGB(248, 133, 191, 180),
             backgroundColor: Color(0xFF296157),
             title: Padding(
               padding: EdgeInsets.only(top: 30),
               child: Text(
                 "Add Account",
                 style: TextStyle(
-                  fontWeight: FontWeight.w100,
-                  color: Color.fromARGB(255, 37, 37, 37),
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white,
                   fontSize: 25,
                 ),
               ),
@@ -91,10 +94,20 @@ class _AddMyAccountState extends State<AddMyAccount> {
             actions: [
               Padding(
                 padding: EdgeInsets.only(top: 20),
-                child: Icon(
-                  Icons.cancel_outlined,
-                  color: Color.fromARGB(255, 37, 37, 37),
-                  size: 33,
+                child: InkWell(
+                  onTap: (() {
+                    Navigator.pop(context);
+                  //  Navigator.of(context).pushReplacementNamed("/listOfAccount");
+                  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const AddListOfAccount()),
+  );
+                  }),
+                  child: Icon(
+                    Icons.cancel_outlined,
+                    color: Colors.white,
+                    size: 33,
+                  ),
                 ),
               ),
               Text("       ")
@@ -159,8 +172,8 @@ class _AddMyAccountState extends State<AddMyAccount> {
                             fontSize: 25
                           ),),
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF95894E),
-                              foregroundColor: Colors.black,
+                              backgroundColor: Color(0xFF296157),
+                              foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20)))),
                     ),
@@ -181,8 +194,8 @@ class _AddMyAccountState extends State<AddMyAccount> {
                           }),
                           child: Text("Cancel",style: TextStyle(fontSize: 25),),
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF95894E),
-                              foregroundColor: Colors.black,
+                              backgroundColor: Color(0xFF296157),
+                              foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20)))),
                     )

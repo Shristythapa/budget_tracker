@@ -18,14 +18,16 @@ class AccountRepo {
     Map<String, dynamic> jsonAccount = account.toJson();
 
     try {
-      await accref.add(account);
+      var docref = accref.doc();
+      account.accountId=docref.id;
+      await docref.set(account);
     } catch (err) {
       rethrow;
     }
   }
-  Future<List<QueryDocumentSnapshot<Account>>> getAccounts() async{
+  Future<List<QueryDocumentSnapshot<Account>>> getAccounts(String user_id) async{
     try{
-       final response = await accref.get();
+       final response = await accref.where("user_id", isEqualTo: user_id).get();
        var account = response.docs;
        return account;
     }catch(err){

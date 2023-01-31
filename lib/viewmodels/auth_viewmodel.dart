@@ -14,6 +14,7 @@ class AuthViewModel with ChangeNotifier {
 
   User? get user => _user;
   
+  
 
   UserModel? _loggedInUser;
   UserModel? get loggedInUser =>_loggedInUser;
@@ -35,6 +36,7 @@ class AuthViewModel with ChangeNotifier {
     try {
       var response = await AuthRepository().login(email, password);
       _user = response.user;
+     
       
       _loggedInUser = await AuthRepository().getUserDetail(_user!.uid);
       print("LOGGED IN USE");
@@ -47,13 +49,14 @@ class AuthViewModel with ChangeNotifier {
 
 
   Future<void> signup(UserModel user) async {
+    print(user.toJson());
     try {
       var response = await AuthRepository().register(user);
       _user = response!.user;
       _loggedInUser = await AuthRepository().getUserDetail(_user!.uid);
       notifyListeners();
     } catch (err) {
-      AuthRepository().logout();
+   
       rethrow;
     }
   }

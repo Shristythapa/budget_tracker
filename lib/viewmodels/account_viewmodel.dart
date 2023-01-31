@@ -12,17 +12,16 @@ class AccViewModel  with ChangeNotifier{
   Future<void> addAccount(Account account) async {
     try {
       await AccountRepo().createAccount(account: account);
-    
     } catch (err) {
       rethrow;
     }
   }
 
-  Future<List<Account>> getAccount() async{
-    _allAccount=[];
+  Future<List<Account>> getAccount(String userid) async{
+
     notifyListeners();
     try{
-      var response = await _accountRepo.getAccounts();
+      var response = await _accountRepo.getAccounts(userid);
       for(var element in response){
         _allAccount.add(element.data());
       }
