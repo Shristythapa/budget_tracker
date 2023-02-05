@@ -10,14 +10,18 @@ class AccViewModel  with ChangeNotifier{
   List<Account> get allAccount => _allAccount;
 
   Future<void> addAccount(Account account) async {
+    notifyListeners();
     try {
       await AccountRepo().createAccount(account: account);
+      notifyListeners();
     } catch (err) {
       rethrow;
     }
+    notifyListeners();
   }
 
   Future<List<Account>> getAccount(String userid) async{
+    _allAccount=[];
     print(userid);
     notifyListeners();
     try{
@@ -33,6 +37,27 @@ class AccViewModel  with ChangeNotifier{
       notifyListeners();
     }
     return _allAccount;
+  }
+  Future<void> updateAccount(Account account) async{
+    try{
+      await AccountRepo().editAccount(account: account, accountId: account.accountId).then((value) => AccountRepo().getAccounts(account.userId));
+      notifyListeners();
+    }catch(e){
+      print(e);
+      rethrow;
+    }
+  }
+  Future<void> deleteAccount(Account account) async{
+
+    try{
+      print("deeee");
+      await AccountRepo().removeAccount(account.accountId, account.userId).then((value) => AccountRepo().getAccounts(account.userId));
+      notifyListeners();
+    }catch(e){
+      rethrow;
+      
+    }
+    notifyListeners();
   }
 
 

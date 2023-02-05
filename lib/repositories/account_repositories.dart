@@ -34,4 +34,26 @@ class AccountRepo {
       rethrow;
     }
   }
+
+   Future<bool?> editAccount({required Account account, required String accountId}) async {
+    try {
+      print("asdfghjhgfddfghjdasdfghhfdssdfghjshjdssdfghjdsasdfghjj");
+      final response = await accref.doc(accountId).set(account);
+      return true;
+    } catch (err) {
+      return false;
+    }
+  }
+
+  Future<bool> removeAccount(String accountid, String userId) async {
+    try {
+      final response = await accref.doc(accountid).get();
+      
+      await accref.doc(accountid).delete();
+      return true;
+    } catch (err) {
+      print(err);
+      rethrow;
+    }
+  }
 }

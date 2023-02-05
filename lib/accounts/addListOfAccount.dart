@@ -35,8 +35,7 @@ class _addListOfAccountState extends State<AddListOfAccount> {
   
     super.initState();
   }
-   
-  
+ 
 
   @override
   Widget build(BuildContext context) {
@@ -119,6 +118,11 @@ class AccountTile extends StatefulWidget {
 }
 
 class _AccountTileState extends State<AccountTile> {
+  @override
+  void initState() {
+   print(widget.accountId);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
     return 

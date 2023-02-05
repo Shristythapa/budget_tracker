@@ -1,7 +1,13 @@
 import 'package:budget_tracer_practice/accounts/addListOfAccount.dart';
+import 'package:budget_tracer_practice/model/account_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
+
+import '../viewmodels/account_viewmodel.dart';
+import '../viewmodels/auth_viewmodel.dart';
+import '../viewmodels/global_ui_viewmodel.dart';
 
 
 
@@ -21,9 +27,20 @@ class MyAccountDetails extends StatefulWidget {
 class _MyAccountDetailsState extends State<MyAccountDetails> {
 
 TextEditingController amount = new TextEditingController();
+
+  AuthViewModel u = new AuthViewModel();
+    
+   late GlobalUIViewModel _ui;
+  late AuthViewModel _auth;
+  late AccViewModel _acc;
+  
   @override
 void initState() {
+  _ui = Provider.of<GlobalUIViewModel>(context, listen: false);
+    _auth = Provider.of<AuthViewModel>(context, listen: false);
+    _acc = Provider.of<AccViewModel>(context, listen: false);
   amount.text = widget.accountAmount.toString();
+  print("I am Idddddddddddddddddddddddddddddddddd"+widget.accountId);
   super.initState();
 }
 @override
@@ -54,7 +71,7 @@ void dispose() {
           },
           icon: const Icon(
             Icons.arrow_left_sharp,
-            color: Colors.white,
+            color: Color.fromARGB(248, 133, 191, 180),
             size: 40,
           ),
           style: ElevatedButton.styleFrom(
@@ -85,7 +102,14 @@ void dispose() {
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                                print("ACCCCCCCCCCCCCCCC::::::::::::::::::"+widget.accountId);
+                    _acc.updateAccount(Account(accountId: widget.accountId, userId: _auth.user!.uid, accountName: widget.accountName, balanceAmount: int.parse(amount.text))).then((value) {  Navigator.of(context).pop();
+           Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AddListOfAccount()));});
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF77ABA2),
                   foregroundColor: Colors.white,
@@ -94,39 +118,41 @@ void dispose() {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0)),
                 ),
-                child: Text(
-                  "Update",
-                  style: TextStyle(fontSize: 25),
-                )),
+                
+                  child: Text(
+                    "Update",
+                    style: TextStyle(fontSize: 25),
+                  ),
+                
+                ),
             ElevatedButton(
-                onPressed: () => showDialog<String>(
-                      context: context,
-                      builder: (BuildContext context) => AlertDialog(
-                        title: const Text('Do you sure want to delete?'),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () {},
-                            child: const Text('No'),
-                          ),
-                          TextButton(
-                            onPressed: () {},
-                            child: const Text('Yes'),
-                          ),
-                        ],
-                      ),
-                    ),
+              
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF77ABA2),
                   foregroundColor: Colors.white,
                   padding:
                       EdgeInsets.symmetric(horizontal: 90.0, vertical: 15.0),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0)),
+                      borderRadius: BorderRadius.circular(10.0)),),
+               
+                
+                  onPressed: () { 
+                      _acc.deleteAccount(Account(accountId: widget.accountId, userId: _auth.user!.uid, accountName: widget.accountName, balanceAmount: int.parse(amount.text))).then((value) {
+                         Navigator.of(context).pop();
+           Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AddListOfAccount()),
+                      );
+                      });
+                    
+                   },
+                  child: Text(
+                    "Delete",
+                    style: TextStyle(fontSize: 25),
+                  ),
+                  
                 ),
-                child: Text(
-                  "Delete",
-                  style: TextStyle(fontSize: 25),
-                )),
             SizedBox(
               height: 50,
             )
