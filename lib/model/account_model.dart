@@ -39,8 +39,8 @@ class Account {
      factory Account.fromFirebaseSnapshot(DocumentSnapshot<Map<String, dynamic>> json) => Account(
     accountId: json["accountId"],
     userId: json["user_id"],
-    accountName: json["accountName"],
-    balanceAmount: json["balanceAmount"],
+    accountName: json["account_name"],
+    balanceAmount: json["balance_amount"],
  
   );
 }

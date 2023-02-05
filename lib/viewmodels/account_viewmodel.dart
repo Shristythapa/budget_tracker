@@ -18,15 +18,17 @@ class AccViewModel  with ChangeNotifier{
   }
 
   Future<List<Account>> getAccount(String userid) async{
-
+    print(userid);
     notifyListeners();
     try{
       var response = await _accountRepo.getAccounts(userid);
       for(var element in response){
         _allAccount.add(element.data());
+        print(element.data().accountId);
       }
       notifyListeners();
     }catch(e){
+      print("VM ERROR :: $e");
       _allAccount=[];
       notifyListeners();
     }

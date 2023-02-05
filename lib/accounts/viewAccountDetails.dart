@@ -1,28 +1,39 @@
+import 'package:budget_tracer_practice/accounts/addListOfAccount.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
-class AccountDetails extends StatefulWidget {
-  const AccountDetails({super.key});
+
+
+class MyAccountDetails extends StatefulWidget {
+   
+  late String accountName;
+  late int accountAmount;
+  late String accountId;
+  MyAccountDetails(this.accountId,this.accountName,this.accountAmount);
+
+  
 
   @override
-  State<AccountDetails> createState() => _AccountDetailsState();
+  State<MyAccountDetails> createState() => _MyAccountDetailsState();
 }
 
-class _AccountDetailsState extends State<AccountDetails> {
+class _MyAccountDetailsState extends State<MyAccountDetails> {
+
+TextEditingController amount = new TextEditingController();
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MyAccountDetails(),
-    );
-  }
+void initState() {
+  amount.text = widget.accountAmount.toString();
+  super.initState();
+}
+@override
+void dispose() {
+  amount.dispose();
+  super.dispose();
 }
 
-class MyAccountDetails extends StatelessWidget {
-  TextEditingController amount = new TextEditingController(text: "20000");
-
-  @override
+ 
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -32,10 +43,18 @@ class MyAccountDetails extends StatelessWidget {
         automaticallyImplyLeading: false,
         leadingWidth: 100,
         leading: IconButton(
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: (){
+             Navigator.of(context).pop();
+           Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AddListOfAccount()),
+                      );
+
+          },
           icon: const Icon(
             Icons.arrow_left_sharp,
-            color: Colors.black,
+            color: Colors.white,
             size: 40,
           ),
           style: ElevatedButton.styleFrom(
@@ -53,7 +72,7 @@ class MyAccountDetails extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "Cash",
+              "${widget.accountName}",
               style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
             ),
             TextFormField(

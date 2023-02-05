@@ -46,7 +46,7 @@ class _AddMyAccountState extends State<AddMyAccount> {
         Account(
           accountId: "",
           userId: user_id,
-          accountName: accountAmount.text,
+          accountName: accountName.text,
           balanceAmount: int.parse(accountAmount.text)
           )
       ).then((value) => null).catchError((e){
@@ -98,10 +98,10 @@ class _AddMyAccountState extends State<AddMyAccount> {
                   onTap: (() {
                     Navigator.pop(context);
                   //  Navigator.of(context).pushReplacementNamed("/listOfAccount");
-                  Navigator.push(
-    context,
-    MaterialPageRoute(builder: (context) => const AddListOfAccount()),
-  );
+  //                 Navigator.push(
+  //   context,
+  //   MaterialPageRoute(builder: (context) => const AddListOfAccount()),
+  // );
                   }),
                   child: Icon(
                     Icons.cancel_outlined,
