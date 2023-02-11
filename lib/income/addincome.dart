@@ -5,6 +5,8 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:date_time_picker/date_time_picker.dart';
 
+import '../dashboard/navigation/navigation_body.dart';
+
 
 class Income extends StatefulWidget {
   const Income({super.key});
@@ -237,7 +239,11 @@ class _IncomeState extends State<Income> {
                 color: Color.fromRGBO(49, 39, 79, 1),
               ),
               child: ElevatedButton(
-                onPressed: (() {}),
+                onPressed: (() {
+                   Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context)=>NavigationBodyScreen()));
+                }),
                 child: Text(
                   "Cancel",
                   style: TextStyle(color: Colors.white),

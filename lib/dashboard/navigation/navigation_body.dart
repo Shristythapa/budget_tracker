@@ -1,3 +1,8 @@
+import 'package:budget_tracer_practice/addsavings/addsaving.dart';
+import 'package:budget_tracer_practice/balanceTransfer/balance_transfer_screen.dart';
+import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_body.dart';
+import 'package:budget_tracer_practice/expenses/addExpenses.dart';
+import 'package:budget_tracer_practice/income/addincome.dart';
 import 'package:flutter/material.dart';
 
 class NavigationBodyScreen extends StatefulWidget {
@@ -69,10 +74,10 @@ class _NavigationBodyScreenState extends State<NavigationBodyScreen> {
               Positioned(
                 child: GestureDetector(
                   onTap: () {
-                    //     Navigator.push(
-                    // context,
-                    // MaterialPageRoute(builder: (context)=>DashboardScreen()));
-                    // print("Container");
+                        Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context)=>Income()));
+                    print("Container");
                   },
                   child: Column(
                     children: [
@@ -141,25 +146,34 @@ class _NavigationBodyScreenState extends State<NavigationBodyScreen> {
                           ),
                         ],
                       ),
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 1, left: 20),
-                            child: ImageIcon(
-                              AssetImage("assets/images/expn.png"),
-                              size: 60,
-                              color: Colors.black,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.of(context).pop();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => Expense()),
+              );
+                        },
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 1, left: 20),
+                              child: ImageIcon(
+                                AssetImage("assets/images/expn.png"),
+                                size: 60,
+                                color: Colors.black,
+                              ),
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10, left: 100),
-                            child: Text("Expenses",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 25,
-                                )),
-                          ),
-                        ],
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10, left: 100),
+                              child: Text("Expenses",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 25,
+                                  )),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ],
@@ -169,45 +183,54 @@ class _NavigationBodyScreenState extends State<NavigationBodyScreen> {
                 top: 180,
               ),
               Positioned(
-                child: Column(
-                  children: [
-                    Container(
-                      height: 85,
-                      width: 315,
-                      decoration: BoxDecoration(
-                        color: Color(0xFFEFEFEF),
-                        borderRadius: BorderRadius.circular(20),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Color(0xFFA10564A).withOpacity(0.5),
-                            spreadRadius: 5,
-                            blurRadius: 10,
-                            offset: Offset(0, 5), // changes position of shadow
-                          ),
-                        ],
-                      ),
-                      child: Row(
-                        children: [
-                          Padding(
-                            padding: const EdgeInsets.only(top: 1, left: 20),
-                            child: ImageIcon(
-                              AssetImage("assets/images/transfer.png"),
-                              size: 60,
-                              color: Colors.black,
+                child: InkWell(
+                  onTap: (() {
+                       Navigator.of(context).pop();
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => BalanceTransferScreen()),
+              );
+                  }),
+                  child: Column(
+                    children: [
+                      Container(
+                        height: 85,
+                        width: 315,
+                        decoration: BoxDecoration(
+                          color: Color(0xFFEFEFEF),
+                          borderRadius: BorderRadius.circular(20),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Color(0xFFA10564A).withOpacity(0.5),
+                              spreadRadius: 5,
+                              blurRadius: 10,
+                              offset: Offset(0, 5), // changes position of shadow
                             ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.only(top: 10, left: 100),
-                            child: Text("Transfer",
-                                style: TextStyle(
-                                  fontWeight: FontWeight.w400,
-                                  fontSize: 25,
-                                )),
-                          ),
-                        ],
+                          ],
+                        ),
+                        child: Row(
+                          children: [
+                            Padding(
+                              padding: const EdgeInsets.only(top: 1, left: 20),
+                              child: ImageIcon(
+                                AssetImage("assets/images/transfer.png"),
+                                size: 60,
+                                color: Colors.black,
+                              ),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.only(top: 10, left: 100),
+                              child: Text("Transfer",
+                                  style: TextStyle(
+                                    fontWeight: FontWeight.w400,
+                                    fontSize: 25,
+                                  )),
+                            ),
+                          ],
+                        ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
                 right: 0,
                 left: 0,
@@ -234,6 +257,11 @@ class _NavigationBodyScreenState extends State<NavigationBodyScreen> {
                       ),
                       onPressed: () {
                         Navigator.of(context).pop();
+                        Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DashboardBody()),
+              );
+                        
                       },
                     ),
                   ],

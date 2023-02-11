@@ -1,28 +1,56 @@
+import 'package:budget_tracer_practice/accounts/addListOfAccount.dart';
+import 'package:budget_tracer_practice/model/account_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
 
-class AccountDetails extends StatefulWidget {
-  const AccountDetails({super.key});
+import '../viewmodels/account_viewmodel.dart';
+import '../viewmodels/auth_viewmodel.dart';
+import '../viewmodels/global_ui_viewmodel.dart';
+
+
+
+class MyAccountDetails extends StatefulWidget {
+   
+  late String accountName;
+  late int accountAmount;
+  late String accountId;
+  MyAccountDetails(this.accountId,this.accountName,this.accountAmount);
+
+  
 
   @override
-  State<AccountDetails> createState() => _AccountDetailsState();
+  State<MyAccountDetails> createState() => _MyAccountDetailsState();
 }
 
-class _AccountDetailsState extends State<AccountDetails> {
+class _MyAccountDetailsState extends State<MyAccountDetails> {
+
+TextEditingController amount = new TextEditingController();
+
+  AuthViewModel u = new AuthViewModel();
+    
+   late GlobalUIViewModel _ui;
+  late AuthViewModel _auth;
+  late AccViewModel _acc;
+  
   @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: MyAccountDetails(),
-    );
-  }
+void initState() {
+  _ui = Provider.of<GlobalUIViewModel>(context, listen: false);
+    _auth = Provider.of<AuthViewModel>(context, listen: false);
+    _acc = Provider.of<AccViewModel>(context, listen: false);
+  amount.text = widget.accountAmount.toString();
+  print("I am Idddddddddddddddddddddddddddddddddd"+widget.accountId);
+  super.initState();
+}
+@override
+void dispose() {
+  amount.dispose();
+  super.dispose();
 }
 
-class MyAccountDetails extends StatelessWidget {
-  TextEditingController amount = new TextEditingController(text: "20000");
-
-  @override
+ 
+   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
@@ -32,10 +60,18 @@ class MyAccountDetails extends StatelessWidget {
         automaticallyImplyLeading: false,
         leadingWidth: 100,
         leading: IconButton(
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: (){
+             Navigator.of(context).pop();
+           Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AddListOfAccount()),
+                      );
+
+          },
           icon: const Icon(
             Icons.arrow_left_sharp,
-            color: Colors.black,
+            color: Color.fromARGB(248, 133, 191, 180),
             size: 40,
           ),
           style: ElevatedButton.styleFrom(
@@ -53,7 +89,7 @@ class MyAccountDetails extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
-              "Cash",
+              "${widget.accountName}",
               style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
             ),
             TextFormField(
@@ -66,7 +102,14 @@ class MyAccountDetails extends StatelessWidget {
                       borderRadius: BorderRadius.all(Radius.circular(20)))),
             ),
             ElevatedButton(
-                onPressed: () {},
+                onPressed: () {
+                                print("ACCCCCCCCCCCCCCCC::::::::::::::::::"+widget.accountId);
+                    _acc.updateAccount(Account(accountId: widget.accountId, userId: _auth.user!.uid, accountName: widget.accountName, balanceAmount: int.parse(amount.text))).then((value) {  Navigator.of(context).pop();
+           Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AddListOfAccount()));});
+                },
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF77ABA2),
                   foregroundColor: Colors.white,
@@ -75,39 +118,41 @@ class MyAccountDetails extends StatelessWidget {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0)),
                 ),
-                child: Text(
-                  "Update",
-                  style: TextStyle(fontSize: 25),
-                )),
+                
+                  child: Text(
+                    "Update",
+                    style: TextStyle(fontSize: 25),
+                  ),
+                
+                ),
             ElevatedButton(
-                onPressed: () => showDialog<String>(
-                      context: context,
-                      builder: (BuildContext context) => AlertDialog(
-                        title: const Text('Do you sure want to delete?'),
-                        actions: <Widget>[
-                          TextButton(
-                            onPressed: () {},
-                            child: const Text('No'),
-                          ),
-                          TextButton(
-                            onPressed: () {},
-                            child: const Text('Yes'),
-                          ),
-                        ],
-                      ),
-                    ),
+              
                 style: ElevatedButton.styleFrom(
                   backgroundColor: Color(0xFF77ABA2),
                   foregroundColor: Colors.white,
                   padding:
                       EdgeInsets.symmetric(horizontal: 90.0, vertical: 15.0),
                   shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(10.0)),
+                      borderRadius: BorderRadius.circular(10.0)),),
+               
+                
+                  onPressed: () { 
+                      _acc.deleteAccount(Account(accountId: widget.accountId, userId: _auth.user!.uid, accountName: widget.accountName, balanceAmount: int.parse(amount.text))).then((value) {
+                         Navigator.of(context).pop();
+           Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AddListOfAccount()),
+                      );
+                      });
+                    
+                   },
+                  child: Text(
+                    "Delete",
+                    style: TextStyle(fontSize: 25),
+                  ),
+                  
                 ),
-                child: Text(
-                  "Delete",
-                  style: TextStyle(fontSize: 25),
-                )),
             SizedBox(
               height: 50,
             )

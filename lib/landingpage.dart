@@ -1,24 +1,11 @@
 
+import 'package:budget_tracer_practice/login.dart';
 import 'package:budget_tracer_practice/signup.dart';
+import 'package:budget_tracer_practice/viewmodels/auth_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 
-class LandingPage extends StatelessWidget {
-  const LandingPage({super.key});
-
-  
-
-  @override
-  Widget build(BuildContext context) {
-    
-    return MaterialApp(
-      theme: ThemeData(
-          scaffoldBackgroundColor: Color.fromARGB(255, 161, 207, 245)),
-      debugShowCheckedModeBanner: false,
-      home: MyLandingPage(),
-    );
-  }
-}
 
 class MyLandingPage extends StatefulWidget {
   const MyLandingPage({super.key});
@@ -28,6 +15,26 @@ class MyLandingPage extends StatefulWidget {
 }
 
 class _MyLandingPageState extends State<MyLandingPage> {
+
+  late AuthViewModel _authViewModel;
+
+  void checkLogin() async{
+    await Future.delayed(Duration(seconds: 0));
+    print("AUTH :: " + _authViewModel.user.toString());
+    print("AUTH :: " + (_authViewModel.user==null).toString());
+    if(_authViewModel.user==null){
+      // Navigator.of(context).pushReplacementNamed("/landingPage");
+    }else{
+      Navigator.of(context).pushReplacementNamed("/dashboard");
+    }
+  }
+  @override
+  void initState() {
+    _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
+    checkLogin();
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     var deviceHeight = MediaQuery.of(context).size.height;
@@ -59,10 +66,7 @@ class _MyLandingPageState extends State<MyLandingPage> {
               ),
               onPressed: () {
                 Navigator.of(context).pop();
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => const RegisterScreen()),
-                );
+                Navigator.push(context, MaterialPageRoute(builder: (context)=>RegisterScreen()));
               },
               child: Text(
                 "Join Now",
@@ -84,7 +88,10 @@ class _MyLandingPageState extends State<MyLandingPage> {
               ),
               onTap: () {
                 Navigator.of(context).pop();
-                Navigator.pushNamed(context, '/signup');  
+                 Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => loginScreen()),
+              ); 
               },
             )),
           )

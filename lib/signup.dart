@@ -1,10 +1,12 @@
+import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_body.dart';
+import 'package:budget_tracer_practice/model/user_model.dart';
 import 'package:budget_tracer_practice/viewmodels/auth_viewmodel.dart';
 import 'package:budget_tracer_practice/viewmodels/global_ui_viewmodel.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'login.dart';
-import 'models/user_model.dart';
+
 
 class RegisterScreen extends StatefulWidget {
   const RegisterScreen({Key? key}) : super(key: key);
@@ -44,7 +46,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
               password: password.text,
               username: userName.text,
           )).then((value) {
-        // Navigator.of(context).pushReplacementNamed("/dashboard");
+        Navigator.of(context).pop();
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DashboardBody()),
+              );
       })
           .catchError((e){
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
@@ -273,9 +279,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     height: 60,
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text("Login Validation Success"),
-                        ));
+                        
                         signup();
                         // Navigator.of(context).pushNamed("/dashboard");
                       } else {
@@ -303,8 +307,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.pop(context);
-                          Navigator.push(context,  MaterialPageRoute(builder: (context) => const loginScreen()));
+                       Navigator.of(context).pop();
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => loginScreen()),
+              );
                         },
                         child: Text(
                           "Go to login",
