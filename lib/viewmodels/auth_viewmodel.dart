@@ -1,4 +1,6 @@
+import 'package:budget_tracer_practice/model/income_model.dart';
 import 'package:budget_tracer_practice/model/user_model.dart';
+import 'package:budget_tracer_practice/repositories/income_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -13,11 +15,8 @@ class AuthViewModel with ChangeNotifier {
   }
 
   User? get user => _user;
-  
-  
-
   UserModel? _loggedInUser;
-  UserModel? get loggedInUser =>_loggedInUser;
+  UserModel? get loggedInUser => _loggedInUser;
 
 
 
@@ -69,5 +68,51 @@ class AuthViewModel with ChangeNotifier {
     }catch(e){
       rethrow;
     }
+  }
+
+  List<IncomeModel>? _myIncome;
+  List<IncomeModel>? get myIncome => _myIncome;
+
+    Future<void> getMyIncomes() async {
+    try {
+      var incomeResponse =
+          await IncomRepository().getMyIncomes(loggedInUser!.userId!);
+      _myIncome = [];
+      for (var element in incomeResponse) {
+        _myIncome!.add(element.data());
+      }
+      notifyListeners();
+    } catch (e) {
+      print(e);
+      _myIncome = null;
+      notifyListeners();
+    }
+  }
+
+    Future<void> addMyIncome(IncomeModel income) async {
+    try {
+      await IncomRepository().addIncomes(income: income);
+
+      await getMyIncomes();
+      notifyListeners();
+    } catch (e) {}
+  }
+
+   Future<void> editMyIncome(IncomeModel income,String incomeId) async {
+    try {
+      await IncomRepository().editIncome(income: income, incomeId: incomeId);
+
+      await getMyIncomes();
+      notifyListeners();
+    } catch (e) {}
+  }
+
+   Future<void> deleteMyIncome(String incomeId) async {
+    try {
+      await IncomRepository().removeIncome(incomeId, loggedInUser!.userId!);
+
+      await getMyIncomes();
+      notifyListeners();
+    } catch (e) {}
   }
 }

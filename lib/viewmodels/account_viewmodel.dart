@@ -1,6 +1,8 @@
-import 'package:budget_tracer_practice/model/account_model.dart';
-import 'package:budget_tracer_practice/repositories/account_repositories.dart';
+
 import 'package:flutter/material.dart';
+
+import '../model/account_model.dart';
+import '../repositories/account_repositories.dart';
 
 class AccViewModel  with ChangeNotifier{
 
