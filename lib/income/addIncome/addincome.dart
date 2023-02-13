@@ -1,11 +1,19 @@
-
-
+<<<<<<< HEAD
+import 'package:budget_tracer_practice/common/custom_dropdown.dart';
+import 'package:control_style/decorated_input_border.dart';
 import 'package:flutter/material.dart';
 
 import 'package:date_time_picker/date_time_picker.dart';
 
+<<<<<<<< HEAD:lib/income/addIncome/addincome.dart
 import '../dashboard/navigation/navigation_body.dart';
 
+========
+import '../common/custom_button.dart';
+import '../common/custom_categoryDropDown.dart';
+import '../common/custom_icon.dart';
+import '../common/custom_textfield.dart';
+>>>>>>>> income:lib/income/addincome.dart
 
 class Income extends StatefulWidget {
   const Income({super.key});
@@ -15,9 +23,11 @@ class Income extends StatefulWidget {
 }
 
 class _IncomeState extends State<Income> {
+  final _formKey = GlobalKey<FormState>();
 
   String dropdownvalue = 'Prime Bank';
   String selectionvalue = 'Category';
+<<<<<<<< HEAD:lib/income/addIncome/addincome.dart
   // List of items in our dropdown menu
   var items = [
     'Prime Bank',
@@ -32,20 +42,47 @@ class _IncomeState extends State<Income> {
     'Category',
     'Expenses',
     'stocks',
+========
+>>>>>>>> income:lib/income/addincome.dart
 
-  ];
   TextEditingController email = new TextEditingController();
   TextEditingController password = new TextEditingController();
   TextEditingController date = new TextEditingController();
 
   final form = GlobalKey<FormState>();
-  // final FirebaseAuth _auth = FirebaseAuth.instance;
-  Future<void> Add() async {
+=======
+import 'package:control_style/decorated_input_border.dart';
+import 'package:flutter/material.dart';
+import 'package:date_time_picker/date_time_picker.dart';
 
-  }
+import '../../common/custom_button.dart';
+import '../../common/custom_categoryDropDown.dart';
+import '../../common/custom_dropdown.dart';
+import '../../common/custom_textfield.dart';
+
+class AddIncome extends StatefulWidget {
+  const AddIncome({super.key});
+
+  @override
+  State<AddIncome> createState() => _AddIncomeState();
+}
+
+class _AddIncomeState extends State<AddIncome> {
+  final _formKey = GlobalKey<FormState>();
+
+
+  TextEditingController amount = new TextEditingController();
+  TextEditingController title = new TextEditingController();
+  TextEditingController date = new TextEditingController();
+
+>>>>>>> income
+  // final FirebaseAuth _auth = FirebaseAuth.instance;
+  Future<void> Add() async {}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+<<<<<<< HEAD
+<<<<<<<< HEAD:lib/income/addIncome/addincome.dart
       backgroundColor: Color.fromARGB(255, 252, 252, 252),
       body: Form(
         key: form,
@@ -217,14 +254,36 @@ class _IncomeState extends State<Income> {
                 child: Text(
                   "Add",
                   style: TextStyle(color: Colors.white),
+========
+=======
+>>>>>>> income
+        body: ListView(
+      children: [
+        Form(
+          key: _formKey,
+          child: Container(
+<<<<<<< HEAD
+            // margin:EdgeInsets.only(top:MediaQuery.of(context).viewPadding.top),
+=======
+>>>>>>> income
+            padding: EdgeInsets.symmetric(horizontal: 24.0, vertical: 20),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text("Add Income",
+                    style: TextStyle(
+                      fontSize: 32,
+                      fontWeight: FontWeight.w400,
+                    )),
+                SizedBox(
+                  height: 40,
+<<<<<<< HEAD
+>>>>>>>> income:lib/income/addincome.dart
                 ),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
-                  ),
-                  backgroundColor: Color(0xFF296157),
-                  foregroundColor: Colors.white,
+                CustomTextField(
+                  hintText: "Title",
                 ),
+<<<<<<<< HEAD:lib/income/addIncome/addincome.dart
               ),
             ),
             SizedBox(
@@ -247,19 +306,100 @@ class _IncomeState extends State<Income> {
                 child: Text(
                   "Cancel",
                   style: TextStyle(color: Colors.white),
+========
+=======
                 ),
-                style: ElevatedButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(30.0),
+                CustomTextField(
+                  controller: title,
+                  hintText: "Title",
+                ),
+>>>>>>> income
+                SizedBox(
+                  height: 40,
+                ),
+                CustomTextField(
+<<<<<<< HEAD
+                  hintText: "Amount",
+>>>>>>>> income:lib/income/addincome.dart
+=======
+                  controller: amount,
+                  hintText: "Amount",
+>>>>>>> income
+                ),
+                SizedBox(height: 40,),
+                Container(
+                  child: DateTimePicker(
+                    initialValue: '',
+                    firstDate: DateTime(2000),
+                    lastDate: DateTime(2100),
+                    dateLabelText: 'Date',
+                    onChanged: (val) => print(val),
+                    validator: (val) {
+                      print(val);
+                      return null;
+                    },
+                    onSaved: (val) => print(val),
+                    decoration: InputDecoration(
+                        border: DecoratedInputBorder(
+                          child: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(8),
+                            borderSide: BorderSide(
+                              width: 0,
+                              style: BorderStyle.none,
+                            ),
+                          ),
+                          shadow: [
+                            BoxShadow(
+                              color: Color.fromARGB(255, 174, 175, 175),
+                              blurRadius: 12,
+                            )
+                          ],
+                        ),
+                        contentPadding: EdgeInsets.zero,
+                        filled: true,
+                        fillColor: Colors.white,
+                        hintText: "Date",
+                        prefixIcon: Icon(Icons.date_range)),
                   ),
-                  backgroundColor: Color(0xFF296157),
-                  foregroundColor: Colors.white,
                 ),
-              ),
+                SizedBox(
+                  height: 10,
+                ),
+                CustomDropDown(
+                  hint: "Select account",
+                ),
+                SizedBox(
+                  height: 10,
+                ),
+                CustomCategoryDropDown(hint: "Category"),
+                SizedBox(
+                  height: 50,
+                ),
+                CustomButton(
+                  title: "Add",
+                  onPressed: () {
+<<<<<<< HEAD
+                    if (_formKey.currentState!.validate()) {
+                      _formKey.currentState!.save();
+                    }
+=======
+>>>>>>> income
+                  },
+                ),
+                SizedBox(
+                  height: 40,
+                ),
+                CustomButton(
+                  title: "Cancel",
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                ),
+              ],
             ),
-          ],
+          ),
         ),
-      ),
-    );
+      ],
+    ));
   }
 }

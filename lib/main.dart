@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 ﻿import 'package:budget_tracer_practice/accounts/addAccount.dart';
 import 'package:budget_tracer_practice/accounts/addListOfAccount.dart';
 import 'package:budget_tracer_practice/balanceTransfer/balance_transfer_screen.dart';
@@ -8,13 +9,24 @@ import 'package:budget_tracer_practice/signup.dart';
 import 'package:budget_tracer_practice/viewmodels/account_viewmodel.dart';
 import 'package:budget_tracer_practice/viewmodels/auth_viewmodel.dart';
 import 'package:budget_tracer_practice/viewmodels/global_ui_viewmodel.dart';
+=======
+﻿import 'package:budget_tracer_practice/income/viewIncome/view_income_details.dart';
+import 'package:budget_tracer_practice/login.dart';
+import 'package:budget_tracer_practice/income/viewIncome/view_income_screen.dart';
+>>>>>>> income
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
 
+<<<<<<< HEAD
 import 'expenses/addExpenses.dart';
 import 'login.dart';
+=======
+import 'income/addIncome/addincome.dart';
+import 'income/addIncome/chooseIncome.dart';
+import 'income/editIncome/edit_income.dart';
+>>>>>>> income
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -43,6 +55,7 @@ class MyApp extends StatelessWidget {
             width: 100,
           ),
         ),
+<<<<<<< HEAD
         child: Consumer<GlobalUIViewModel>(
           builder: (context, loader, child) {
             if (loader.isLoading) {
@@ -74,5 +87,8 @@ class MyApp extends StatelessWidget {
         ),
       ),
     );
+=======
+        home: EditIncome());
+>>>>>>> income
   }
 }

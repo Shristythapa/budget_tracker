@@ -5,7 +5,7 @@ import 'package:flutter/material.dart';
 
 class CustomTextField extends StatelessWidget {
   // final String label;
-  final String hintText;
+  final String? hintText;
   final double bottomPadding;
   final TextInputType? textInputType;
   final Widget? prefixIcon;
@@ -13,11 +13,12 @@ class CustomTextField extends StatelessWidget {
   final bool obscureText;
   final TextEditingController controller;
   final String? Function(String?)? validator;
+  final TextEditingController? controller;
 
    CustomTextField({
     Key? key,
     // required this.label,
-    required this.hintText,
+    this.hintText,
     this.bottomPadding=10,
     this.textInputType,
     this.prefixIcon,
@@ -25,6 +26,7 @@ class CustomTextField extends StatelessWidget {
     required this.controller,
     this.obscureText=false,
     this.validator,
+    this.controller,
     
 
   }): super(key: key);
@@ -36,11 +38,18 @@ class CustomTextField extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
             child: TextFormField(
+<<<<<<< HEAD
+=======
+              controller: controller,
+>>>>>>> income
               // cursorColor: Colors.red,
               controller: controller,
               keyboardType: TextInputType.emailAddress,
               obscureText:obscureText,
+<<<<<<< HEAD
 
+=======
+>>>>>>> income
               decoration:InputDecoration(
                 prefixIcon: prefixIcon,
                 suffixIcon:suffixIcon,
