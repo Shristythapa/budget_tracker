@@ -1,16 +1,13 @@
-import 'package:budget_tracer_practice/accounts/addListOfAccount.dart';
-import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_body.dart';
-import 'package:budget_tracer_practice/dashboard/main_dashboard/sidebar.dart';
-import 'package:budget_tracer_practice/model/account_model.dart';
-import 'package:budget_tracer_practice/viewmodels/account_viewmodel.dart';
-import 'package:budget_tracer_practice/viewmodels/auth_viewmodel.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 
+import '../dashboard/main_dashboard/dashboard_body.dart';
+import '../model/account_model.dart';
+import '../viewmodels/account_viewmodel.dart';
+import '../viewmodels/auth_viewmodel.dart';
 import '../viewmodels/global_ui_viewmodel.dart';
+import 'addListOfAccount.dart';
 
 
 

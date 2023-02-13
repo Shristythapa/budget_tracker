@@ -1,9 +1,10 @@
-import 'package:budget_tracer_practice/addsavings/addsaving.dart';
-import 'package:budget_tracer_practice/balanceTransfer/balance_transfer_screen.dart';
-import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_body.dart';
-import 'package:budget_tracer_practice/expenses/addExpenses.dart';
-import 'package:budget_tracer_practice/income/addincome.dart';
+
 import 'package:flutter/material.dart';
+
+import '../../balanceTransfer/balance_transfer_screen.dart';
+import '../../expenses/addExpenses.dart';
+import '../../income/addIncome/addincome.dart';
+import '../main_dashboard/dashboard_body.dart';
 
 class NavigationBodyScreen extends StatefulWidget {
   const NavigationBodyScreen({super.key});
@@ -76,7 +77,7 @@ class _NavigationBodyScreenState extends State<NavigationBodyScreen> {
                   onTap: () {
                         Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context)=>Income()));
+                    MaterialPageRoute(builder: (context)=> AddIncome()));
                     print("Container");
                   },
                   child: Column(

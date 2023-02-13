@@ -1,32 +1,21 @@
-<<<<<<< HEAD
-﻿import 'package:budget_tracer_practice/accounts/addAccount.dart';
-import 'package:budget_tracer_practice/accounts/addListOfAccount.dart';
-import 'package:budget_tracer_practice/balanceTransfer/balance_transfer_screen.dart';
-import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_body.dart';
-import 'package:budget_tracer_practice/dashboard/main_dashboard/sidebar.dart';
-import 'package:budget_tracer_practice/landingpage.dart';
-import 'package:budget_tracer_practice/signup.dart';
-import 'package:budget_tracer_practice/viewmodels/account_viewmodel.dart';
-import 'package:budget_tracer_practice/viewmodels/auth_viewmodel.dart';
-import 'package:budget_tracer_practice/viewmodels/global_ui_viewmodel.dart';
-=======
-﻿import 'package:budget_tracer_practice/income/viewIncome/view_income_details.dart';
-import 'package:budget_tracer_practice/login.dart';
-import 'package:budget_tracer_practice/income/viewIncome/view_income_screen.dart';
->>>>>>> income
-import 'package:flutter/material.dart';
+﻿import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
 
-<<<<<<< HEAD
+import 'accounts/addAccount.dart';
+import 'accounts/addListOfAccount.dart';
+import 'balanceTransfer/balance_transfer_screen.dart';
+import 'dashboard/main_dashboard/dashboard_body.dart';
+import 'dashboard/main_dashboard/sidebar.dart';
 import 'expenses/addExpenses.dart';
-import 'login.dart';
-=======
 import 'income/addIncome/addincome.dart';
-import 'income/addIncome/chooseIncome.dart';
-import 'income/editIncome/edit_income.dart';
->>>>>>> income
+import 'landingpage.dart';
+import 'login.dart';
+import 'signup.dart';
+import 'viewmodels/account_viewmodel.dart';
+import 'viewmodels/auth_viewmodel.dart';
+import 'viewmodels/global_ui_viewmodel.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -55,7 +44,6 @@ class MyApp extends StatelessWidget {
             width: 100,
           ),
         ),
-<<<<<<< HEAD
         child: Consumer<GlobalUIViewModel>(
           builder: (context, loader, child) {
             if (loader.isLoading) {
@@ -67,7 +55,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: 'Flutter Demo',
               theme: ThemeData(),
-              initialRoute: "/landingPage",
+              initialRoute: "/login",
               routes: {
                 "/landingPage": (BuildContext context) => MyLandingPage(),
                 "/login": (BuildContext context) => loginScreen(),
@@ -79,7 +67,7 @@ class MyApp extends StatelessWidget {
                 "/listOfAccount": (BuildContext context) => AddListOfAccount(),
                 "/add_account": (BuildContext context) => AddMyAccount(),
                 "/add_expense": (BuildContext context) => Expense(),
-                "/add_income": (BuildContext context) => Income(),
+                "/add_income": (BuildContext context) => AddIncome(),
                 "/dashboard": (BuildContext context) => DashboardBody(),
               },
             );
@@ -87,8 +75,5 @@ class MyApp extends StatelessWidget {
         ),
       ),
     );
-=======
-        home: EditIncome());
->>>>>>> income
   }
 }

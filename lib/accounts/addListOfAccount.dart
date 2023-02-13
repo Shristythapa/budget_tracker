@@ -1,13 +1,13 @@
-import 'package:budget_tracer_practice/accounts/addAccount.dart';
-import 'package:budget_tracer_practice/accounts/viewAccountDetails.dart';
-import 'package:budget_tracer_practice/dashboard/main_dashboard/sidebar.dart';
-import 'package:flutter/cupertino.dart';
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../dashboard/main_dashboard/sidebar.dart';
 import '../model/account_model.dart';
 import '../viewmodels/account_viewmodel.dart';
 import '../viewmodels/auth_viewmodel.dart';
+import 'addAccount.dart';
+import 'viewAccountDetails.dart';
 
 class AddListOfAccount extends StatefulWidget {
   const AddListOfAccount({Key? key}) : super(key: key);
