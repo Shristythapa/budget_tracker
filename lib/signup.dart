@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'login.dart';
-import 'models/user_model.dart';
 import 'viewmodels/auth_viewmodel.dart';
 import 'viewmodels/global_ui_viewmodel.dart';
 
@@ -44,7 +43,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
               password: password.text,
               username: userName.text,
           )).then((value) {
-        // Navigator.of(context).pushReplacementNamed("/dashboard");
+        Navigator.of(context).pop();
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DashboardBody()),
+              );
       })
           .catchError((e){
         ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
@@ -273,9 +276,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
                     height: 60,
                     onPressed: () {
                       if (_formKey.currentState!.validate()) {
-                        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-                          content: Text("Login Validation Success"),
-                        ));
+                        
                         signup();
                         // Navigator.of(context).pushNamed("/dashboard");
                       } else {
@@ -303,8 +304,11 @@ class _RegisterScreenState extends State<RegisterScreen> {
                       ),
                       InkWell(
                         onTap: () {
-                          Navigator.pop(context);
-                          Navigator.push(context,  MaterialPageRoute(builder: (context) => const loginScreen()));
+                       Navigator.of(context).pop();
+                Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => loginScreen()),
+              );
                         },
                         child: Text(
                           "Go to login",

@@ -1,8 +1,11 @@
 import 'dart:async';
 import 'package:budget_tracer_practice/signup.dart';
+import 'package:budget_tracer_practice/viewmodels/auth_viewmodel.dart';
+import 'package:budget_tracer_practice/viewmodels/global_ui_viewmodel.dart';
 import 'package:control_style/decorated_input_border.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import 'common/custom_button.dart';
 import 'common/custom_textfield.dart';
@@ -21,23 +24,32 @@ class _LoginScreenState extends State<loginScreen> {
   TextEditingController password = new TextEditingController();
   bool showPassword = false;
   final form = GlobalKey<FormState>();
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  Future<void> login() async {
-    try {
-      final user = (await _auth.signInWithEmailAndPassword(
-              email: email.text, password: password.text))
-          .user;
-      if (user != null) {
-        ScaffoldMessenger.of(context).showSnackBar(SnackBar(
-            backgroundColor: Colors.green, content: Text("Login Success")));
-
-        Navigator.push(context,
-            MaterialPageRoute(builder: (context) => const DashboardBody()));
-      }
-    } catch (e) {
-      ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(e.toString())));
+ void login() async{
+    _ui.loadState(true);
+    try{
+      print("EMAIL TEXT :: "+email.text);
+      await _auth.login(email.text, password.text).then((value){
+         Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DashboardBody()),
+              );
+      })
+          .catchError((e){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
+      });
+    }catch(err){
+      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(err.toString())));
     }
+    _ui.loadState(false);
+  }
+
+  late GlobalUIViewModel _ui;
+  late AuthViewModel _auth;
+  @override
+  void initState() {
+    _ui = Provider.of<GlobalUIViewModel>(context, listen: false);
+    _auth = Provider.of<AuthViewModel>(context, listen: false);
+    super.initState();
   }
 
   @override
@@ -71,6 +83,7 @@ class _LoginScreenState extends State<loginScreen> {
                 Container(
                   height: 70,
                   child: CustomTextField(
+                    controller: email,
                     hintText: "Email address",
                     prefixIcon: Icon(Icons.email),
                     bottomPadding: 30,
@@ -173,17 +186,12 @@ class _LoginScreenState extends State<loginScreen> {
                 CustomButton(
                   title: "Login",
                   onPressed: (() {
-                    Navigator.pop(context);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const DashboardBody()));
-                    // if (form.currentState!.validate()) {
-                    //   DashboardScreen ();
-
-                    // } else {
-                    //   print("Fail");
-                    // }
+                    if (form.currentState!.validate()) {
+                      print("Log");
+                        login();
+                    } else {
+                      print("Fail");
+                    }
                   }),
                 ),
                 SizedBox(
@@ -192,11 +200,8 @@ class _LoginScreenState extends State<loginScreen> {
                 CustomButton(
                   title: "Register",
                   onPressed: () {
-                    Navigator.pop(context);
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const RegisterScreen()));
+                     Navigator.of(context).pop();
+                Navigator.pushNamed(context, '/signup');  
                   },
                 ),
               ],

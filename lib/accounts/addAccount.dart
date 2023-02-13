@@ -1,18 +1,18 @@
+import 'package:budget_tracer_practice/accounts/addListOfAccount.dart';
+import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_body.dart';
+import 'package:budget_tracer_practice/dashboard/main_dashboard/sidebar.dart';
+import 'package:budget_tracer_practice/model/account_model.dart';
+import 'package:budget_tracer_practice/viewmodels/account_viewmodel.dart';
+import 'package:budget_tracer_practice/viewmodels/auth_viewmodel.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
 
-class AddAccount extends StatelessWidget {
-  const AddAccount({super.key});
+import '../viewmodels/global_ui_viewmodel.dart';
 
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      home: AddMyAccount(),
-    );
-  }
-}
+
 
 class AddMyAccount extends StatefulWidget {
   const AddMyAccount({super.key});
@@ -22,6 +22,47 @@ class AddMyAccount extends StatefulWidget {
 }
 
 class _AddMyAccountState extends State<AddMyAccount> {
+
+  TextEditingController accountName = TextEditingController();
+  TextEditingController accountAmount = TextEditingController();
+
+  AuthViewModel u = new AuthViewModel();
+    
+   late GlobalUIViewModel _ui;
+  late AuthViewModel _auth;
+  late AccViewModel _acc;
+  @override
+  void initState() {
+    _ui = Provider.of<GlobalUIViewModel>(context, listen: false);
+    _auth = Provider.of<AuthViewModel>(context, listen: false);
+    _acc = Provider.of<AccViewModel>(context, listen: false);
+    super.initState();
+  }
+  Future<void> addAccount() async{
+    _ui.loadState(true);
+   var user_id = _auth.user!.uid;
+    try{
+      await _acc.addAccount(
+        Account(
+          accountId: "",
+          userId: user_id,
+          accountName: accountName.text,
+          balanceAmount: int.parse(accountAmount.text)
+          )
+      ).then((value) => null).catchError((e){
+        ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(e.message.toString())));
+      });
+    }catch(err){
+       ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text(err.toString())));
+    }
+     _ui.loadState(false);
+     ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Task Added Sucessfully")));
+     Navigator.pop(context);
+    Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => AddListOfAccount()));
+
+  }
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -33,18 +74,19 @@ class _AddMyAccountState extends State<AddMyAccount> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(100.0),
           child: AppBar(
-            shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(20),
-            )),
+            // shape: RoundedRectangleBorder(
+            //     borderRadius: BorderRadius.vertical(
+            //   bottom: Radius.circular(20),
+            // )),
+            // backgroundColor: Color.fromARGB(248, 133, 191, 180),
             backgroundColor: Color(0xFF296157),
             title: Padding(
               padding: EdgeInsets.only(top: 30),
               child: Text(
                 "Add Account",
                 style: TextStyle(
-                  fontWeight: FontWeight.w100,
-                  color: Color.fromARGB(255, 37, 37, 37),
+                  fontWeight: FontWeight.w400,
+                  color: Colors.white,
                   fontSize: 25,
                 ),
               ),
@@ -52,10 +94,20 @@ class _AddMyAccountState extends State<AddMyAccount> {
             actions: [
               Padding(
                 padding: EdgeInsets.only(top: 20),
-                child: Icon(
-                  Icons.cancel_outlined,
-                  color: Color.fromARGB(255, 37, 37, 37),
-                  size: 33,
+                child: InkWell(
+                  onTap: (() {
+                    Navigator.pop(context);
+                   Navigator.of(context).pushReplacementNamed("/listOfAccount");
+                  Navigator.push(
+    context,
+    MaterialPageRoute(builder: (context) => const AddListOfAccount()),
+  );
+                  }),
+                  child: Icon(
+                    Icons.cancel_outlined,
+                    color: Colors.white,
+                    size: 33,
+                  ),
                 ),
               ),
               Text("       ")
@@ -80,6 +132,7 @@ class _AddMyAccountState extends State<AddMyAccount> {
                       width: MediaQuery.of(context).size.width / 100 * 8,
                     ),
                     TextFormField(
+                      controller: accountName,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -94,6 +147,7 @@ class _AddMyAccountState extends State<AddMyAccount> {
                       width: MediaQuery.of(context).size.width / 100 * 8,
                     ),
                     TextFormField(
+                      controller: accountAmount,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -111,13 +165,15 @@ class _AddMyAccountState extends State<AddMyAccount> {
                       height: 50,
                       width: 300,
                       child: ElevatedButton(
-                          onPressed: (() {}),
+                          onPressed: (() {
+                            addAccount();
+                          }),
                           child: Text("Add", style: TextStyle(
                             fontSize: 25
                           ),),
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF95894E),
-                              foregroundColor: Colors.black,
+                              backgroundColor: Color(0xFF296157),
+                              foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20)))),
                     ),
@@ -129,11 +185,17 @@ class _AddMyAccountState extends State<AddMyAccount> {
                        height: 50,
                       width: 300,
                       child: ElevatedButton(
-                          onPressed: (() {}),
+                          onPressed: (() {
+                            Navigator.pop(context);
+                             Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => DashboardBody()),
+              );
+                          }),
                           child: Text("Cancel",style: TextStyle(fontSize: 25),),
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF95894E),
-                              foregroundColor: Colors.black,
+                              backgroundColor: Color(0xFF296157),
+                              foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20)))),
                     )

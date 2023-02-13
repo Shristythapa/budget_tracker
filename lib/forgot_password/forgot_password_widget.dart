@@ -76,6 +76,7 @@ class _ForgetPasswordWidgetState extends State<ForgetPasswordWidget> {
                   child: Column(
                     children: [
                       CustomTextField(
+                        controller: TextEditingController(),
                         hintText: "Email address",
                         prefixIcon: Icon(Icons.email),
                         bottomPadding: 30,

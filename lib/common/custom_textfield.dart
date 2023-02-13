@@ -11,6 +11,7 @@ class CustomTextField extends StatelessWidget {
   final Widget? prefixIcon;
   final Widget? suffixIcon;
   final bool obscureText;
+  final TextEditingController controller;
   final String? Function(String?)? validator;
 
    CustomTextField({
@@ -21,6 +22,7 @@ class CustomTextField extends StatelessWidget {
     this.textInputType,
     this.prefixIcon,
     this.suffixIcon,
+    required this.controller,
     this.obscureText=false,
     this.validator,
     
@@ -35,6 +37,7 @@ class CustomTextField extends StatelessWidget {
     return Container(
             child: TextFormField(
               // cursorColor: Colors.red,
+              controller: controller,
               keyboardType: TextInputType.emailAddress,
               obscureText:obscureText,
 

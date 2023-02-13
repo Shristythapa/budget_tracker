@@ -8,6 +8,7 @@ import '../common/custom_textfield.dart';
 import '../common/custom_button.dart';
 import '../common/custom_dropdown.dart';
 import '../common/custom_icon.dart';
+import '../dashboard/navigation/navigation_body.dart';
 
 class BalanceTransferWidget extends StatelessWidget {
    BalanceTransferWidget({super.key});
@@ -41,6 +42,7 @@ class BalanceTransferWidget extends StatelessWidget {
                       ),
                       SizedBox(height: 40,),
                       CustomTextField(
+                        controller: TextEditingController(),
                         hintText: "Amount",
                         validator:(val){
                             final  amountValid =RegExp(
@@ -74,7 +76,9 @@ class BalanceTransferWidget extends StatelessWidget {
                           CustomButton(
                           title: "Cancel",
                           onPressed: (){
-                            Navigator.pop(context);
+                            Navigator.pop(context); Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context)=>NavigationBodyScreen()));
                           },
                           ),
                 ],
