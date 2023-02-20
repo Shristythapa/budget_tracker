@@ -59,7 +59,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: 'Flutter Demo',
               theme: ThemeData(),
-              initialRoute: "/add_income",
+              initialRoute: "/landingPage",
               routes: {
                 "/landingPage": (BuildContext context) => MyLandingPage(),
                 "/login": (BuildContext context) => loginScreen(),
