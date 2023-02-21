@@ -2,9 +2,7 @@
 //
 //     final account = accountFromJson(jsonString);
 
-import 'package:budget_tracer_practice/model/user_model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:meta/meta.dart';
 import 'dart:convert';
 
 Account accountFromJson(String str) => Account.fromJson(json.decode(str));

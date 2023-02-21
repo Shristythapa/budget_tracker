@@ -18,7 +18,6 @@ class IncomeModel {
     this.title,
     this.amount,
     this.date,
-    this.accountId,
     this.categoryId,
   });
 
@@ -27,29 +26,26 @@ class IncomeModel {
   String? title;
   String? amount;
   String? date;
-  String? accountId;
   String? categoryId;
 
   factory IncomeModel.fromJson(Map<String, dynamic> json) => IncomeModel(
         id: json["id"],
-        userId: json["userId"],
+        userId: json["user_id"],
         title: json["title"],
         amount: json["amount"],
         date: json["date"],
-        accountId: json["accountId"],
-        categoryId: json["categoryId"],
+        categoryId: json["category_id"],
       );
 
   factory IncomeModel.fromFirebaseSnapshot(
           DocumentSnapshot<Map<String, dynamic>> json) =>
       IncomeModel(
         id: json.id,
-        userId: json["userId"],
+        userId: json["user_id"],
         title: json["title"],
         amount: json["amount"],
         date: json["date"],
-        accountId: json["accountId"],
-        categoryId: json["categoryId"],
+        categoryId: json["category_id"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -58,7 +54,6 @@ class IncomeModel {
         "title": title,
         "amount": amount,
         "date": date,
-        "accountId": accountId,
         "categoryId": categoryId,
       };
 }
