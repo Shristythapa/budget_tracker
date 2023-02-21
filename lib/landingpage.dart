@@ -78,7 +78,9 @@ class _MyLandingPageState extends State<MyLandingPage> {
             padding: EdgeInsets.symmetric(vertical: 20, horizontal: 20),
             child: Center(
                 child: InkWell(
+                
               child: Text(
+                
                 "Already have an account?",
                 style: TextStyle(
                   fontSize: 20,

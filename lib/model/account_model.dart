@@ -43,4 +43,6 @@ class Account {
     balanceAmount: json["balance_amount"],
  
   );
+
+  Account then(Null Function(dynamic value) param0) {}
 }
