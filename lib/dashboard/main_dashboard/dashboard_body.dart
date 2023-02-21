@@ -4,6 +4,8 @@ import 'package:budget_tracer_practice/viewmodels/auth_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../expenses/viewExpenses/expense_screen.dart';
+import '../../income/viewIncome/view_income_screen.dart';
 import '../navigation/navigation_body.dart';
 
 class DashboardBody extends StatefulWidget {
@@ -105,101 +107,115 @@ class _DashboardBodyState extends State<DashboardBody> {
                     child: Column(
                       mainAxisSize: MainAxisSize.min,
                       children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 15),
-                          child: ListTile(
-                            leading: Text(
-                              "Balance :",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 22,
-                              ),
-                            ),
-                            trailing: Text(
-                              "20000",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 22,
-                              ),
-                            ),
-                          ),
-                        ),
+                        // Padding(
+                        //   padding: const EdgeInsets.symmetric(
+                        //       horizontal: 12, vertical: 15),
+                        //   child: ListTile(
+                        //     leading: Text(
+                        //       "Balance :",
+                        //       style: TextStyle(
+                        //         fontWeight: FontWeight.w400,
+                        //         fontSize: 22,
+                        //       ),
+                        //     ),
+                        //     trailing: Text(
+                        //       "20000",
+                        //       style: TextStyle(
+                        //         fontWeight: FontWeight.w400,
+                        //         fontSize: 22,
+                        //       ),
+                        //     ),
+                        //   ),
+                        // ),
                       ],
                     ),
                   ),
-                  Card(
-                    color: Color(0xFFAEFEFEF),
-                    elevation: 6,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20)),
-                    margin: EdgeInsets.all(20),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 12),
-                          child: ListTile(
-                            title: Text(
-                              "Income",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 22,
+                  InkWell(
+                    onTap: () {
+                        Navigator.pop(context);
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) =>IncomeScreen()));
+                    },
+                    child: Card(
+                      color: Color(0xFFAEFEFEF),
+                      elevation: 6,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(20)),
+                      margin: EdgeInsets.all(20),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 12),
+                            child: ListTile(
+                              title: Text(
+                                "Income",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 22,
+                                ),
                               ),
-                            ),
-                            subtitle: Text(
-                              "20000",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 22,
+                              // subtitle: Text(
+                              //   "20000",
+                              //   style: TextStyle(
+                              //     fontWeight: FontWeight.w400,
+                              //     fontSize: 22,
+                              //   ),
+                             // ),
+                              trailing: ImageIcon(
+                                AssetImage("assets/images/income.png"),
+                                size: 60,
+                                color: Colors.black,
                               ),
-                            ),
-                            trailing: ImageIcon(
-                              AssetImage("assets/images/income.png"),
-                              size: 60,
-                              color: Colors.black,
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
-                  Card(
-                    color: Color(0xFFAEFEFEF),
-                    elevation: 6,
-                    shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(15)),
-                    margin: EdgeInsets.all(20),
-                    child: Column(
-                      mainAxisSize: MainAxisSize.min,
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.symmetric(
-                              horizontal: 12, vertical: 12),
-                          child: ListTile(
-                            title: Text(
-                              "Expenses",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 22,
+                  InkWell(
+                    onTap: () {
+                        Navigator.pop(context);
+                  Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => ExpenseScreen()));
+                    },
+                    child: Card(
+                      color: Color(0xFFAEFEFEF),
+                      elevation: 6,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      margin: EdgeInsets.all(20),
+                      child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 12, vertical: 12),
+                            child: ListTile(
+                              title: Text(
+                                "Expenses",
+                                style: TextStyle(
+                                  fontWeight: FontWeight.w400,
+                                  fontSize: 22,
+                                ),
                               ),
-                            ),
-                            subtitle: Text(
-                              "20000",
-                              style: TextStyle(
-                                fontWeight: FontWeight.w400,
-                                fontSize: 22,
+                              // subtitle: Text(
+                              //   "20000",
+                              //   style: TextStyle(
+                              //     fontWeight: FontWeight.w400,
+                              //     fontSize: 22,
+                              //   ),
+                              // ),
+                              trailing: ImageIcon(
+                                AssetImage("assets/images/expn.png"),
+                                size: 60,
+                                color: Colors.black,
                               ),
-                            ),
-                            trailing: ImageIcon(
-                              AssetImage("assets/images/expn.png"),
-                              size: 60,
-                              color: Colors.black,
                             ),
                           ),
-                        ),
-                      ],
+                        ],
+                      ),
                     ),
                   ),
                 ],

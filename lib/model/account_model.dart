@@ -44,5 +44,4 @@ class Account {
  
   );
 
-  Account then(Null Function(dynamic value) param0) {}
 }

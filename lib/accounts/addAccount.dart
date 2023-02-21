@@ -71,11 +71,6 @@ class _AddMyAccountState extends State<AddMyAccount> {
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(100.0),
           child: AppBar(
-            // shape: RoundedRectangleBorder(
-            //     borderRadius: BorderRadius.vertical(
-            //   bottom: Radius.circular(20),
-            // )),
-            // backgroundColor: Color.fromARGB(248, 133, 191, 180),
             backgroundColor: Color(0xFF296157),
             title: Padding(
               padding: EdgeInsets.only(top: 30),

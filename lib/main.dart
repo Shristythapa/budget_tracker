@@ -38,7 +38,9 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => AccViewModel()),
         ChangeNotifierProvider(create: (_) => CategoryViewModel()),
         ChangeNotifierProvider(create: (_) => IncomeViewModel()),
+        ChangeNotifierProvider(create: (_)=> AccViewModel())
       ],
+
       child: GlobalLoaderOverlay(
         useDefaultLoading: false,
         overlayWidget: Center(

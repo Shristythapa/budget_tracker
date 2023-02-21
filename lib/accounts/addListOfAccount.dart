@@ -22,21 +22,15 @@ class _addListOfAccountState extends State<AddListOfAccount> {
   late Future<List<Account>> myAccounts;
   @override
   void initState() {
-    // TODO: implement initState
     _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
     _accViewModel = Provider.of<AccViewModel>(context, listen: false);
-    
     try{
-
     _accViewModel.getAccount(_authViewModel.user!.uid); 
     }catch(e){
-      print("ERROR $e");
+      print(e);
     }
-  
     super.initState();
   }
- 
-
   @override
   Widget build(BuildContext context) {
     
@@ -45,16 +39,11 @@ class _addListOfAccountState extends State<AddListOfAccount> {
         print(taskVM.allAccount);
         return Scaffold(
           appBar: AppBar(
-            // shape: const RoundedRectangleBorder(
-            //     borderRadius: BorderRadius.vertical(
-            //   bottom: Radius.circular(20),
-            // )),
             backgroundColor: Color.fromARGB(248, 133, 191, 180),
             toolbarHeight: MediaQuery.of(context).size.height / 100 * 10,
             leading: IconButton(
                 onPressed: (() {
                   Navigator.pop(context);
-                  // Navigator.of(context).pushReplacementNamed("/side_Bar");
                   Navigator.push(
                       context, MaterialPageRoute(builder: (context) => sidebar()));
                 }),

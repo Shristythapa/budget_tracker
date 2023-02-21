@@ -32,16 +32,13 @@ class _MyAccountDetailsState extends State<MyAccountDetails> {
     _auth = Provider.of<AuthViewModel>(context, listen: false);
     _acc = Provider.of<AccViewModel>(context, listen: false);
     amount.text = widget.accountAmount.toString();
-    print("I am Idddddddddddddddddddddddddddddddddd" + widget.accountId);
     super.initState();
   }
-
   @override
   void dispose() {
     amount.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -150,14 +147,14 @@ class _MyAccountDetailsState extends State<MyAccountDetails> {
                         accountId: widget.accountId,
                         userId: _auth.user!.uid,
                         accountName: widget.accountName,
-                        balanceAmount: int.parse(amount.text))
+                        balanceAmount: int.parse(amount.text)))
                         .then((value){
                            Navigator.of(context).pop();
                   Navigator.push(
                     context,
                     MaterialPageRoute(
                         builder: (context) => const AddListOfAccount()));
-                        })
+                        }
                         );
 
                 }),

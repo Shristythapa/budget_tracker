@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../../common/custom_date_picker.dart';
 import '../../../common/custom_icon.dart';
 import '../../common/custom_box.dart';
+import '../../dashboard/main_dashboard/dashboard_body.dart';
 
 class IncomeWidget extends StatefulWidget {
    IncomeWidget({super.key});
@@ -67,6 +68,8 @@ class _IncomeWidgetState extends State<IncomeWidget> {
               icon: Icons.close,
               onPressed:(){
                 Navigator.pop(context);
+                 Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => DashboardBody()));
               }
               ),
               SizedBox(height: 20,),
