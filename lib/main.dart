@@ -12,6 +12,7 @@ import 'dashboard/main_dashboard/dashboard_body.dart';
 import 'dashboard/main_dashboard/sidebar.dart';
 import 'expenses/addExpenses.dart';
 import 'income/addIncome/addincome.dart';
+import 'income/viewIncome/view_income_screen.dart';
 import 'landingpage.dart';
 import 'login.dart';
 import 'signup.dart';
@@ -74,6 +75,7 @@ class MyApp extends StatelessWidget {
                 "/add_account": (BuildContext context) => AddMyAccount(),
                 "/add_expense": (BuildContext context) => Expense(),
                 "/add_income": (BuildContext context) => AddIncome(),
+                "/view_income": (BuildContext context) => IncomeScreen(),
                 "/dashboard": (BuildContext context) => DashboardBody(),
               },
             );

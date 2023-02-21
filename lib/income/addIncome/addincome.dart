@@ -36,19 +36,20 @@ class _AddIncomeState extends State<AddIncome> {
 
   void saveIncome() async {
     _ui.loadState(true);
+    var user_id = _auth.user!.uid;
     try {
       final IncomeModel data = IncomeModel(
         amount: amount.text,
         title: title.text,
         date: date.text,
         categoryId: selectedCategory,
-        accountId: selectedAccount,
-        userId: _auth.loggedInUser!.userId,
+        // accountId: selectedAccount,
+        userId: user_id,
       );
       await _auth.addMyIncome(data);
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Success")));
-      Navigator.of(context).pop();
+          .showSnackBar(SnackBar(content: Text("Income added succssfully")));
+      Navigator.of(context).pushNamed("/view_income");
     } catch (e) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Error")));
@@ -64,7 +65,7 @@ class _AddIncomeState extends State<AddIncome> {
       _categoryViewModel =
           Provider.of<CategoryViewModel>(context, listen: false);
       getInit();
-      _accountViewModel = Provider.of<AccViewModel>(context, listen: false);
+      getAccount();
     });
     super.initState();
   }
@@ -84,21 +85,17 @@ class _AddIncomeState extends State<AddIncome> {
   getAccount() async {
     _ui.loadState(true);
     try {
-      await _accountViewModel.getAccount("1");
-    } catch (e) {
-      print(e);
-    }
+      await _accountViewModel.getAccount("b6RrEExjPldzxDyu5FXdRKR8tOD2");
+    } catch (e) {}
     _ui.loadState(false);
   }
 
   String? selectedAccount;
 
-  // final FirebaseAuth _auth = FirebaseAuth.instance;
-  Future<void> Add() async {}
   @override
   Widget build(BuildContext context) {
-    return Scaffold(body: Consumer<CategoryViewModel>(
-      builder: (context, categoryVM, child) {
+    return Scaffold(body: Consumer2<CategoryViewModel, AccViewModel>(
+      builder: (context, categoryVM, accountVM, child) {
         return ListView(
           children: [
             Form(
@@ -132,7 +129,6 @@ class _AddIncomeState extends State<AddIncome> {
                     ),
                     Container(
                       child: DateTimePicker(
-                        // initialValue: ,
                         firstDate: DateTime(2000),
                         lastDate: DateTime(2100),
                         dateLabelText: 'Date',
@@ -140,7 +136,6 @@ class _AddIncomeState extends State<AddIncome> {
                         onChanged: (val) => print(val),
                         validator: (val) {
                           print(val);
-                          // return null;
                         },
                         onSaved: (val) => print(val),
                         decoration: InputDecoration(
@@ -169,9 +164,66 @@ class _AddIncomeState extends State<AddIncome> {
                     SizedBox(
                       height: 10,
                     ),
-                    CustomDropDown(
-                      hint: "Select account",
-                    ),
+                    // DropdownButtonFormField2(
+                    //   value: selectedAccount,
+                    //   decoration: InputDecoration(
+                    //     border: DecoratedInputBorder(
+                    //       child: OutlineInputBorder(
+                    //         borderRadius: BorderRadius.circular(8),
+                    //         borderSide: BorderSide(
+                    //           width: 0,
+                    //           style: BorderStyle.none,
+                    //         ),
+                    //       ),
+                    //       shadow: [
+                    //         BoxShadow(
+                    //           color: Color.fromARGB(255, 174, 175, 175),
+                    //           blurRadius: 12,
+                    //         )
+                    //       ],
+                    //     ),
+                    //     contentPadding: EdgeInsets.zero,
+                    //     filled: true,
+                    //     fillColor: Colors.white,
+                    //   ),
+                    //   isDense: true,
+                    //   hint: Text(
+                    //     "Acount",
+                    //     style: TextStyle(fontSize: 16),
+                    //   ),
+                    //   icon: const Icon(
+                    //     Icons.arrow_drop_down,
+                    //     color: Colors.black45,
+                    //   ),
+                    //   iconSize: 30,
+                    //   buttonHeight: 50,
+                    //   // buttonPadding: const EdgeInsets.only(left: 20, right: 10),
+                    //   dropdownDecoration: BoxDecoration(
+                    //     borderRadius: BorderRadius.circular(15),
+                    //   ),
+                    //   items: accountVM.allAccount.map((pt) {
+                    //     return DropdownMenuItem(
+                    //       value: pt.accountId.toString(),
+                    //       child: Text(
+                    //         pt.accountName.toString(),
+                    //         style: const TextStyle(
+                    //           fontSize: 16,
+                    //         ),
+                    //       ),
+                    //     );
+                    //   }).toList(),
+                    //   onChanged: (newVal) {
+                    //     setState(() {
+                    //       selectedAccount = newVal.toString();
+                    //     });
+                    //   },
+                    //   validator: (value) {
+                    //     if (value == null) {
+                    //       return 'Please select bank account.';
+                    //     }
+                    //   },
+                    // ),
+                    CustomDropDown(hint: "Account"),
                     SizedBox(
                       height: 10,
                     ),
@@ -232,7 +284,7 @@ class _AddIncomeState extends State<AddIncome> {
                       },
                       validator: (value) {
                         if (value == null) {
-                          return 'Please select bank account.';
+                          return 'Please select category.';
                         }
                       },
                       // onSaved: (value) {
