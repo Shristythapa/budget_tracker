@@ -1,3 +1,4 @@
+import 'package:budget_tracer_practice/view_saving/mysavings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -118,7 +119,15 @@ class _addsavingState extends State<addsaving> {
                        height: 50,
                       width: 300,
                       child: ElevatedButton(
-                          onPressed: (() {}),
+                          onPressed: (() {
+                            
+                              Navigator.pop(context);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => AddListOfSavings()),
+                                  );
+                          }),
                           child: Text("Cancel",style: TextStyle(fontSize: 25),),
                           style: ElevatedButton.styleFrom(
                               backgroundColor: Color.fromARGB(255, 41, 97, 87),

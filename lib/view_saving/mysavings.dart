@@ -1,5 +1,8 @@
+import 'package:budget_tracer_practice/addsavings/addsaving.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+
+import '../dashboard/main_dashboard/sidebar.dart';
 
 class AddListOfSavings extends StatefulWidget {
   const AddListOfSavings({Key? key}) : super(key: key);
@@ -22,24 +25,17 @@ class _addListOfSavingsState extends State<AddListOfSavings> {
           IconButton(
               icon: const Icon(Icons.cancel_outlined,size: 32,),
               tooltip: 'Cancel',
-              color: Colors.black87,
-              onPressed: ()=> showDialog<String>(
-                context:context,
-                builder:(BuildContext context) => AlertDialog(
-                  title: const Text('Do you sure want to quit?'),
-                  actions: <Widget>[
-                    TextButton(
-                      onPressed:(
-                          ) {},
-                      child: const Text('No'),
-                    ),
-                    TextButton(
-                      onPressed:() {},
-                      child: const Text('Yes'),
-                    ),
-                  ],
-                ),
-              )
+              color: Colors.black87, onPressed: () { 
+                 Navigator.pop(context);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => sidebar()),
+                                        
+                                  );
+               },
+               
+              
           )
         ],
         toolbarHeight: MediaQuery.of(context).size.height / 100 * 20,
@@ -96,7 +92,15 @@ class _addListOfSavingsState extends State<AddListOfSavings> {
                 child: FloatingActionButton(
                   child: Icon(Icons.add,color: Colors.black, size: 30),
                   tooltip: "Add ",
-                  onPressed: () {},
+                  onPressed: () {
+                       Navigator.pop(context);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => addsaving()),
+                                  );
+                    
+                  },
                   backgroundColor: Colors.white,
                 ),
                 right: 0,

@@ -122,6 +122,7 @@ class _NavigationBodyScreenState extends State<NavigationBodyScreen> {
                       ),
                     ],
                   ),
+
                 ),
                 right: 0,
                 left: 0,

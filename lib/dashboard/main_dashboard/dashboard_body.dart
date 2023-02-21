@@ -1,4 +1,5 @@
 import 'package:budget_tracer_practice/dashboard/main_dashboard/sidebar.dart';
+import 'package:budget_tracer_practice/theme%20Swatcher/userProfile.dart';
 import 'package:budget_tracer_practice/viewmodels/auth_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -32,8 +33,17 @@ class _DashboardBodyState extends State<DashboardBody> {
             backgroundColor: Colors.white,
             elevation: 3,
             toolbarHeight: MediaQuery.of(context).size.height / 100 * 10,
-            leading:
-                Icon(Icons.person_rounded, color: Color(0xFFA296157), size: 60),
+            leading: IconButton(
+              icon: Icon(Icons.person_rounded,
+                  color: Color(0xFFA296157), size: 60),
+              onPressed: () {
+                 Navigator.pop(context);
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => userprofile()),
+                  );
+              },
+            ),
 
             title: Padding(
               padding: EdgeInsets.all(10),

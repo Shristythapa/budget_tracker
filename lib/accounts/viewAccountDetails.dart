@@ -93,7 +93,7 @@ class _MyAccountDetailsState extends State<MyAccountDetails> {
             ),
             ElevatedButton(
               onPressed: () {
-                print("ACCCCCCCCCCCCCCCC::::::::::::::::::" + widget.accountId);
+        
                 _acc
                     .updateAccount(Account(
                         accountId: widget.accountId,
@@ -144,9 +144,27 @@ class _MyAccountDetailsState extends State<MyAccountDetails> {
                   );
                 });
               },
-              child: Text(
-                "Delete",
-                style: TextStyle(fontSize: 25),
+              child: InkWell(
+                onTap: (() {
+                  _acc.deleteAccount(Account(
+                        accountId: widget.accountId,
+                        userId: _auth.user!.uid,
+                        accountName: widget.accountName,
+                        balanceAmount: int.parse(amount.text))
+                        .then((value){
+                           Navigator.of(context).pop();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const AddListOfAccount()));
+                        })
+                        );
+
+                }),
+                child: Text(
+                  "Delete",
+                  style: TextStyle(fontSize: 25),
+                ),
               ),
             ),
             SizedBox(

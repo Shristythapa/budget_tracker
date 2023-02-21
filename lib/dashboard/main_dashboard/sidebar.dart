@@ -1,5 +1,6 @@
 import 'package:budget_tracer_practice/addsavings/addsaving.dart';
 import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_body.dart';
+import 'package:budget_tracer_practice/view_saving/mysavings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
@@ -177,45 +178,56 @@ class _sidebarState extends State<sidebar> {
                       top: 280,
                     ),
                     Positioned(
-                      child: Column(
-                        children: [
-                          Container(
-                            height: 85,
-                            width: 315,
-                            decoration: BoxDecoration(
-                              color: Color(0xFFEFEFEF),
-                              borderRadius: BorderRadius.circular(20),
-                              boxShadow: [
-                                BoxShadow(
-                                  color: Color(0xFFA10564A).withOpacity(0.5),
-                                  spreadRadius: 5,
-                                  blurRadius: 10,
-                                  offset: Offset(0, 5), // changes position of shadow
-                                ),
-                              ],
-                            ),
-                            child: Row(
-                              children: [
-                                const Padding(
-                                  padding: EdgeInsets.only(top: 1, left: 20),
-                                  child: ImageIcon(
-                                    AssetImage("assets/images/money-saving.png"),
-                                    size: 60,
-                                    color: Colors.black,
+                      child: InkWell(
+                        onTap: () {
+                           Navigator.pop(context);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => AddListOfSavings()),
+                                  );
+                          
+                        },
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 85,
+                              width: 315,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEFEFEF),
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0xFFA10564A).withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 10,
+                                    offset: Offset(0, 5), // changes position of shadow
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(top: 10, left: 100),
-                                  child: Text("Savings",
-                                      style: TextStyle(
-                                        fontWeight: FontWeight.w400,
-                                        fontSize: 25,
-                                      )),
-                                ),
-                              ],
+                                ],
+                              ),
+                              child: Row(
+                                children: [
+                                  const Padding(
+                                    padding: EdgeInsets.only(top: 1, left: 20),
+                                    child: ImageIcon(
+                                      AssetImage("assets/images/money-saving.png"),
+                                      size: 60,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                  Padding(
+                                    padding: const EdgeInsets.only(top: 10, left: 100),
+                                    child: Text("Savings",
+                                        style: TextStyle(
+                                          fontWeight: FontWeight.w400,
+                                          fontSize: 25,
+                                        )),
+                                  ),
+                                ],
+                              ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
                       right: 0,
                       left: 0,
