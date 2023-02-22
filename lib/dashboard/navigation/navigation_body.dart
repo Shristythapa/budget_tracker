@@ -2,7 +2,6 @@
 import 'package:flutter/material.dart';
 
 import '../../balanceTransfer/balance_transfer_screen.dart';
-import '../../expenses/addExpenses.dart';
 import '../../income/addIncome/addincome.dart';
 import '../main_dashboard/dashboard_body.dart';
 
@@ -151,10 +150,7 @@ class _NavigationBodyScreenState extends State<NavigationBodyScreen> {
                       child: InkWell(
                         onTap: () {
                           Navigator.of(context).pop();
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => Expense()),
-              );
+              Navigator.of(context).pushNamed("/add_expense");
                         },
                         child: Row(
                           children: [
