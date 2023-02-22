@@ -8,8 +8,6 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import '../../accounts/addListOfAccount.dart';
 import '../../bar_chart/expense_barchart.dart';
-import '../../category/bottom_navigation.dart';
-import '../../category/expense_category_body.dart';
 
 class sidebar extends StatefulWidget {
   const sidebar({super.key});
@@ -23,24 +21,24 @@ class _sidebarState extends State<sidebar> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-     appBar: AppBar(
-      backgroundColor: Color(0xFF77ABA2),
-      leading: IconButton(icon: Icon(Icons.arrow_back),
-     
-      onPressed: (() {
-        Navigator.pop(context);
-         Navigator.push(
+      appBar: AppBar(
+          backgroundColor: Color(0xFF77ABA2),
+          leading: IconButton(icon: Icon(Icons.arrow_back),
+
+            onPressed: (() {
+              Navigator.pop(context);
+              Navigator.push(
                 context,
                 MaterialPageRoute(builder: (context) => DashboardBody()),
               );
-      }),),
-       title:Text("")
-     ),
+            }),),
+          title:Text("")
+      ),
       body:
-         Column(
-          mainAxisAlignment: MainAxisAlignment.end,
-           children: [
-             Container(
+      Column(
+        mainAxisAlignment: MainAxisAlignment.end,
+        children: [
+          Container(
             margin: EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top + 20),
             child: Column(
               children: [
@@ -68,6 +66,7 @@ class _sidebarState extends State<sidebar> {
                           )),
                       // width: 150,
                     ),
+
                     Positioned(
                       child: GestureDetector(
                         onTap: () {
@@ -90,7 +89,7 @@ class _sidebarState extends State<sidebar> {
                                     spreadRadius: 5,
                                     blurRadius: 10,
                                     offset:
-                                        Offset(0, 5), // changes position of shadow
+                                    Offset(0, 5), // changes position of shadow
                                   ),
                                 ],
                               ),
@@ -107,7 +106,7 @@ class _sidebarState extends State<sidebar> {
                                   children: [
                                     Padding(
                                       padding:
-                                          const EdgeInsets.only(top: 1, left: 20),
+                                      const EdgeInsets.only(top: 1, left: 20),
                                       child: ImageIcon(
                                         AssetImage("assets/images/wallet.png"),
                                         size: 60,
@@ -116,7 +115,73 @@ class _sidebarState extends State<sidebar> {
                                     ),
                                     Padding(
                                       padding:
-                                          const EdgeInsets.only(top: 10, left: 100),
+                                      const EdgeInsets.only(top: 10, left: 100),
+                                      child: Text("Chart",
+                                          style: TextStyle(
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 25,
+                                          )),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      right: 0,
+                      left: 0,
+                      top: 100,
+                    ),
+                    Positioned(
+                      child: GestureDetector(
+                        onTap: () {
+                          //     Navigator.push(
+                          // context,
+                          // MaterialPageRoute(builder: (context)=>DashboardScreen()));
+                          // print("Container");
+                        },
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 85,
+                              width: 315,
+                              decoration: BoxDecoration(
+                                color: Color(0xFFEFEFEF),
+                                borderRadius: BorderRadius.circular(20),
+                                boxShadow: [
+                                  BoxShadow(
+                                    color: Color(0xFFA10564A).withOpacity(0.5),
+                                    spreadRadius: 5,
+                                    blurRadius: 10,
+                                    offset:
+                                    Offset(0, 5), // changes position of shadow
+                                  ),
+                                ],
+                              ),
+                              child: InkWell(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => AddListOfAccount()),
+                                  );
+                                },
+                                child: Row(
+                                  children: [
+                                    Padding(
+                                      padding:
+                                      const EdgeInsets.only(top: 1, left: 20),
+                                      child: ImageIcon(
+                                        AssetImage("assets/images/wallet.png"),
+                                        size: 60,
+                                        color: Colors.black,
+                                      ),
+                                    ),
+                                    Padding(
+                                      padding:
+                                      const EdgeInsets.only(top: 10, left: 100),
                                       child: Text("Account",
                                           style: TextStyle(
                                             fontWeight: FontWeight.w400,
@@ -132,76 +197,19 @@ class _sidebarState extends State<sidebar> {
                       ),
                       right: 0,
                       left: 0,
-                      top: 160,
+                      top: 250,
                     ),
-            
-                    // second
-                    InkWell(
-                      onTap: (() {
-                        
-                        Navigator.pop(context);
-                              Navigator.of(context).push(MaterialPageRoute(
-                      builder: ((context) => CustomBottomNavigation(
-                            selected: true,
-                          )),
-                    ));
-                      }),
-                      child: Positioned(
-                        child: Column(
-                          children: [
-                            Container(
-                              height: 85,
-                              width: 315,
-                              decoration: BoxDecoration(
-                                color: Color(0xFFEFEFEF),
-                                borderRadius: BorderRadius.circular(20),
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Color(0xFFA10564A).withOpacity(0.5),
-                                    spreadRadius: 5,
-                                    blurRadius: 10,
-                                    offset: Offset(0, 5), // changes position of shadow
-                                  ),
-                                ],
-                              ),
-                              child: Row(
-                                children: [
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 1, left: 20),
-                                    child: ImageIcon(
-                                      AssetImage("assets/images/pie-chart.png"),
-                                      size: 60,
-                                      color: Colors.black,
-                                    ),
-                                  ),
-                                  Padding(
-                                    padding: const EdgeInsets.only(top: 10, left: 100),
-                                    child: Text("Chart",
-                                        style: TextStyle(
-                                          fontWeight: FontWeight.w400,
-                                          fontSize: 25,
-                                        )),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ],
-                        ),
-                        right: 0,
-                        left: 0,
-                        top: 280,
-                      ),
-                    ),
+
                     Positioned(
                       child: InkWell(
                         onTap: () {
-                           Navigator.pop(context);
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => AddListOfSavings()),
-                                  );
-                          
+                          Navigator.pop(context);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => AddListOfSavings()),
+                          );
+
                         },
                         child: Column(
                           children: [
@@ -246,16 +254,16 @@ class _sidebarState extends State<sidebar> {
                       ),
                       right: 0,
                       left: 0,
-                      top: 400,
+                      top:400,
                     ),
                   ],
                 ),
               ],
             ),
-                
-               ),
-           ],
-         ),
+
+          ),
+        ],
+      ),
     );
   }
 }
