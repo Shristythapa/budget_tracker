@@ -95,7 +95,7 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                       itemBuilder:(context, index){
                         return CustomBox(
                           title:widget._items[index]["title"],
-                          rs:widget._items[index]["rs"],
+                          rs:widget._items[index]["rs"], id: '', userId: '',
                         );
                       },
                       itemCount:widget._items.length,

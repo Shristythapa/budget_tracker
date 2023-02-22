@@ -5,16 +5,16 @@ import '../expenses/view_Expenses_details.dart';
 
 
 class CustomBox extends StatefulWidget {
-  final String? title;
-  final String? rs;
-  final String? id;
-  final String? userId;
+  final String title;
+  final String rs;
+  final String id;
+  final String userId;
   const CustomBox({
     super.key,
-    this.id,
-     this.title,
-     this.rs,
-     this.userId
+    required this.id,
+    required this.title,
+    required this.rs,
+    required this.userId
      
   });
  
@@ -46,7 +46,7 @@ class _CustomBoxState extends State<CustomBox> {
             children: [
               Expanded(
                 child: Text(
-                  widget.title!,
+                  widget.title,
                    style:TextStyle(
                     fontSize:16,
                     fontWeight:FontWeight.w400,
@@ -54,7 +54,7 @@ class _CustomBoxState extends State<CustomBox> {
                 ),
               ),
               Text(
-                widget.rs!,
+                widget.rs,
                  style:TextStyle(
                     fontSize:16,
                     fontWeight:FontWeight.w400,

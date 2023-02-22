@@ -87,6 +87,7 @@ class ExpensesRepository {
       if (response.data()!.userId != userId) {
         return false;
       }
+      print("Datadelete");
       await expensesRef.doc(expensesId).delete();
       return true;
     } catch (err) {

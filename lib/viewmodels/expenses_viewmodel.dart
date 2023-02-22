@@ -39,7 +39,7 @@ class ExpensesViewModel with ChangeNotifier {
       notifyListeners();
     }
   }
-  Future<void> deleteExpense(String? expenseId, String? userId) async{
+  Future<void> deleteExpense(String expenseId, String userId) async{
     try{
       await _expensesRepository.removeExpenses(expenseId, userId).then((value) => _expensesRepository.getMyExpenses(userId));
      notifyListeners();
