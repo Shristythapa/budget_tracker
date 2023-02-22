@@ -39,7 +39,6 @@ class Account {
     userId: json["user_id"],
     accountName: json["account_name"],
     balanceAmount: json["balance_amount"],
- 
   );
 
   Account then(Null Function(dynamic value) param0) {}

@@ -51,6 +51,7 @@ dependencies:
   day_night_switcher: ^0.2.0+1
   animated_theme_switcher: ^2.0.6
   shared_preferences: ^2.0.15
+  fake_cloud_firestore: ^2.0.0
 
 dev_dependencies:
   flutter_test:

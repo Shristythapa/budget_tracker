@@ -6,7 +6,6 @@ import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
 
 import 'accounts/addAccount.dart';
-import 'accounts/addListOfAccount.dart';
 import 'addsavings/addsaving.dart';
 
 import 'balanceTransfer/balance_transfer_screen.dart';
@@ -22,7 +21,6 @@ import 'signup.dart';
 import 'viewmodels/account_viewmodel.dart';
 import 'viewmodels/auth_viewmodel.dart';
 import 'viewmodels/global_ui_viewmodel.dart';
-
 import 'viewmodels/saving_viewmodel.dart';
 
 void main() async {
