@@ -10,19 +10,6 @@ void main() async {
 
   final SavingRepository savingRepository = SavingRepository();
 
-  // test("Create a product", () async {
-  //   var response = await savingRepository.addSavings(saving: SavingModel());
-  //   accountname:
-  //   "Test Name";
-  //   amount:
-  //   "Test price";
-  //   expect(response, true);
-  // });
-  // test("Get saving snapshot", () async {
-  //   var data = await savingRepository.getAllSavings();
-  //   expect(data.runtimeType, Stream<QuerySnapshot<SavingModel>>);
-  // });
-
   test("create a saving", () async {
     var response = await savingRepository.addSavings(
         saving: SavingModel(
