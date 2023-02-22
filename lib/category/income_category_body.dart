@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/container.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:pie_chart/pie_chart.dart';
 
 import 'expense_category_body.dart';
@@ -60,8 +58,6 @@ class _IncomeCategoryBodyState extends State<IncomeCategoryBody> {
             showChartValuesOutside: false,
             decimalPlaces: 1,
           ),
-          // gradientList: ---To add gradient colors---
-          // emptyColorGradient: ---Empty Color gradient---
         )
       ],
     ));

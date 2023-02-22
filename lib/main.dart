@@ -1,8 +1,4 @@
-﻿
-import 'package:budget_tracer_practice/viewmodels/expenses_category_viewmodel.dart';
-import 'package:budget_tracer_practice/viewmodels/expenses_viewmodel.dart';
-import 'package:budget_tracer_practice/viewmodels/income_viewmodel.dart';
-import 'package:firebase_core/firebase_core.dart';
+﻿﻿import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
@@ -19,7 +15,9 @@ import 'login.dart';
 import 'signup.dart';
 import 'viewmodels/account_viewmodel.dart';
 import 'viewmodels/auth_viewmodel.dart';
+import 'viewmodels/category_viewmodel.dart';
 import 'viewmodels/global_ui_viewmodel.dart';
+import 'viewmodels/income_viewmodel.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -40,10 +38,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => AccViewModel()),
         ChangeNotifierProvider(create: (_) => CategoryViewModel()),
         ChangeNotifierProvider(create: (_) => IncomeViewModel()),
-        ChangeNotifierProvider(create: (_)=> AccViewModel()),
-        ChangeNotifierProvider(create: (_)=> ExpensesViewModel())
+        ChangeNotifierProvider(create: (_) => AccViewModel()),
       ],
-
       child: GlobalLoaderOverlay(
         useDefaultLoading: false,
         overlayWidget: Center(

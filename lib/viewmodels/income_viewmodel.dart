@@ -3,7 +3,6 @@ import 'package:budget_tracer_practice/repositories/income_repository.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
-
 class IncomeViewModel with ChangeNotifier {
   IncomRepository _incomRepository = IncomRepository();
   List<IncomeModel> _incomes = [];
@@ -15,7 +14,6 @@ class IncomeViewModel with ChangeNotifier {
     try {
       var response = await _incomRepository.getIncomeByAccount(userid);
       for (var element in response) {
-        print(element.id);
         _incomes.add(element.data());
       }
       notifyListeners();
@@ -24,6 +22,7 @@ class IncomeViewModel with ChangeNotifier {
       _incomes = [];
       notifyListeners();
     }
+    // return _incomes;
   }
 
   Future<void> addIncome(IncomeModel income) async {

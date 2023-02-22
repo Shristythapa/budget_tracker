@@ -33,7 +33,7 @@ class _IncomeWidgetState extends State<IncomeWidget> {
   }
   @override
   Widget build(BuildContext context) {
-      DateTime? selectedDate;
+    DateTime? selectedDate;
 
      return Consumer<IncomeViewModel>(
       builder: (context,taskVM, child){

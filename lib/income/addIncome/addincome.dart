@@ -60,6 +60,10 @@ class _AddIncomeState extends State<AddIncome> {
           .showSnackBar(SnackBar(content: Text(e.toString())));
     }
     _ui.loadState(false);
+    ScaffoldMessenger.of(context)
+        .showSnackBar(SnackBar(content: Text("Income Added Sucessfully")));
+    Navigator.pop(context);
+    Navigator.of(context).pushNamed('/view_income');
   }
 
   @override
@@ -72,7 +76,6 @@ class _AddIncomeState extends State<AddIncome> {
           _incomeViewModel=Provider.of<IncomeViewModel>(context,listen: false);
 
       getInit();
-      getAccount();
     });
     super.initState();
   }
@@ -88,16 +91,6 @@ class _AddIncomeState extends State<AddIncome> {
   }
 
   String? selectedCategory;
-
-  getAccount() async {
-    _ui.loadState(true);
-    try {
-      await _accountViewModel.getAccount("b6RrEExjPldzxDyu5FXdRKR8tOD2");
-    } catch (e) {}
-    _ui.loadState(false);
-  }
-
-  String? selectedAccount;
 
   @override
   Widget build(BuildContext context) {

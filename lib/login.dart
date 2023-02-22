@@ -1,9 +1,7 @@
-import 'dart:async';
-import 'package:budget_tracer_practice/signup.dart';
+
 import 'package:budget_tracer_practice/viewmodels/auth_viewmodel.dart';
 import 'package:budget_tracer_practice/viewmodels/global_ui_viewmodel.dart';
 import 'package:control_style/decorated_input_border.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
