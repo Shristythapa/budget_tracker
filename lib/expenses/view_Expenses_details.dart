@@ -1,3 +1,5 @@
+import 'package:budget_tracer_practice/expenses/viewExpenses/expense_screen.dart';
+import 'package:budget_tracer_practice/model/expenses_model.dart';
 import 'package:budget_tracer_practice/viewmodels/auth_viewmodel.dart';
 import 'package:budget_tracer_practice/viewmodels/expenses_viewmodel.dart';
 import 'package:flutter/material.dart';
@@ -6,15 +8,29 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 
 class expenses extends StatefulWidget {
-  const expenses({super.key});
+  
+   final String? title;
+  final String? rs;
+  final String? id;
+  final String? userId;
+ const expenses({
+  super.key,
+  this.id,
+  this.rs,
+  this.title,
+  this.userId
+ });
 
   @override
   State<expenses> createState() => _expensesState();
 }
 
 class _expensesState extends State<expenses> {
-  TextEditingController food = new TextEditingController();
+  TextEditingController title = new TextEditingController();
   TextEditingController date = new TextEditingController();
+  TextEditingController amount = new TextEditingController();
+  TextEditingController account  = new TextEditingController();
+ 
   late AuthViewModel _authViewModel;
   late ExpensesViewModel _expensesViewModel;
    @override
@@ -37,7 +53,9 @@ class _expensesState extends State<expenses> {
         ),
         ElevatedButton(
           child: Text('Yes'),
-          onPressed: () => Navigator.pop(context, true),
+          onPressed: () {
+         
+          }
         )
       ],
     );
@@ -102,7 +120,7 @@ class _expensesState extends State<expenses> {
               ),
               margin: EdgeInsets.all(8),
               child: TextFormField(
-                  controller: food,
+                  controller: title,
                   decoration: InputDecoration(
                       hintText: "                                     Salary",
                       border: InputBorder.none)),
@@ -125,7 +143,7 @@ class _expensesState extends State<expenses> {
               ),
               margin: EdgeInsets.all(10),
               child: TextFormField(
-                controller: food,
+                controller: date,
                 decoration: InputDecoration(
                     hintText: "                          2022/02/03",
                     prefixIcon: Icon(Icons.date_range),
@@ -150,7 +168,7 @@ class _expensesState extends State<expenses> {
               ),
               margin: EdgeInsets.all(8),
               child: TextFormField(
-                  controller: food,
+                  controller: amount,
                   decoration: InputDecoration(
                       hintText: "                                       20000",
                       border: InputBorder.none)),
@@ -174,7 +192,7 @@ class _expensesState extends State<expenses> {
               ),
               margin: EdgeInsets.all(8),
               child: TextFormField(
-                  controller: food,
+                  controller: account,
                   decoration: InputDecoration(
                       hintText:
                       "                                     Himalayan Bank",
@@ -184,27 +202,7 @@ class _expensesState extends State<expenses> {
               height: 40,
               width: 100,
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 225, 223, 223),
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
-              ),
-              margin: EdgeInsets.all(8),
-              child: TextFormField(
-                  controller: food,
-                  decoration: InputDecoration(
-                      hintText: "                                     Salary",
-                      suffixIcon: Icon(Icons.arrow_drop_down),
-                      border: InputBorder.none)),
-            ),
+          
             SizedBox(
               height: 20.0,
             ),
@@ -218,11 +216,16 @@ class _expensesState extends State<expenses> {
               ),
               child: ElevatedButton(
                 onPressed: (() {
-                  //   if (form.currentState!.validate()) {
-                  //     Delete();
-                  //   } else {
-                  //     print("");
-                  //   }
+                    if (form.currentState!.validate()) {
+                         _expensesViewModel.deleteExpense(widget.id, widget.userId);
+                           Navigator.pop(context);
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) =>ExpenseScreen()),
+              );
+                    } else {
+                      print("");
+                    }
                 }),
                 child: Text(
                   "Delete",

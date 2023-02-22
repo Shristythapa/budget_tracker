@@ -11,21 +11,25 @@ class ExpensesViewModel with ChangeNotifier {
   List<ExpensesModel> _expenses = [];
   List<ExpensesModel> get expenses => _expenses;
 
-  Future<void> getExpenses() async {
-    _expenses = [];
-    notifyListeners();
+  Future<void> getExpenses(String uid) async {
+    print("getfunctionrun");
+  _expenses = [];
+    //notifyListeners();
     try {
-      var response = await _expensesRepository.getAllExpenses();
+      var response = await _expensesRepository.getMyExpenses(uid);
+      print(":::::$response");
       for (var element in response) {
-        print(element.id);
         _expenses.add(element.data());
+        print("data here ${element.data().amount}");
       }
       notifyListeners();
     } catch (e) {
-      print(e);
+    
+      print("I error:: $e");
       _expenses = [];
       notifyListeners();
     }
+   // return _expenses;
   }
 
   Future<void> addExpenses(ExpensesModel expenses) async {
@@ -35,4 +39,13 @@ class ExpensesViewModel with ChangeNotifier {
       notifyListeners();
     }
   }
+  Future<void> deleteExpense(String? expenseId, String? userId) async{
+    try{
+      await _expensesRepository.removeExpenses(expenseId, userId).then((value) => _expensesRepository.getMyExpenses(userId));
+     notifyListeners();
+    }catch(e){
+      rethrow;
+    }
+  }
+
 }

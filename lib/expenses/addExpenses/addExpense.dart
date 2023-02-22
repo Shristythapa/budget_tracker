@@ -9,6 +9,7 @@ import 'package:provider/provider.dart';
 import '../../common/custom_button.dart';
 import '../../common/custom_dropdown.dart';
 import '../../common/custom_textfield.dart';
+import '../../dashboard/main_dashboard/dashboard_body.dart';
 import '../../model/expenses_model.dart';
 import '../../viewmodels/account_viewmodel.dart';
 import '../../viewmodels/auth_viewmodel.dart';
@@ -54,10 +55,13 @@ class _AddExpensesState extends State<AddExpenses> {
       await _expensesViewModel.addExpenses(data);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Expenses added successfully")));
-      Navigator.of(context).pushNamed("/view_Expenses");
+  Navigator.pop(context);
+
+                 Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => DashboardBody()));
     } catch (e) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Error")));
+          .showSnackBar(SnackBar(content: Text(e.toString())));
     }
     _ui.loadState(false);
   }
@@ -71,6 +75,8 @@ class _AddExpensesState extends State<AddExpenses> {
           Provider.of<CategoryViewModel>(context, listen: false);
       getInit();
     });
+       _expensesViewModel=Provider.of<ExpensesViewModel>(context, listen: false);
+  
     super.initState();
   }
 
@@ -84,7 +90,7 @@ class _AddExpensesState extends State<AddExpenses> {
     _ui.loadState(false);
   }
 
-  late String selectedCategory;
+   String? selectedCategory;
 
   @override
   Widget build(BuildContext context) {

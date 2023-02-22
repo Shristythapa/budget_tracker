@@ -14,12 +14,15 @@ class ExpensesRepository {
   );
 
   Future<List<QueryDocumentSnapshot<ExpensesModel>>> getAllExpenses() async {
+    
     try {
       final response = await expensesRef.get();
       var incomes = response.docs;
+      print("expenseHere $response");
       return incomes;
     } catch (err) {
-      print(err);
+    
+      print("expenseErrorOcured $err");
       rethrow;
     }
   }
@@ -64,19 +67,21 @@ class ExpensesRepository {
   }
 
   Future<List<QueryDocumentSnapshot<ExpensesModel>>> getMyExpenses(
-      String userId) async {
+      String? userId) async {
+        print("I am ui d $userId");
     try {
       final response =
-      await expensesRef.where("user_id", isEqualTo: userId).get();
+      await expensesRef.where("userId", isEqualTo: userId).get();
       var expenses = response.docs;
+      print("get done");
       return expenses;
     } catch (err) {
-      print(err);
+      print("expensError $err");
       rethrow;
     }
   }
 
-  Future<bool> removeExpenses(String expensesId, String userId) async {
+  Future<bool> removeExpenses(String? expensesId, String? userId) async {
     try {
       final response = await expensesRef.doc(expensesId).get();
       if (response.data()!.userId != userId) {

@@ -1,5 +1,6 @@
 ﻿
 import 'package:budget_tracer_practice/viewmodels/expenses_category_viewmodel.dart';
+import 'package:budget_tracer_practice/viewmodels/expenses_viewmodel.dart';
 import 'package:budget_tracer_practice/viewmodels/income_viewmodel.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -39,7 +40,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => AccViewModel()),
         ChangeNotifierProvider(create: (_) => CategoryViewModel()),
         ChangeNotifierProvider(create: (_) => IncomeViewModel()),
-        ChangeNotifierProvider(create: (_)=> AccViewModel())
+        ChangeNotifierProvider(create: (_)=> AccViewModel()),
+        ChangeNotifierProvider(create: (_)=> ExpensesViewModel())
       ],
 
       child: GlobalLoaderOverlay(
@@ -62,7 +64,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: 'Flutter Demo',
               theme: ThemeData(),
-              initialRoute: "/add_expense",
+              initialRoute: "/landingPage",
               routes: {
                 "/landingPage": (BuildContext context) => MyLandingPage(),
                 "/login": (BuildContext context) => loginScreen(),

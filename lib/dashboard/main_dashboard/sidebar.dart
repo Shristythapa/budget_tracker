@@ -96,10 +96,11 @@ class _sidebarState extends State<sidebar> {
                               child: InkWell(
                                 onTap: () {
                                   Navigator.pop(context);
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => AddListOfAccount()),
+                                   Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) => BarChartNavigation(
+                                selected: true,
+                              )),
                                   );
                                 },
                                 child: Row(

@@ -11,32 +11,6 @@ import '../../viewmodels/expenses_viewmodel.dart';
 class ExpenseWidget extends StatefulWidget {
    ExpenseWidget({super.key});
 
-   final List<Map<String,dynamic>>_items=[
-    {
-      "title": "Food",
-      "rs":"Rs. 4000"
-    },
-    {
-      "title": "Books",
-      "rs":"Rs. 3000"
-    },
-    {
-      "title": "Travel",
-      "rs":"Rs. 10000"
-    },
-     {
-      "title": "Food",
-      "rs":"Rs. 4000"
-    },
-    {
-      "title": "Books",
-      "rs":"Rs. 3000"
-    },
-    {
-      "title": "Travel",
-      "rs":"Rs. 10000"
-    },
-  ];
 
   @override
   State<ExpenseWidget> createState() => _ExpenseWidgetState();
@@ -49,6 +23,11 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
   void initState() {
      _authViewModel =Provider.of<AuthViewModel>(context,listen: false);
      _expensesViewModel=Provider.of<ExpensesViewModel>(context, listen: false);
+     try{
+      _expensesViewModel.getExpenses(_authViewModel.user!.uid);
+     }catch(e){
+      print(e);
+     }
     super.initState();
   }
   @override
@@ -92,12 +71,14 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                    ],
                  ),
                  
-                 ListView(
-                  shrinkWrap: true,
-                  children: [
-                    ...taskVM.expenses.map((e) => CustomBox(title: e.title, rs:e.amount))
-                  ],
-                 )
+                  ListView(
+                    shrinkWrap: true,
+                    children: [
+                      ...taskVM.expenses.map((e) =>
+                       CustomBox(id: e.id,title: e.title, rs:e.amount))
+                    ],
+                   ),
+                
 
           ],
         ),

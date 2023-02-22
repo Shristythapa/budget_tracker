@@ -13,20 +13,20 @@ String expensesModelToJson(ExpensesModel data) => json.encode(data.toJson());
 
 class ExpensesModel {
   ExpensesModel({
-    required this.id,
-    required this.userId,
-    required this.title,
-    required this.amount,
-    required this.date,
-    required this.categoryId, 
+     this.id,
+     this.userId,
+     this.title,
+     this.amount,
+     this.date,
+     this.categoryId, 
   });
 
-  String id;
-  String userId;
-  String title;
-  String amount;
-  String date;
-  String categoryId;
+  String? id;
+  String? userId;
+  String? title;
+  String? amount;
+  String? date;
+  String? categoryId;
 
   factory ExpensesModel.fromJson(Map<String, dynamic> json) => ExpensesModel(
     id: json["id"],
@@ -41,11 +41,11 @@ class ExpensesModel {
       DocumentSnapshot<Map<String, dynamic>> json) =>
       ExpensesModel(
         id: json["id"],
-        userId: json["user_id"],
+        userId: json["userId"],
         title: json["title"],
         amount: json["amount"],
         date: json["date"],
-        categoryId: json["category_id"],
+        categoryId: json["categoryId"],
       );
 
   Map<String, dynamic> toJson() => {

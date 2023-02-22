@@ -26,6 +26,7 @@ class _addListOfAccountState extends State<AddListOfAccount> {
     _accViewModel = Provider.of<AccViewModel>(context, listen: false);
     try{
     _accViewModel.getAccount(_authViewModel.user!.uid); 
+    
     }catch(e){
       print(e);
     }

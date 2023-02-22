@@ -3,8 +3,16 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 class income extends StatefulWidget {
-  const income({super.key});
-
+ 
+   final String? title;
+  final String? rs;
+  final String? id;
+ const income({
+  super.key,
+  this.id,
+  this.rs,
+  this.title
+ });
   @override
   State<income> createState() => _incomeState();
 }
@@ -12,6 +20,7 @@ class income extends StatefulWidget {
 class _incomeState extends State<income> {
   TextEditingController food = new TextEditingController();
   TextEditingController date = new TextEditingController();
+  
   final form = GlobalKey<FormState>();
   Future<bool?> showWarning(BuildContext context) async {
     context:
@@ -26,7 +35,9 @@ class _incomeState extends State<income> {
             ),
             ElevatedButton(
               child: Text('Yes'),
-              onPressed: () => Navigator.pop(context, true),
+              onPressed: () {
+
+              }
             )
           ],
         );
