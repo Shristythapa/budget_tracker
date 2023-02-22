@@ -1,62 +1,43 @@
+import 'package:budget_tracer_practice/viewmodels/income_viewmodel.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../../common/custom_date_picker.dart';
 import '../../../common/custom_icon.dart';
+import '../../common/CustomIncomeBox.dart';
 import '../../common/custom_box.dart';
 import '../../dashboard/main_dashboard/dashboard_body.dart';
+import '../../viewmodels/auth_viewmodel.dart';
 
 class IncomeWidget extends StatefulWidget {
    IncomeWidget({super.key});
 
-  final List<Map<String,dynamic>>_items=[
-    {
-      "title": "Salary",
-      "rs":"Rs. 4000"
-    },
-    {
-      "title": "Frelancing",
-      "rs":"Rs. 3000"
-    },
-    {
-      "title": "Marketing",
-      "rs":"Rs. 10000"
-    },
-    {
-      "title": "Salary",
-      "rs":"Rs. 4000"
-    },
-    {
-      "title": "Frelancing",
-      "rs":"Rs. 3000"
-    },
-    {
-      "title": "Marketing",
-      "rs":"Rs. 10000"
-    },
-    {
-      "title": "Salary",
-      "rs":"Rs. 4000"
-    },
-    {
-      "title": "Frelancing",
-      "rs":"Rs. 3000"
-    },
-    {
-      "title": "Marketing",
-      "rs":"Rs. 10000"
-    },
-  ];
-
+ 
   @override
   State<IncomeWidget> createState() => _IncomeWidgetState();
 }
 
 class _IncomeWidgetState extends State<IncomeWidget> {
+     late AuthViewModel _authViewModel;
+  late IncomeViewModel _incomeViewModel;
+   @override
+  void initState() {
+     _authViewModel =Provider.of<AuthViewModel>(context,listen: false);
+     _incomeViewModel=Provider.of<IncomeViewModel>(context, listen: false);
+     try{
+      _incomeViewModel.getIncomes(_authViewModel.user!.uid);
+     }catch(e){
+      print(e);
+     }
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
       DateTime? selectedDate;
 
-    return Scaffold(
+     return Consumer<IncomeViewModel>(
+      builder: (context,taskVM, child){
+           return Scaffold(
       backgroundColor: Colors.white,
       body:Container(
         margin:EdgeInsets.only(top:MediaQuery.of(context).viewPadding.top+10),
@@ -90,20 +71,18 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                      CustomDatePicker(title: "Year",),
                    ],
                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemBuilder:(context, index){
-                        return CustomBox(
-                          title:widget._items[index]["title"],
-                          rs:widget._items[index]["rs"], id: '', userId: '',
-                        );
-                      },
-                      itemCount:widget._items.length,
-                    ),
-                  ),
+                  ListView(
+                    shrinkWrap: true,
+                    children: [
+                      ...taskVM.incomes.map((e) =>
+                       CustomIncomeBox(id:e.id,userId:e.userId!,title: e.title!, rs:e.amount!,  incomeId: e.id!,))
+                    ],
+                   ),
           ],
         ),
       )
     );
+      }
+      );
   }
 }

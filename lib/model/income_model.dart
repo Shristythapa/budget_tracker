@@ -27,22 +27,22 @@ class IncomeModel {
 
   factory IncomeModel.fromJson(Map<String, dynamic> json) => IncomeModel(
         id: json["id"],
-        userId: json["user_id"],
+        userId: json["userId"],
         title: json["title"],
         amount: json["amount"],
         date: json["date"],
-        categoryId: json["category_id"],
+        categoryId: json["categoryId"],
       );
 
   factory IncomeModel.fromFirebaseSnapshot(
           DocumentSnapshot<Map<String, dynamic>> json) =>
       IncomeModel(
-        id: json.id,
-        userId: json["user_id"],
+        id: json["id"],
+        userId: json["userId"],
         title: json["title"],
         amount: json["amount"],
         date: json["date"],
-        categoryId: json["category_id"],
+        categoryId: json["categoryId"],
       );
 
   Map<String, dynamic> toJson() => {

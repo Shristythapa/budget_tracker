@@ -75,7 +75,7 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                     shrinkWrap: true,
                     children: [
                       ...taskVM.expenses.map((e) =>
-                       CustomBox(id: e.id!,title: e.title!, rs:e.amount!,userId: e.userId!,))
+                       CustomBox(id: e.id!,userId:e.userId!,title: e.title!, rs:e.amount!, expneseId: e.id!,))
                     ],
                    ),
                 

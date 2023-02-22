@@ -47,5 +47,14 @@ class ExpensesViewModel with ChangeNotifier {
       rethrow;
     }
   }
+  Future<void> updateExpense(String expenseId,String userId,String name, String amount) async{
+    try{
+      await _expensesRepository.editExpenses(expensesId: expenseId,userId: userId,name: name,amount: amount);
+      notifyListeners();
+    }catch(e){
+      rethrow;
+    }
+
+  }
 
 }

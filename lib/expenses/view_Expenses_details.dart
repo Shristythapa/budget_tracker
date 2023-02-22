@@ -12,7 +12,9 @@ class expenses extends StatefulWidget {
   final String rs;
   final String id;
   final String userId;
-  const expenses({super.key, required this.id, required this.rs, required this.title, required this.userId});
+  final String expenseId;
+
+  const expenses({super.key,required this.expenseId, required this.id, required this.rs, required this.title, required this.userId});
 
   @override
   State<expenses> createState() => _expensesState();
@@ -242,11 +244,14 @@ class _expensesState extends State<expenses> {
                 ),
                 child: ElevatedButton(
                   onPressed: (() {
-                    //   if (form.currentState!.validate()) {
-                    //     Delete();
-                    //   } else {
-                    //     print("");
-                    //   }
+                    _expensesViewModel.updateExpense(widget.expenseId, widget.userId, title.text, amount.text).then((value){
+                         Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => ExpenseScreen()),
+                      );
+                    });
                   }),
                   child: Text(
                     "Update",

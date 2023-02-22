@@ -1,3 +1,5 @@
+import 'package:budget_tracer_practice/dashboard/main_dashboard/dashboard_body.dart';
+import 'package:budget_tracer_practice/viewmodels/income_viewmodel.dart';
 import 'package:control_style/decorated_input_border.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
@@ -33,6 +35,7 @@ class _AddIncomeState extends State<AddIncome> {
   late AuthViewModel _auth;
   late CategoryViewModel _categoryViewModel;
   late AccViewModel _accountViewModel;
+  late IncomeViewModel _incomeViewModel;
 
   void saveIncome() async {
     _ui.loadState(true);
@@ -43,16 +46,18 @@ class _AddIncomeState extends State<AddIncome> {
         title: title.text,
         date: date.text,
         categoryId: selectedCategory,
-        // accountId: selectedAccount,
         userId: user_id,
+        id:'',
       );
-      await _auth.addMyIncome(data);
+      await _incomeViewModel.addIncome(data);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Income added succssfully")));
-      Navigator.of(context).pushNamed("/view_income");
+  Navigator.pop(context);
+                 Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => DashboardBody()));
     } catch (e) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Error")));
+          .showSnackBar(SnackBar(content: Text(e.toString())));
     }
     _ui.loadState(false);
   }
@@ -64,6 +69,8 @@ class _AddIncomeState extends State<AddIncome> {
       _auth = Provider.of<AuthViewModel>(context, listen: false);
       _categoryViewModel =
           Provider.of<CategoryViewModel>(context, listen: false);
+          _incomeViewModel=Provider.of<IncomeViewModel>(context,listen: false);
+
       getInit();
       getAccount();
     });

@@ -1,25 +1,28 @@
+import 'package:budget_tracer_practice/income/viewIncome/view_income_screen.dart';
+import 'package:budget_tracer_practice/viewmodels/income_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
+
+import '../../viewmodels/auth_viewmodel.dart';
 
 class income extends StatefulWidget {
  
-   final String? title;
-  final String? rs;
-  final String? id;
- const income({
-  super.key,
-  this.id,
-  this.rs,
-  this.title
- });
+   final String title;
+  final String rs;
+  final String id;
+  final String userId;
+  final String incomeId;
+ const income({super.key,required this.incomeId, required this.id, required this.rs, required this.title, required this.userId});
   @override
   State<income> createState() => _incomeState();
 }
 
 class _incomeState extends State<income> {
-  TextEditingController food = new TextEditingController();
-  TextEditingController date = new TextEditingController();
+ TextEditingController amount = new TextEditingController();
+  TextEditingController account = new TextEditingController();
+
   
   final form = GlobalKey<FormState>();
   Future<bool?> showWarning(BuildContext context) async {
@@ -42,17 +45,23 @@ class _incomeState extends State<income> {
           ],
         );
   }
+  
+  late AuthViewModel _authViewModel;
+  late IncomeViewModel _income;
+  @override
+  void initState() {
+    _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
+    _income = Provider.of<IncomeViewModel>(context, listen: false);
+    account.text = widget.title.toString();
+    amount.text = widget.rs.toString();
+  
+
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context)
-  // => WillPopScope(
-  //   onWillPop: ()async {
-  //   print("Items Deleted");
-  //   final shouldPop = await showWarning(context);
-  //   return shouldPop ?? false;
 
-  // },
-  //  );
   {
     return Scaffold(
       backgroundColor: Color.fromARGB(255, 251, 251, 251),
@@ -102,36 +111,36 @@ class _incomeState extends State<income> {
               ),
               margin: EdgeInsets.all(8),
               child: TextFormField(
-                  controller: food,
+                  controller: account,
                   decoration: InputDecoration(
-                      hintText: "                                     Salary",
+                  
                       border: InputBorder.none)),
             ),
             SizedBox(
               height: 30,
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 225, 223, 223),
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
-              ),
-              margin: EdgeInsets.all(10),
-              child: TextFormField(
-                controller: food,
-                decoration: InputDecoration(
-                    hintText: "                          2022/02/03",
-                    prefixIcon: Icon(Icons.date_range),
-                    border: InputBorder.none),
-              ),
-            ),
+            // Container(
+            //   decoration: BoxDecoration(
+            //     color: Color.fromARGB(255, 225, 223, 223),
+            //     borderRadius: BorderRadius.circular(30),
+            //     boxShadow: [
+            //       BoxShadow(
+            //         color: Colors.grey.withOpacity(0.5),
+            //         spreadRadius: 5,
+            //         blurRadius: 7,
+            //         offset: Offset(0, 3), // changes position of shadow
+            //       ),
+            //     ],
+            //   ),
+            //   margin: EdgeInsets.all(10),
+            //   child: TextFormField(
+            //     controller: food,
+            //     decoration: InputDecoration(
+            //         hintText: "                          2022/02/03",
+            //         prefixIcon: Icon(Icons.date_range),
+            //         border: InputBorder.none),
+            //   ),
+            // ),
             const SizedBox(
               height: 35,
             ),
@@ -150,61 +159,60 @@ class _incomeState extends State<income> {
               ),
               margin: EdgeInsets.all(8),
               child: TextFormField(
-                  controller: food,
+                  controller: amount,
                   decoration: InputDecoration(
-                      hintText: "                                       20000",
                       border: InputBorder.none)),
             ),
             const SizedBox(
               height: 40,
               width: 100,
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 225, 223, 223),
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
-              ),
-              margin: EdgeInsets.all(8),
-              child: TextFormField(
-                  controller: food,
-                  decoration: InputDecoration(
-                      hintText:
-                          "                                     Himalayan Bank",
-                      border: InputBorder.none)),
-            ),
+            // Container(
+            //   decoration: BoxDecoration(
+            //     color: Color.fromARGB(255, 225, 223, 223),
+            //     borderRadius: BorderRadius.circular(30),
+            //     boxShadow: [
+            //       BoxShadow(
+            //         color: Colors.grey.withOpacity(0.5),
+            //         spreadRadius: 5,
+            //         blurRadius: 7,
+            //         offset: Offset(0, 3), // changes position of shadow
+            //       ),
+            //     ],
+            //   ),
+            //   margin: EdgeInsets.all(8),
+            //   child: TextFormField(
+            //       controller: food,
+            //       decoration: InputDecoration(
+            //           hintText:
+            //               "                                     Himalayan Bank",
+            //           border: InputBorder.none)),
+            // ),
             const SizedBox(
               height: 40,
               width: 100,
             ),
-            Container(
-              decoration: BoxDecoration(
-                color: Color.fromARGB(255, 225, 223, 223),
-                borderRadius: BorderRadius.circular(30),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, 3), // changes position of shadow
-                  ),
-                ],
-              ),
-              margin: EdgeInsets.all(8),
-              child: TextFormField(
-                  controller: food,
-                  decoration: InputDecoration(
-                      hintText: "                                     Salary",
-                      suffixIcon: Icon(Icons.arrow_drop_down),
-                      border: InputBorder.none)),
-            ),
+            // Container(
+            //   decoration: BoxDecoration(
+            //     color: Color.fromARGB(255, 225, 223, 223),
+            //     borderRadius: BorderRadius.circular(30),
+            //     boxShadow: [
+            //       BoxShadow(
+            //         color: Colors.grey.withOpacity(0.5),
+            //         spreadRadius: 5,
+            //         blurRadius: 7,
+            //         offset: Offset(0, 3), // changes position of shadow
+            //       ),
+            //     ],
+            //   ),
+            //   margin: EdgeInsets.all(8),
+            //   child: TextFormField(
+            //       controller: food,
+            //       decoration: InputDecoration(
+            //           hintText: "                                     Salary",
+            //           suffixIcon: Icon(Icons.arrow_drop_down),
+            //           border: InputBorder.none)),
+            // ),
             SizedBox(
               height: 20.0,
             ),
@@ -218,11 +226,14 @@ class _incomeState extends State<income> {
               ),
               child: ElevatedButton(
                 onPressed: (() {
-                  //   if (form.currentState!.validate()) {
-                  //     Delete();
-                  //   } else {
-                  //     print("");
-                  //   }
+                 _income.deleteMyIncome(widget.incomeId,widget.userId).then((value){
+                         Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => IncomeScreen()),
+                      );
+                 });
                 }),
                 child: Text(
                   "Delete",

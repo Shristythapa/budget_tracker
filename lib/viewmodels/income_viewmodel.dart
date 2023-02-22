@@ -9,11 +9,11 @@ class IncomeViewModel with ChangeNotifier {
   List<IncomeModel> _incomes = [];
   List<IncomeModel> get incomes => _incomes;
 
-  Future<void> getIncomes() async {
+  Future<void> getIncomes(String userid) async {
     _incomes = [];
-    notifyListeners();
+     print("IncomeViewModelReached");
     try {
-      var response = await _incomRepository.getAllIncomes();
+      var response = await _incomRepository.getIncomeByAccount(userid);
       for (var element in response) {
         print(element.id);
         _incomes.add(element.data());
@@ -31,6 +31,18 @@ class IncomeViewModel with ChangeNotifier {
       var response = await _incomRepository.addIncomes(income: income);
     } catch (e) {
       notifyListeners();
+    }
+  }
+   Future<void> deleteMyIncome(String incomeId,String uid) async {
+    try {
+      await _incomRepository.removeIncome(incomeId,uid).then(((value) {
+        _incomRepository.getIncomeByAccount(uid);
+      }));
+
+    
+      notifyListeners();
+    } catch (e) {
+      rethrow;
     }
   }
 }

@@ -1,19 +1,16 @@
 import 'package:budget_tracer_practice/income/viewIncome/view_income_details.dart';
 import 'package:flutter/material.dart';
 
-import '../expenses/view_Expenses_details.dart';
-
-
-class CustomBox extends StatefulWidget {
+class CustomIncomeBox extends StatefulWidget {
   final String title;
   final String rs;
-  final String id;
+   final id;
   final String userId;
-  final String expneseId;
-  const CustomBox({
+  final String incomeId;
+  const CustomIncomeBox({
     super.key,
-    required this.expneseId,
-    required this.id,
+    required this.incomeId,
+      required this.id,
     required this.title,
     required this.rs,
     required this.userId
@@ -22,17 +19,17 @@ class CustomBox extends StatefulWidget {
  
 
   @override
-  State<CustomBox> createState() => _CustomBoxState();
+  State<CustomIncomeBox> createState() => _CustomIncomeBoxState();
 }
 
-class _CustomBoxState extends State<CustomBox> {
+class _CustomIncomeBoxState extends State<CustomIncomeBox> {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: (() {
          Navigator.pop(context);
                   Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => expenses(id: widget.id,title: widget.title,rs: widget.rs,userId: widget.userId, expenseId: widget.expneseId,)));
+                      context, MaterialPageRoute(builder: (context) =>income(id: widget.id,title: widget.title,rs: widget.rs,userId: widget.userId,incomeId: widget.incomeId,) ));
       
       }),
       child: Container(

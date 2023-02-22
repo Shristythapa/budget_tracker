@@ -37,12 +37,16 @@ class IncomRepository {
   }
   Future<List<QueryDocumentSnapshot<IncomeModel>>> getIncomeByAccount(
       String id) async {
+        print("incomeRepo");
+        print("IamuserId $id");
     try {
       final response =
-          await incomeRef.where("account_id", isEqualTo: id.toString()).get();
+          await incomeRef.where("userId", isEqualTo: id).get();
       var incomes = response.docs;
+      print("this is my incomes $incomes");
       return incomes;
     } catch (err) {
+      print("incomeError $err");
       print(err);
       rethrow;
     }
@@ -65,6 +69,7 @@ class IncomRepository {
   Future<List<QueryDocumentSnapshot<IncomeModel>>> getMyIncomes(
       String userId) async {
     try {
+      print("incomeRepoReached");
       final response =
           await incomeRef.where("user_id", isEqualTo: userId).get();
       var incomes = response.docs;
@@ -104,7 +109,9 @@ class IncomRepository {
 
   Future<bool?> addIncomes({required IncomeModel income}) async {
     try {
-      final response = await incomeRef.add(income);
+      var docref = incomeRef.doc();
+      income.id=docref.id;
+ await docref.set(income);
       return true;
     } catch (err) {
       return false;

@@ -122,9 +122,13 @@ class ExpensesRepository {
   }
 
   Future<bool?> editExpenses(
-      {required ExpensesModel expenses, required String expensesId}) async {
+      {required String expensesId, required String userId,required String name, required String amount}) async {
     try {
-      final response = await expensesRef.doc(expensesId).set(expenses);
+       final response = await expensesRef.doc(expensesId).get();
+       String? cate=response.data()!.categoryId;
+       String? date = response.data()!.date;
+
+      final ans = await expensesRef.doc(expensesId).set(ExpensesModel(id: expensesId, userId: userId, categoryId: cate, date: date, title: name, amount: amount)) ;
       return true;
     } catch (err) {
       return false;
