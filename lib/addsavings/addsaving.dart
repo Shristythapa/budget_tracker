@@ -23,11 +23,12 @@ class _addsavingState extends State<addsaving> {
 
   void addsaving() async {
     _ui.loadState(true);
+    var user_id = _authViewModel.user!.uid;
     try {
       final SavingModel data = SavingModel(
         accountname: _accountNameController.text,
         amount: _amountController.text,
-        // userId: _authViewModel.loggedInUser!.id,
+        userId: user_id,
       );
       await SavingRepository().addSavings(saving: data);
       ScaffoldMessenger.of(context)

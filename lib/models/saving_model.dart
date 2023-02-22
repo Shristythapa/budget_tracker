@@ -9,30 +9,35 @@ String savingModelToJson(SavingModel data) => json.encode(data.toJson());
 
 class SavingModel {
   SavingModel({
-    // this.userId,
+    this.id,
+    this.userId,
     this.accountname,
     this.amount,
   });
 
-  // String? userId;
+  String? id;
+  String? userId;
   String? accountname;
   String? amount;
 
   factory SavingModel.fromJson(Map<String, dynamic> json) => SavingModel(
-        // userId: json["user_id"],
+        id: json["id"],
+        userId: json["user_id"],
         accountname: json["accountname"],
         amount: json["amount"],
       );
   factory SavingModel.fromFireBaseSnapshot(
           DocumentSnapshot<Map<String, dynamic>> json) =>
       SavingModel(
-        // userId: json["user_id"],
+        id: json.id,
+        userId: json["user_id"],
         accountname: json["accountname"],
         amount: json["amount"],
       );
 
   Map<String, dynamic> toJson() => {
-        // "user_id": userId,
+        "id": id,
+        "userId": userId,
         "accountname": accountname,
         "amount": amount,
       };
