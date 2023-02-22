@@ -62,17 +62,27 @@ class _ReportHeaderState extends State<ReportHeader> {
                       widget.selected = !widget.selected;
                     });
                   },
-                  child: Container(
-                    padding: EdgeInsets.all(14),
-                    color: Colors.grey[100],
-                    child: Text(
-                      "Bar Chart",
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                        color: widget.selected
-                            ? Color(0xFFA77ABA2)
-                            : Color(0xFFA77ABA2),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.of(context).push(
+                      MaterialPageRoute(
+                          builder: (context) => BarChartNavigation(
+                                selected: true,
+                              )),
+                    );
+                    },
+                    child: Container(
+                      padding: EdgeInsets.all(14),
+                      color: Colors.grey[100],
+                      child: Text(
+                        "Bar Chart",
+                        style: TextStyle(
+                          fontSize: 20,
+                          fontWeight: FontWeight.bold,
+                          color: widget.selected
+                              ? Color(0xFFA77ABA2)
+                              : Color(0xFFA77ABA2),
+                        ),
                       ),
                     ),
                   ),

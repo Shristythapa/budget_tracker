@@ -1,7 +1,5 @@
 import 'package:budget_tracer_practice/category/income_category_body.dart';
-import 'package:budget_tracer_practice/expenses/expenseCategory.dart';
 import 'package:flutter/material.dart';
-
 import '../common/custom_date_picker.dart';
 import 'expense_category_body.dart';
 import 'report_header.dart';

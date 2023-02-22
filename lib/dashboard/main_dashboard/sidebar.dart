@@ -8,6 +8,8 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import '../../accounts/addListOfAccount.dart';
 import '../../bar_chart/expense_barchart.dart';
+import '../../category/bottom_navigation.dart';
+import '../../category/expense_category_body.dart';
 
 class sidebar extends StatefulWidget {
   const sidebar({super.key});
@@ -138,11 +140,11 @@ class _sidebarState extends State<sidebar> {
                       onTap: (() {
                         
                         Navigator.pop(context);
-                                //  // Navigator.push(
-                                //     context,
-                                //     MaterialPageRoute(
-                                //         builder: (context) => BarChartNavigation(selected: BarChart,)));
-
+                              Navigator.of(context).push(MaterialPageRoute(
+                      builder: ((context) => CustomBottomNavigation(
+                            selected: true,
+                          )),
+                    ));
                       }),
                       child: Positioned(
                         child: Column(

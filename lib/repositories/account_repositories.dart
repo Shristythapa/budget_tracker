@@ -4,7 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 
 class AccountRepo {
-  final FirebaseFirestore firestore = FirebaseFirestore.instance;
+  //final FirebaseFirestore firestore = FirebaseFirestore.instance;
 
   CollectionReference<Account> accref =
       FirebaseService.db.collection("account").withConverter<Account>(
