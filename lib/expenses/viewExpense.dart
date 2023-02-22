@@ -1,17 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:provider/provider.dart';
+
+import '../viewmodels/auth_viewmodel.dart';
+import '../viewmodels/expenses_viewmodel.dart';
 
 class food extends StatefulWidget {
   const food({super.key});
 
   @override
   State<food> createState() => _foodState();
+  
 }
 
 class _foodState extends State<food> {
   TextEditingController food = new TextEditingController();
   TextEditingController date = new TextEditingController();
+   
   final form = GlobalKey<FormState>();
   Future<bool?> showWarning(BuildContext context) async {
     context:

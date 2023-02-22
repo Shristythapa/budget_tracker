@@ -1,6 +1,13 @@
+<<<<<<< HEAD
 ﻿import 'package:firebase_core/firebase_core.dart';
+=======
+﻿
+import 'package:budget_tracer_practice/viewmodels/expenses_category_viewmodel.dart';
+import 'package:budget_tracer_practice/viewmodels/expenses_viewmodel.dart';
+import 'package:budget_tracer_practice/viewmodels/income_viewmodel.dart';
+import 'package:firebase_core/firebase_core.dart';
+>>>>>>> 49020cc2cfa88760317d148044097d958b3137c9
 import 'package:flutter/material.dart';
-
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
 import 'accounts/addAccount.dart';
@@ -39,7 +46,12 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => AccViewModel()),
         ChangeNotifierProvider(create: (_) => CategoryViewModel()),
         ChangeNotifierProvider(create: (_) => IncomeViewModel()),
+<<<<<<< HEAD
         ChangeNotifierProvider(create: (_) => AccViewModel()),
+=======
+        ChangeNotifierProvider(create: (_)=> AccViewModel()),
+        ChangeNotifierProvider(create: (_)=> ExpensesViewModel())
+>>>>>>> 49020cc2cfa88760317d148044097d958b3137c9
       ],
       child: GlobalLoaderOverlay(
         useDefaultLoading: false,
@@ -61,15 +73,14 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: 'Flutter Demo',
               theme: ThemeData(),
-              initialRoute: "/view_income",
+              initialRoute: "/landingPage",
               routes: {
                 "/landingPage": (BuildContext context) => MyLandingPage(),
                 "/login": (BuildContext context) => loginScreen(),
                 "/signup": (BuildContext context) => RegisterScreen(),
                 "/main_homePage": (BuildContext context) => DashboardBody(),
                 "/side_Bar": (BuildContext context) => sidebar(),
-                "/transfer_Balance": (BuildContext context) =>
-                    BalanceTransferScreen(),
+                "/transfer_Balance": (BuildContext context) => BalanceTransferScreen(),
                 "/listOfAccount": (BuildContext context) => AddListOfAccount(),
                 "/add_account": (BuildContext context) => AddMyAccount(),
                 "/add_expense": (BuildContext context) => AddExpenses(),

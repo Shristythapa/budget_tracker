@@ -13,12 +13,12 @@ String expensesModelToJson(ExpensesModel data) => json.encode(data.toJson());
 
 class ExpensesModel {
   ExpensesModel({
-    this.id,
-    this.userId,
-    this.title,
-    this.amount,
-    this.date,
-    this.categoryId,
+     this.id,
+     this.userId,
+     this.title,
+     this.amount,
+     this.date,
+     this.categoryId, 
   });
 
   String? id;
@@ -40,12 +40,12 @@ class ExpensesModel {
   factory ExpensesModel.fromFirebaseSnapshot(
       DocumentSnapshot<Map<String, dynamic>> json) =>
       ExpensesModel(
-        id: json.id,
-        userId: json["user_id"],
+        id: json["id"],
+        userId: json["userId"],
         title: json["title"],
         amount: json["amount"],
         date: json["date"],
-        categoryId: json["category_id"],
+        categoryId: json["categoryId"],
       );
 
   Map<String, dynamic> toJson() => {

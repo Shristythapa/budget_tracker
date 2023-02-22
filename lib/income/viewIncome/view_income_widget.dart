@@ -17,16 +17,6 @@ class _IncomeWidgetState extends State<IncomeWidget> {
   late AuthViewModel _authViewModel;
   late IncomeViewModel _incomeViewModel;
 
-  // void initState() {
-  //   _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
-  //   _incomeViewModel = Provider.of<IncomeViewModel>(context, listen: false);
-  //   try {
-  //     _incomeViewModel.getIncomes(_authViewModel.user!.uid);
-  //   } catch (e) {
-  //     print(e);
-  //   }
-  //   super.initState();
-  // }
   @override
   void initState() {
     _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
@@ -65,13 +55,6 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                       }),
                   SizedBox(
                     height: 20,
-                  ),
-                  Center(
-                    child: Text("Income",
-                        style: TextStyle(
-                          fontSize: 32,
-                          fontWeight: FontWeight.w400,
-                        )),
                   ),
                   SizedBox(
                     height: 5,

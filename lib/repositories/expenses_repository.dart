@@ -14,12 +14,15 @@ class ExpensesRepository {
   );
 
   Future<List<QueryDocumentSnapshot<ExpensesModel>>> getAllExpenses() async {
+    
     try {
       final response = await expensesRef.get();
       var incomes = response.docs;
+      print("expenseHere $response");
       return incomes;
     } catch (err) {
-      print(err);
+    
+      print("expenseErrorOcured $err");
       rethrow;
     }
   }
@@ -64,24 +67,27 @@ class ExpensesRepository {
   }
 
   Future<List<QueryDocumentSnapshot<ExpensesModel>>> getMyExpenses(
-      String userId) async {
+      String? userId) async {
+        print("I am ui d $userId");
     try {
       final response =
-      await expensesRef.where("user_id", isEqualTo: userId).get();
+      await expensesRef.where("userId", isEqualTo: userId).get();
       var expenses = response.docs;
+      print("get done");
       return expenses;
     } catch (err) {
-      print(err);
+      print("expensError $err");
       rethrow;
     }
   }
 
-  Future<bool> removeExpenses(String expensesId, String userId) async {
+  Future<bool> removeExpenses(String? expensesId, String? userId) async {
     try {
       final response = await expensesRef.doc(expensesId).get();
       if (response.data()!.userId != userId) {
         return false;
       }
+      print("Datadelete");
       await expensesRef.doc(expensesId).delete();
       return true;
     } catch (err) {
@@ -103,12 +109,15 @@ class ExpensesRepository {
     }
   }
 
-  Future<bool?> addExpenses({required ExpensesModel expenses}) async {
+  Future<void> addExpenses({required ExpensesModel expenses}) async {
+    Map<String, dynamic> jsonAccount = expenses.toJson();
     try {
-      final response = await expensesRef.add(expenses);
-      return true;
+      var docref = expensesRef.doc();
+      expenses.id=docref.id;
+    await docref.set(expenses);
+
     } catch (err) {
-      return false;
+      rethrow;
     }
   }
 

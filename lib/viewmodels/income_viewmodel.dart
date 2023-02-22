@@ -14,7 +14,6 @@ class IncomeViewModel with ChangeNotifier {
     try {
       var response = await _incomRepository.getMyIncomes(uid);
       for (var element in response) {
-        print("::::: $response");
         _incomes.add(element.data());
       }
       notifyListeners();

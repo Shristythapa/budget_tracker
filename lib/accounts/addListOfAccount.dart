@@ -23,9 +23,16 @@ class _addListOfAccountState extends State<AddListOfAccount> {
   void initState() {
     _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
     _accViewModel = Provider.of<AccViewModel>(context, listen: false);
+<<<<<<< HEAD
     try {
       _accViewModel.getAccount(_authViewModel.user!.uid);
     } catch (e) {
+=======
+    try{
+    _accViewModel.getAccount(_authViewModel.user!.uid); 
+    
+    }catch(e){
+>>>>>>> 49020cc2cfa88760317d148044097d958b3137c9
       print(e);
     }
     super.initState();

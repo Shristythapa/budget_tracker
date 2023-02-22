@@ -1,4 +1,5 @@
 import 'package:budget_tracer_practice/viewmodels/expenses_category_viewmodel.dart';
+import 'package:budget_tracer_practice/viewmodels/expenses_viewmodel.dart';
 import 'package:control_style/decorated_input_border.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
@@ -8,6 +9,7 @@ import 'package:provider/provider.dart';
 import '../../common/custom_button.dart';
 import '../../common/custom_dropdown.dart';
 import '../../common/custom_textfield.dart';
+import '../../dashboard/main_dashboard/dashboard_body.dart';
 import '../../model/expenses_model.dart';
 import '../../viewmodels/account_viewmodel.dart';
 import '../../viewmodels/auth_viewmodel.dart';
@@ -34,26 +36,32 @@ class _AddExpensesState extends State<AddExpenses> {
   late AuthViewModel _auth;
   late CategoryViewModel _categoryViewModel;
   late AccViewModel _accountViewModel;
+  late ExpensesViewModel _expensesViewModel;
+  
+  get selectedAccount => null;
 
   void saveExpenses() async {
     _ui.loadState(true);
     var user_id = _auth.user!.uid;
     try {
-      final ExpensesModel data = ExpensesModel(
+      final ExpensesModel data = ExpensesModel(  
         amount: amount.text,
         title: title.text,
         date: date.text,
         categoryId: selectedCategory,
-        // accountId: selectedAccount,
-        userId: user_id,
+        userId: user_id, 
+        id: '',
       );
-      await _auth.addMyExpenses(data);
+      await _expensesViewModel.addExpenses(data);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Expenses added successfully")));
-      Navigator.of(context).pushNamed("/view_Expenses");
+  Navigator.pop(context);
+
+                 Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => DashboardBody()));
     } catch (e) {
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text("Error")));
+          .showSnackBar(SnackBar(content: Text(e.toString())));
     }
     _ui.loadState(false);
   }
@@ -67,6 +75,8 @@ class _AddExpensesState extends State<AddExpenses> {
           Provider.of<CategoryViewModel>(context, listen: false);
       getInit();
     });
+       _expensesViewModel=Provider.of<ExpensesViewModel>(context, listen: false);
+  
     super.initState();
   }
 
@@ -80,7 +90,7 @@ class _AddExpensesState extends State<AddExpenses> {
     _ui.loadState(false);
   }
 
-  String? selectedCategory;
+   String? selectedCategory;
 
   @override
   Widget build(BuildContext context) {

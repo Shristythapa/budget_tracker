@@ -71,7 +71,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
         leading: IconButton(
           onPressed: () {
               Navigator.of(context).pop();
-           //     Navigator.push(context,MaterialPageRoute(builder: (context) => const LandingPage() ));  
+          //   Navigator.push(context,MaterialPageRoute(builder: (context) => const LandingPage() ));  
           },
           icon: Icon(Icons.arrow_back_ios, size: 20),
           color: Colors.black,
