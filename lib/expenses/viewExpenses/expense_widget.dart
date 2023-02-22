@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import '../../common/custom_box.dart';
 import '../../common/custom_date_picker.dart';
 import '../../common/custom_icon.dart';
+import '../../dashboard/main_dashboard/dashboard_body.dart';
 
 class ExpenseWidget extends StatefulWidget {
    ExpenseWidget({super.key});
@@ -55,6 +56,9 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
               icon: Icons.close,
               onPressed: (){
                 Navigator.pop(context);
+
+                 Navigator.push(
+                      context, MaterialPageRoute(builder: (context) => DashboardBody()));
               },
               ),
               SizedBox(height: 20,),

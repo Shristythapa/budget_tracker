@@ -1,4 +1,4 @@
-import 'package:budget_tracer_practice/viewmodels/income_viewmodel.dart';
+import 'package:budget_tracer_practice/viewmodels/expenses_category_viewmodel.dart';
 import 'package:control_style/decorated_input_border.dart';
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:flutter/material.dart';
@@ -8,61 +8,54 @@ import 'package:provider/provider.dart';
 import '../../common/custom_button.dart';
 import '../../common/custom_dropdown.dart';
 import '../../common/custom_textfield.dart';
-import '../../model/income_model.dart';
+import '../../model/expenses_model.dart';
 import '../../viewmodels/account_viewmodel.dart';
 import '../../viewmodels/auth_viewmodel.dart';
-import '../../viewmodels/category_viewmodel.dart';
 import '../../viewmodels/global_ui_viewmodel.dart';
 
-class AddIncome extends StatefulWidget {
-  const AddIncome({super.key});
+
+class AddExpenses extends StatefulWidget {
+  const AddExpenses({super.key});
 
   @override
-  State<AddIncome> createState() => _AddIncomeState();
+  State<AddExpenses> createState() => _AddExpensesState();
 }
 
-class _AddIncomeState extends State<AddIncome> {
+class _AddExpensesState extends State<AddExpenses> {
   final _formKey = GlobalKey<FormState>();
 
   TextEditingController amount = new TextEditingController();
   TextEditingController title = new TextEditingController();
   TextEditingController date = new TextEditingController();
-  String incomeCategory = "";
-  String incomeAccount = "";
+  String expensesCategory = "";
+  String expensesAccount = "";
 
   late GlobalUIViewModel _ui;
   late AuthViewModel _auth;
   late CategoryViewModel _categoryViewModel;
   late AccViewModel _accountViewModel;
-  late IncomeViewModel _inc;
 
-  void saveIncome() async {
+  void saveExpenses() async {
     _ui.loadState(true);
     var user_id = _auth.user!.uid;
     try {
-      await _inc
-          .addIncome(IncomeModel(
-            id: "",
-            userId: user_id,
-            title: title.text,
-            amount: amount.text,
-            date: date.text,
-            categoryId: selectedCategory,
-          ))
-          .then((value) => null)
-          .catchError((e) {
-        ScaffoldMessenger.of(context)
-            .showSnackBar(SnackBar(content: Text(e.message.toString())));
-      });
-    } catch (err) {
+      final ExpensesModel data = ExpensesModel(
+        amount: amount.text,
+        title: title.text,
+        date: date.text,
+        categoryId: selectedCategory,
+        // accountId: selectedAccount,
+        userId: user_id,
+      );
+      await _auth.addMyExpenses(data);
       ScaffoldMessenger.of(context)
-          .showSnackBar(SnackBar(content: Text(err.toString())));
+          .showSnackBar(SnackBar(content: Text("Expenses added successfully")));
+      Navigator.of(context).pushNamed("/view_Expenses");
+    } catch (e) {
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Error")));
     }
     _ui.loadState(false);
-    ScaffoldMessenger.of(context)
-        .showSnackBar(SnackBar(content: Text("Income Added Sucessfully")));
-    Navigator.pop(context);
-    Navigator.of(context).pushNamed('/view_income');
   }
 
   @override
@@ -72,7 +65,6 @@ class _AddIncomeState extends State<AddIncome> {
       _auth = Provider.of<AuthViewModel>(context, listen: false);
       _categoryViewModel =
           Provider.of<CategoryViewModel>(context, listen: false);
-      _inc = Provider.of<IncomeViewModel>(context, listen: false);
       getInit();
     });
     super.initState();
@@ -103,7 +95,7 @@ class _AddIncomeState extends State<AddIncome> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    Text("Add Income",
+                    Text("Add Expenses",
                         style: TextStyle(
                           fontSize: 32,
                           fontWeight: FontWeight.w400,
@@ -295,7 +287,7 @@ class _AddIncomeState extends State<AddIncome> {
                     CustomButton(
                       title: "Add",
                       onPressed: () {
-                        saveIncome();
+                        saveExpenses();
                       },
                     ),
                     SizedBox(

@@ -9,21 +9,15 @@ import 'package:provider/provider.dart';
 
 class MyLandingPage extends StatefulWidget {
   const MyLandingPage({super.key});
-
   @override
   State<MyLandingPage> createState() => _MyLandingPageState();
 }
-
 class _MyLandingPageState extends State<MyLandingPage> {
-
   late AuthViewModel _authViewModel;
-
   void checkLogin() async{
     await Future.delayed(Duration(seconds: 0));
-    print("AUTH :: " + _authViewModel.user.toString());
-    print("AUTH :: " + (_authViewModel.user==null).toString());
     if(_authViewModel.user==null){
-      // Navigator.of(context).pushReplacementNamed("/landingPage");
+       Navigator.of(context).pushReplacementNamed("/landingPage");
     }else{
       Navigator.of(context).pushReplacementNamed("/dashboard");
     }

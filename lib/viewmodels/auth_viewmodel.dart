@@ -4,7 +4,9 @@ import 'package:budget_tracer_practice/repositories/income_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import '../model/expenses_model.dart';
 import '../repositories/auth_repositories.dart';
+import '../repositories/expenses_repository.dart';
 import '../services/firebase_service.dart';
 
 class AuthViewModel with ChangeNotifier {
@@ -112,6 +114,51 @@ class AuthViewModel with ChangeNotifier {
       await IncomRepository().removeIncome(incomeId, loggedInUser!.userId!);
 
       await getMyIncomes();
+      notifyListeners();
+    } catch (e) {}
+  }
+  List<ExpensesModel>? _myExpenses;
+  List<ExpensesModel>? get myExpenses => _myExpenses;
+
+    Future<void> getMyExpenses() async {
+    try {
+      var expensesResponse =
+          await ExpensesRepository().getMyExpenses(loggedInUser!.userId!);
+      _myExpenses = [];
+      for (var element in expensesResponse) {
+        _myExpenses!.add(element.data());
+      }
+      notifyListeners();
+    } catch (e) {
+      print(e);
+      _myExpenses = null;
+      notifyListeners();
+    }
+  }
+
+    Future<void> addMyExpenses(ExpensesModel expenses) async {
+    try {
+      await ExpensesRepository().addExpenses(expenses: expenses);
+
+      await getMyExpenses();
+      notifyListeners();
+    } catch (e) {}
+  }
+
+   Future<void> editMyExpenses(ExpensesModel expenses,String expensesId) async {
+    try {
+      await ExpensesRepository().editExpenses(expenses: expenses, expensesId: expensesId);
+
+      await getMyExpenses();
+      notifyListeners();
+    } catch (e) {}
+  }
+
+   Future<void> deleteMyExpenses(String expensesId) async {
+    try {
+      await ExpensesRepository().removeExpenses(expensesId, loggedInUser!.userId!);
+
+      await getMyExpenses();
       notifyListeners();
     } catch (e) {}
   }

@@ -1,55 +1,14 @@
-import 'package:budget_tracer_practice/model/income_model.dart';
 import 'package:budget_tracer_practice/viewmodels/auth_viewmodel.dart';
 import 'package:budget_tracer_practice/viewmodels/income_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-
 import '../../../common/custom_date_picker.dart';
 import '../../../common/custom_icon.dart';
 import '../../common/custom_box.dart';
+import '../../dashboard/main_dashboard/dashboard_body.dart';
 
 class IncomeWidget extends StatefulWidget {
   IncomeWidget({super.key});
-
-  // final List<Map<String,dynamic>>_items=[
-  //   {
-  //     "title": "Salary",
-  //     "rs":"Rs. 4000"
-  //   },
-  //   {
-  //     "title": "Frelancing",
-  //     "rs":"Rs. 3000"
-  //   },
-  //   {
-  //     "title": "Marketing",
-  //     "rs":"Rs. 10000"
-  //   },
-  //   {
-  //     "title": "Salary",
-  //     "rs":"Rs. 4000"
-  //   },
-  //   {
-  //     "title": "Frelancing",
-  //     "rs":"Rs. 3000"
-  //   },
-  //   {
-  //     "title": "Marketing",
-  //     "rs":"Rs. 10000"
-  //   },
-  //   {
-  //     "title": "Salary",
-  //     "rs":"Rs. 4000"
-  //   },
-  //   {
-  //     "title": "Frelancing",
-  //     "rs":"Rs. 3000"
-  //   },
-  //   {
-  //     "title": "Marketing",
-  //     "rs":"Rs. 10000"
-  //   },
-  // ];
-
   @override
   State<IncomeWidget> createState() => _IncomeWidgetState();
 }
@@ -57,15 +16,38 @@ class IncomeWidget extends StatefulWidget {
 class _IncomeWidgetState extends State<IncomeWidget> {
   late AuthViewModel _authViewModel;
   late IncomeViewModel _incomeViewModel;
+
+  // void initState() {
+  //   _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
+  //   _incomeViewModel = Provider.of<IncomeViewModel>(context, listen: false);
+  //   try {
+  //     _incomeViewModel.getIncomes(_authViewModel.user!.uid);
+  //   } catch (e) {
+  //     print(e);
+  //   }
+  //   super.initState();
+  // }
+  @override
+  void initState() {
+    _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
+    _incomeViewModel = Provider.of<IncomeViewModel>(context, listen: false);
+    try {
+      _incomeViewModel.getIncomes(_authViewModel.user!.uid);
+    } catch (e) {
+      print(e);
+    }
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     DateTime? selectedDate;
 
-    return Scaffold(
-        backgroundColor: Colors.white,
-        body: Consumer<IncomeViewModel>(
-          builder: (context, incomeVM, child) {
-            return Container(
+    return Consumer<IncomeViewModel>(
+      builder: (context, incomeVM, child) {
+        return Scaffold(
+            backgroundColor: Colors.white,
+            body: Container(
               margin: EdgeInsets.only(
                   top: MediaQuery.of(context).viewPadding.top + 10),
               padding: EdgeInsets.symmetric(horizontal: 14.0),
@@ -76,6 +58,10 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                       icon: Icons.close,
                       onPressed: () {
                         Navigator.pop(context);
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => DashboardBody()));
                       }),
                   SizedBox(
                     height: 20,
@@ -101,55 +87,17 @@ class _IncomeWidgetState extends State<IncomeWidget> {
                       ),
                     ],
                   ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemBuilder: (context, index) {
-                        Column(
-                          children: [
-                            ...incomeVM.incomes.map((e) => IncomeCard(e))
-                          ],
-                        );
-                        // return CustomBox(
-                        // title:widget._items[index]["title"],
-                        // rs:widget._items[index]["rs"],
-                        // );
-                      },
-                      // itemCount:widget._items.length,
-                    ),
+                  ListView(
+                    shrinkWrap: true,
+                    children: [
+                      ...incomeVM.incomes.map((e) =>
+                          CustomBox(id: e.id, title: e.title, rs: e.amount))
+                    ],
                   ),
                 ],
               ),
-            );
-          },
-        ));
-  }
-
-  Widget IncomeCard(IncomeModel e) {
-    return Container(
-      margin: EdgeInsets.only(bottom: 20),
-      decoration: BoxDecoration(
-        borderRadius: BorderRadius.all(Radius.circular(12)),
-        color: Colors.grey[300],
-      ),
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 30, vertical: 25),
-        child: Row(
-          children: [
-            Expanded(
-              child: Text(e.categoryId.toString(),
-                  style: TextStyle(
-                    fontSize: 16,
-                    fontWeight: FontWeight.w400,
-                  )),
-            ),
-            Text("Rs" + e.amount.toString(),
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w400,
-                )),
-          ],
-        ),
-      ),
+            ));
+      },
     );
   }
 }

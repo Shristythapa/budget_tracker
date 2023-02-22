@@ -31,18 +31,18 @@ class MySavingsDetails extends StatelessWidget {
         // Overide the default Back button
         automaticallyImplyLeading: false,
         leadingWidth: 100,
-        leading: IconButton(
-          onPressed: () => Navigator.of(context).pop(),
-          icon: const Icon(
-            Icons.arrow_left_sharp,
-            color: Colors.black,
-            size: 40,
-          ),
-          style: ElevatedButton.styleFrom(
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-          ),
-        ),
+        // leading: IconButton(
+        //   onPressed: () => Navigator.of(context).pop(),
+        //   icon: const Icon(
+        //     Icons.arrow_left_sharp,
+        //     color: Colors.black,
+        //     size: 40,
+        //   ),
+        //   style: ElevatedButton.styleFrom(
+        //     elevation: 0,
+        //     backgroundColor: Colors.transparent,
+        //   ),
+        // ),
 
         // other stuff
       ),

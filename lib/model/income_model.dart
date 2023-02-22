@@ -1,7 +1,3 @@
-// To parse this JSON data, do
-//
-//     final incomeModel = incomeModelFromJson(jsonString);
-
 import 'dart:convert';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -40,7 +36,7 @@ class IncomeModel {
   factory IncomeModel.fromFirebaseSnapshot(
           DocumentSnapshot<Map<String, dynamic>> json) =>
       IncomeModel(
-        id: json.id,
+        id: json["id"],
         userId: json["user_id"],
         title: json["title"],
         amount: json["amount"],

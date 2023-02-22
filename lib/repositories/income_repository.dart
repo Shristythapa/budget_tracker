@@ -35,6 +35,7 @@ class IncomRepository {
       rethrow;
     }
   }
+
   Future<List<QueryDocumentSnapshot<IncomeModel>>> getIncomeByAccount(
       String id) async {
     try {
@@ -51,9 +52,8 @@ class IncomRepository {
   Future<List<QueryDocumentSnapshot<IncomeModel>>> getIncomeFromList(
       List<String> incomeIds) async {
     try {
-      final response = await incomeRef
-          .where(FieldPath.documentId, whereIn: incomeIds)
-          .get();
+      final response =
+          await incomeRef.where(FieldPath.documentId, whereIn: incomeIds).get();
       var incomes = response.docs;
       return incomes;
     } catch (err) {
@@ -63,10 +63,9 @@ class IncomRepository {
   }
 
   Future<List<QueryDocumentSnapshot<IncomeModel>>> getMyIncomes(
-      String userId) async {
+      String? userId) async {
     try {
-      final response =
-          await incomeRef.where("user_id", isEqualTo: userId).get();
+      final response = await incomeRef.where("userId", isEqualTo: userId).get();
       var incomes = response.docs;
       return incomes;
     } catch (err) {
@@ -103,11 +102,13 @@ class IncomRepository {
   }
 
   Future<bool?> addIncomes({required IncomeModel income}) async {
+    Map<String, dynamic> jsonAccount = income.toJson();
     try {
-      final response = await incomeRef.add(income);
-      return true;
+      var docref = incomeRef.doc();
+      income.id = docref.id;
+      await docref.set(income);
     } catch (err) {
-      return false;
+      rethrow;
     }
   }
 

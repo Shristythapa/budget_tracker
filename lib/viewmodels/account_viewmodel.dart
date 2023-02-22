@@ -5,9 +5,7 @@ import '../model/account_model.dart';
 import '../repositories/account_repositories.dart';
 
 class AccViewModel  with ChangeNotifier{
-
   AccountRepo _accountRepo = AccountRepo();
-
   List<Account> _allAccount=[];
   List<Account> get allAccount => _allAccount;
 
