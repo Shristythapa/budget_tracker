@@ -7,6 +7,8 @@ import 'package:provider/provider.dart';
 
 import 'accounts/addAccount.dart';
 import 'accounts/addListOfAccount.dart';
+import 'addsavings/addsaving.dart';
+
 import 'balanceTransfer/balance_transfer_screen.dart';
 import 'dashboard/main_dashboard/dashboard_body.dart';
 import 'dashboard/main_dashboard/sidebar.dart';
@@ -15,10 +17,13 @@ import 'income/addIncome/addincome.dart';
 import 'income/viewIncome/view_income_screen.dart';
 import 'landingpage.dart';
 import 'login.dart';
+
 import 'signup.dart';
 import 'viewmodels/account_viewmodel.dart';
 import 'viewmodels/auth_viewmodel.dart';
 import 'viewmodels/global_ui_viewmodel.dart';
+
+import 'viewmodels/saving_viewmodel.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -39,6 +44,7 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => AccViewModel()),
         ChangeNotifierProvider(create: (_) => CategoryViewModel()),
         ChangeNotifierProvider(create: (_) => IncomeViewModel()),
+        ChangeNotifierProvider(create: (_) => SavingViewModel()),
       ],
       child: GlobalLoaderOverlay(
         useDefaultLoading: false,
@@ -60,7 +66,7 @@ class MyApp extends StatelessWidget {
               debugShowCheckedModeBanner: false,
               title: 'Flutter Demo',
               theme: ThemeData(),
-              initialRoute: "/landingPage",
+              initialRoute: "/add_saving",
               routes: {
                 "/landingPage": (BuildContext context) => MyLandingPage(),
                 "/login": (BuildContext context) => loginScreen(),
@@ -75,6 +81,7 @@ class MyApp extends StatelessWidget {
                 "/add_income": (BuildContext context) => AddIncome(),
                 "/view_income": (BuildContext context) => IncomeScreen(),
                 "/dashboard": (BuildContext context) => DashboardBody(),
+                "/add_saving": (BuildContext context) => addsaving(),
               },
             );
           },
