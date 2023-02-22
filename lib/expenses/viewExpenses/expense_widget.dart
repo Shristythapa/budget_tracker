@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 import '../../common/custom_box.dart';
 import '../../common/custom_date_picker.dart';
 import '../../common/custom_icon.dart';
 import '../../dashboard/main_dashboard/dashboard_body.dart';
+import '../../viewmodels/auth_viewmodel.dart';
+import '../../viewmodels/expenses_viewmodel.dart';
 
 class ExpenseWidget extends StatefulWidget {
    ExpenseWidget({super.key});
@@ -40,11 +43,20 @@ class ExpenseWidget extends StatefulWidget {
 }
 
 class _ExpenseWidgetState extends State<ExpenseWidget> {
+   late AuthViewModel _authViewModel;
+  late ExpensesViewModel _expensesViewModel;
+   @override
+  void initState() {
+     _authViewModel =Provider.of<AuthViewModel>(context,listen: false);
+     _expensesViewModel=Provider.of<ExpensesViewModel>(context, listen: false);
+    super.initState();
+  }
   @override
   Widget build(BuildContext context) {
      DateTime? selectedDate;
-
-    return Scaffold(
+     return Consumer<ExpensesViewModel>(
+      builder:(context, taskVM, child){
+           return Scaffold(
       backgroundColor: Colors.white,
       body:Container(
         margin:EdgeInsets.only(top:MediaQuery.of(context).viewPadding.top+10),
@@ -79,22 +91,19 @@ class _ExpenseWidgetState extends State<ExpenseWidget> {
                      CustomDatePicker(title: "Year",),
                    ],
                  ),
-                  Expanded(
-                    child: ListView.builder(
-                      itemBuilder:(context, index){
-                        return CustomBox(
-                          title:widget._items[index]["title"],
-                          rs:widget._items[index]["rs"],
-                        );
-                      },
-                      itemCount:widget._items.length,
-                    ),
-                  ),
-
+                 
+                 ListView(
+                  shrinkWrap: true,
+                  children: [
+                    ...taskVM.expenses.map((e) => CustomBox(title: e.title, rs:e.amount))
+                  ],
+                 )
 
           ],
         ),
       )
     );
+      } );
+    
   }
 }
