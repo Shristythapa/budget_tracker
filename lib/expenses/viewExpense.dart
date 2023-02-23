@@ -1,46 +1,41 @@
-import 'package:budget_tracer_practice/viewmodels/auth_viewmodel.dart';
-import 'package:budget_tracer_practice/viewmodels/expenses_viewmodel.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:provider/provider.dart';
 
-class expenses extends StatefulWidget {
-  const expenses({super.key});
+import '../viewmodels/auth_viewmodel.dart';
+import '../viewmodels/expenses_viewmodel.dart';
+
+class food extends StatefulWidget {
+  const food({super.key});
 
   @override
-  State<expenses> createState() => _expensesState();
+  State<food> createState() => _foodState();
+  
 }
 
-class _expensesState extends State<expenses> {
+class _foodState extends State<food> {
   TextEditingController food = new TextEditingController();
   TextEditingController date = new TextEditingController();
-  late AuthViewModel _authViewModel;
-  late ExpensesViewModel _expensesViewModel;
-   @override
-  void initState() {
-     _authViewModel =Provider.of<AuthViewModel>(context,listen: false);
-     _expensesViewModel=Provider.of<ExpensesViewModel>(context, listen: false);
-    super.initState();
-  }
+   
   final form = GlobalKey<FormState>();
   Future<bool?> showWarning(BuildContext context) async {
     context:
     context;
     builder:
-        (context) => AlertDialog(
-      title: Text("Do you want to delete?"),
-      actions: [
-        ElevatedButton(
-          child: Text('No'),
-          onPressed: () => Navigator.pop(context, false),
-        ),
-        ElevatedButton(
-          child: Text('Yes'),
-          onPressed: () => Navigator.pop(context, true),
-        )
-      ],
-    );
+    (context) => AlertDialog(
+          title: Text("Do you want to delete?"),
+          actions: [
+            ElevatedButton(
+              child: Text('No'),
+              onPressed: () => Navigator.pop(context, false),
+            ),
+            ElevatedButton(
+              child: Text('Yes'),
+              onPressed: () => Navigator.pop(context, true),
+            )
+          ],
+        );
   }
 
   @override
@@ -104,7 +99,8 @@ class _expensesState extends State<expenses> {
               child: TextFormField(
                   controller: food,
                   decoration: InputDecoration(
-                      hintText: "                                     Salary",
+                      hintText:
+                          "                                     Food for Week",
                       border: InputBorder.none)),
             ),
             SizedBox(
@@ -177,7 +173,7 @@ class _expensesState extends State<expenses> {
                   controller: food,
                   decoration: InputDecoration(
                       hintText:
-                      "                                     Himalayan Bank",
+                          "                                     Himalayan Bank",
                       border: InputBorder.none)),
             ),
             const SizedBox(
@@ -201,7 +197,7 @@ class _expensesState extends State<expenses> {
               child: TextFormField(
                   controller: food,
                   decoration: InputDecoration(
-                      hintText: "                                     Salary",
+                      hintText: "                                     food",
                       suffixIcon: Icon(Icons.arrow_drop_down),
                       border: InputBorder.none)),
             ),

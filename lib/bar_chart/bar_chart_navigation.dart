@@ -1,4 +1,3 @@
-import 'package:budget_tracer_practice/dashboard/main_dashboard/sidebar.dart';
 import 'package:flutter/material.dart';
 
 import '../category/report_header.dart';
@@ -28,16 +27,7 @@ class _BarChartNavigationState extends State<BarChartNavigation> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xFFA77ABA2),
-          leading:
-           
-          IconButton(icon: Icon(Icons.arrow_back), onPressed: () { Navigator.pop(context);
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => sidebar()),
-                                  ); },
-          ),
-           
+          leading: Icon(Icons.arrow_back),
           title: Padding(
             padding: EdgeInsets.only(left: 55),
             child: Text(

@@ -10,7 +10,7 @@ class IncomeViewModel with ChangeNotifier {
 
   Future<void> getIncomes(String userid) async {
     _incomes = [];
-     print("IncomeViewModelReached");
+    print("IncomeViewModelReached");
     try {
       var response = await _incomRepository.getIncomeByAccount(userid);
       for (var element in response) {
@@ -32,13 +32,13 @@ class IncomeViewModel with ChangeNotifier {
       notifyListeners();
     }
   }
-   Future<void> deleteMyIncome(String incomeId,String uid) async {
+  Future<void> deleteMyIncome(String incomeId,String uid) async {
     try {
       await _incomRepository.removeIncome(incomeId,uid).then(((value) {
         _incomRepository.getIncomeByAccount(uid);
       }));
 
-    
+
       notifyListeners();
     } catch (e) {
       rethrow;

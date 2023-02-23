@@ -37,28 +37,28 @@ class _AddExpensesState extends State<AddExpenses> {
   late CategoryViewModel _categoryViewModel;
   late AccViewModel _accountViewModel;
   late ExpensesViewModel _expensesViewModel;
-  
+
   get selectedAccount => null;
 
   void saveExpenses() async {
     _ui.loadState(true);
     var user_id = _auth.user!.uid;
     try {
-      final ExpensesModel data = ExpensesModel(  
+      final ExpensesModel data = ExpensesModel(
         amount: amount.text,
         title: title.text,
         date: date.text,
         categoryId: selectedCategory,
-        userId: user_id, 
+        userId: user_id,
         id: '',
       );
       await _expensesViewModel.addExpenses(data);
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text("Expenses added successfully")));
-  Navigator.pop(context);
+      Navigator.pop(context);
 
-                 Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => DashboardBody()));
+      Navigator.push(
+          context, MaterialPageRoute(builder: (context) => DashboardBody()));
     } catch (e) {
       ScaffoldMessenger.of(context)
           .showSnackBar(SnackBar(content: Text(e.toString())));
@@ -75,8 +75,8 @@ class _AddExpensesState extends State<AddExpenses> {
           Provider.of<CategoryViewModel>(context, listen: false);
       getInit();
     });
-       _expensesViewModel=Provider.of<ExpensesViewModel>(context, listen: false);
-  
+    _expensesViewModel=Provider.of<ExpensesViewModel>(context, listen: false);
+
     super.initState();
   }
 
@@ -90,7 +90,7 @@ class _AddExpensesState extends State<AddExpenses> {
     _ui.loadState(false);
   }
 
-   String? selectedCategory;
+  String? selectedCategory;
 
   @override
   Widget build(BuildContext context) {

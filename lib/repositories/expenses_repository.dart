@@ -14,14 +14,14 @@ class ExpensesRepository {
   );
 
   Future<List<QueryDocumentSnapshot<ExpensesModel>>> getAllExpenses() async {
-    
+
     try {
       final response = await expensesRef.get();
       var incomes = response.docs;
       print("expenseHere $response");
       return incomes;
     } catch (err) {
-    
+
       print("expenseErrorOcured $err");
       rethrow;
     }
@@ -68,7 +68,7 @@ class ExpensesRepository {
 
   Future<List<QueryDocumentSnapshot<ExpensesModel>>> getMyExpenses(
       String? userId) async {
-        print("I am ui d $userId");
+    print("I am ui d $userId");
     try {
       final response =
       await expensesRef.where("userId", isEqualTo: userId).get();
@@ -114,7 +114,7 @@ class ExpensesRepository {
     try {
       var docref = expensesRef.doc();
       expenses.id=docref.id;
-    await docref.set(expenses);
+      await docref.set(expenses);
 
     } catch (err) {
       rethrow;
@@ -124,9 +124,9 @@ class ExpensesRepository {
   Future<bool?> editExpenses(
       {required String expensesId, required String userId,required String name, required String amount}) async {
     try {
-       final response = await expensesRef.doc(expensesId).get();
-       String? cate=response.data()!.categoryId;
-       String? date = response.data()!.date;
+      final response = await expensesRef.doc(expensesId).get();
+      String? cate=response.data()!.categoryId;
+      String? date = response.data()!.date;
 
       final ans = await expensesRef.doc(expensesId).set(ExpensesModel(id: expensesId, userId: userId, categoryId: cate, date: date, title: name, amount: amount)) ;
       return true;

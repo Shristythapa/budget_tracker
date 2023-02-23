@@ -1,4 +1,3 @@
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +12,7 @@ class ExpensesViewModel with ChangeNotifier {
 
   Future<void> getExpenses(String uid) async {
     print("getfunctionrun");
-  _expenses = [];
+    _expenses = [];
     //notifyListeners();
     try {
       var response = await _expensesRepository.getMyExpenses(uid);
@@ -24,12 +23,12 @@ class ExpensesViewModel with ChangeNotifier {
       }
       notifyListeners();
     } catch (e) {
-    
+
       print("I error:: $e");
       _expenses = [];
       notifyListeners();
     }
-   // return _expenses;
+    // return _expenses;
   }
 
   Future<void> addExpenses(ExpensesModel expenses) async {
@@ -42,7 +41,7 @@ class ExpensesViewModel with ChangeNotifier {
   Future<void> deleteExpense(String expenseId, String userId) async{
     try{
       await _expensesRepository.removeExpenses(expenseId, userId).then((value) => _expensesRepository.getMyExpenses(userId));
-     notifyListeners();
+      notifyListeners();
     }catch(e){
       rethrow;
     }

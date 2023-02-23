@@ -13,12 +13,12 @@ String expensesModelToJson(ExpensesModel data) => json.encode(data.toJson());
 
 class ExpensesModel {
   ExpensesModel({
-     this.id,
-     this.userId,
-     this.title,
-     this.amount,
-     this.date,
-     this.categoryId, 
+    this.id,
+    this.userId,
+    this.title,
+    this.amount,
+    this.date,
+    this.categoryId,
   });
 
   String? id;

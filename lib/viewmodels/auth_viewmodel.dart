@@ -109,7 +109,14 @@ class AuthViewModel with ChangeNotifier {
     } catch (e) {}
   }
 
-  
+   Future<void> deleteMyIncome(String incomeId) async {
+    try {
+      await IncomRepository().removeIncome(incomeId, loggedInUser!.userId!);
+
+      await getMyIncomes();
+      notifyListeners();
+    } catch (e) {}
+  }
   List<ExpensesModel>? _myExpenses;
   List<ExpensesModel>? get myExpenses => _myExpenses;
 
@@ -138,6 +145,14 @@ class AuthViewModel with ChangeNotifier {
     } catch (e) {}
   }
 
+  //  Future<void> editMyExpenses(ExpensesModel expenses,String expensesId) async {
+  //   try {
+  //     await ExpensesRepository().editExpenses(expenses: expenses, expensesId: expensesId);
+  //
+  //     await getMyExpenses();
+  //     notifyListeners();
+  //   } catch (e) {}
+  // }
 
    Future<void> deleteMyExpenses(String expensesId) async {
     try {

@@ -9,7 +9,7 @@ import '../../viewmodels/auth_viewmodel.dart';
 import '../../viewmodels/expenses_viewmodel.dart';
 
 class ExpenseWidget extends StatefulWidget {
-   ExpenseWidget({super.key});
+  ExpenseWidget({super.key});
 
 
   @override
@@ -17,74 +17,74 @@ class ExpenseWidget extends StatefulWidget {
 }
 
 class _ExpenseWidgetState extends State<ExpenseWidget> {
-   late AuthViewModel _authViewModel;
+  late AuthViewModel _authViewModel;
   late ExpensesViewModel _expensesViewModel;
-   @override
+  @override
   void initState() {
-     _authViewModel =Provider.of<AuthViewModel>(context,listen: false);
-     _expensesViewModel=Provider.of<ExpensesViewModel>(context, listen: false);
-     try{
+    _authViewModel =Provider.of<AuthViewModel>(context,listen: false);
+    _expensesViewModel=Provider.of<ExpensesViewModel>(context, listen: false);
+    try{
       _expensesViewModel.getExpenses(_authViewModel.user!.uid);
-     }catch(e){
+    }catch(e){
       print(e);
-     }
+    }
     super.initState();
   }
   @override
   Widget build(BuildContext context) {
-     DateTime? selectedDate;
-     return Consumer<ExpensesViewModel>(
-      builder:(context, taskVM, child){
-           return Scaffold(
-      backgroundColor: Colors.white,
-      body:Container(
-        margin:EdgeInsets.only(top:MediaQuery.of(context).viewPadding.top+10),
-        padding: EdgeInsets.symmetric(horizontal: 14.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            CustomIcon(
-              icon: Icons.close,
-              onPressed: (){
-                Navigator.pop(context);
+    DateTime? selectedDate;
+    return Consumer<ExpensesViewModel>(
+        builder:(context, taskVM, child){
+          return Scaffold(
+              backgroundColor: Colors.white,
+              body:Container(
+                margin:EdgeInsets.only(top:MediaQuery.of(context).viewPadding.top+10),
+                padding: EdgeInsets.symmetric(horizontal: 14.0),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    CustomIcon(
+                      icon: Icons.close,
+                      onPressed: (){
+                        Navigator.pop(context);
 
-                 Navigator.push(
-                      context, MaterialPageRoute(builder: (context) => DashboardBody()));
-              },
-              ),
-              SizedBox(height: 20,),
-              Center(
-                child: Text(
-                  "Expenses",
-                  style:TextStyle(
-                   fontSize:32,
-                   fontWeight: FontWeight.w400,
-                 )
-                  ),
-              ),
-                  SizedBox(height: 5,),
-                 Row(
-                   children: [
-                     CustomDatePicker(title: "Month",),
-                     SizedBox(width:150),
-                     CustomDatePicker(title: "Year",),
-                   ],
-                 ),
-                 
-                  ListView(
-                    shrinkWrap: true,
-                    children: [
-                      ...taskVM.expenses.map((e) =>
-                       CustomBox(id: e.id!,userId:e.userId!,title: e.title!, rs:e.amount!, ))
-                    ],
-                   ),
-                
+                        Navigator.push(
+                            context, MaterialPageRoute(builder: (context) => DashboardBody()));
+                      },
+                    ),
+                    SizedBox(height: 20,),
+                    Center(
+                      child: Text(
+                          "Expenses",
+                          style:TextStyle(
+                            fontSize:32,
+                            fontWeight: FontWeight.w400,
+                          )
+                      ),
+                    ),
+                    SizedBox(height: 5,),
+                    Row(
+                      children: [
+                        CustomDatePicker(title: "Month",),
+                        SizedBox(width:150),
+                        CustomDatePicker(title: "Year",),
+                      ],
+                    ),
 
-          ],
-        ),
-      )
-    );
-      } );
-    
+                    ListView(
+                      shrinkWrap: true,
+                      children: [
+                        ...taskVM.expenses.map((e) =>
+                            CustomBox(id: e.id!,userId:e.userId!,title: e.title!, rs:e.amount!, ))
+                      ],
+                    ),
+
+
+                  ],
+                ),
+              )
+          );
+        } );
+
   }
 }

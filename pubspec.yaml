@@ -51,7 +51,6 @@ dependencies:
   day_night_switcher: ^0.2.0+1
   animated_theme_switcher: ^2.0.6
   shared_preferences: ^2.0.15
-  fake_cloud_firestore: ^2.0.0
   charts_flutter_new: ^0.12.0
   pie_chart: ^5.3.2
   firebase_auth_mocks: ^0.9.2

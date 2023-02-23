@@ -8,44 +8,44 @@ import 'package:provider/provider.dart';
 import '../../viewmodels/auth_viewmodel.dart';
 
 class income extends StatefulWidget {
- 
-   final String title;
+
+  final String title;
   final String rs;
   final String id;
   final String userId;
   final String incomeId;
- const income({super.key,required this.incomeId, required this.id, required this.rs, required this.title, required this.userId});
+  const income({super.key,required this.incomeId, required this.id, required this.rs, required this.title, required this.userId});
   @override
   State<income> createState() => _incomeState();
 }
 
 class _incomeState extends State<income> {
- TextEditingController amount = new TextEditingController();
+  TextEditingController amount = new TextEditingController();
   TextEditingController account = new TextEditingController();
 
-  
+
   final form = GlobalKey<FormState>();
   Future<bool?> showWarning(BuildContext context) async {
     context:
     context;
     builder:
-    (context) => AlertDialog(
-          title: Text("Do you want to delete?"),
-          actions: [
-            ElevatedButton(
-              child: Text('No'),
-              onPressed: () => Navigator.pop(context, false),
-            ),
-            ElevatedButton(
-              child: Text('Yes'),
-              onPressed: () {
+        (context) => AlertDialog(
+      title: Text("Do you want to delete?"),
+      actions: [
+        ElevatedButton(
+          child: Text('No'),
+          onPressed: () => Navigator.pop(context, false),
+        ),
+        ElevatedButton(
+            child: Text('Yes'),
+            onPressed: () {
 
-              }
-            )
-          ],
-        );
+            }
+        )
+      ],
+    );
   }
-  
+
   late AuthViewModel _authViewModel;
   late IncomeViewModel _income;
   @override
@@ -54,7 +54,7 @@ class _incomeState extends State<income> {
     _income = Provider.of<IncomeViewModel>(context, listen: false);
     account.text = widget.title.toString();
     amount.text = widget.rs.toString();
-  
+
 
     super.initState();
   }
@@ -64,6 +64,27 @@ class _incomeState extends State<income> {
 
   {
     return Scaffold(
+      appBar: AppBar(
+        backgroundColor: Color.fromARGB(248, 133, 191, 180),
+        toolbarHeight: MediaQuery.of(context).size.height / 100 * 10,
+        leading: IconButton(
+            onPressed: (() {
+              Navigator.pop(context);
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => IncomeScreen()));
+            }),
+            icon: Icon(Icons.arrow_back)),
+        title: Center(
+          child: Text(
+            "Statements",
+            style: TextStyle(
+              fontSize: 30,
+              fontWeight: FontWeight.bold,
+              color: Colors.white,
+            ),
+          ),
+        ),
+      ),
       backgroundColor: Color.fromARGB(255, 251, 251, 251),
       body: Form(
         key: form,
@@ -83,12 +104,7 @@ class _incomeState extends State<income> {
                 child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: <Widget>[
-                      Text("Statements",
-                          style: TextStyle(
-                            fontSize: 30,
-                            color: Color.fromARGB(255, 20, 20, 20),
-                            fontWeight: FontWeight.bold,
-                          ))
+                     
                     ])),
             const SizedBox(
               height: 20,
@@ -113,7 +129,7 @@ class _incomeState extends State<income> {
               child: TextFormField(
                   controller: account,
                   decoration: InputDecoration(
-                  
+
                       border: InputBorder.none)),
             ),
             SizedBox(
@@ -226,14 +242,14 @@ class _incomeState extends State<income> {
               ),
               child: ElevatedButton(
                 onPressed: (() {
-                 _income.deleteMyIncome(widget.incomeId,widget.userId).then((value){
-                         Navigator.pop(context);
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => IncomeScreen()),
-                      );
-                 });
+                  _income.deleteMyIncome(widget.incomeId,widget.userId).then((value){
+                    Navigator.pop(context);
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => IncomeScreen()),
+                    );
+                  });
                 }),
                 child: Text(
                   "Delete",

@@ -34,13 +34,11 @@ class _MyAccountDetailsState extends State<MyAccountDetails> {
     amount.text = widget.accountAmount.toString();
     super.initState();
   }
-
   @override
   void dispose() {
     amount.dispose();
     super.dispose();
   }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -92,6 +90,7 @@ class _MyAccountDetailsState extends State<MyAccountDetails> {
             ),
             ElevatedButton(
               onPressed: () {
+        
                 _acc
                     .updateAccount(Account(
                         accountId: widget.accountId,
@@ -144,19 +143,20 @@ class _MyAccountDetailsState extends State<MyAccountDetails> {
               },
               child: InkWell(
                 onTap: (() {
-                  _acc
-                      .deleteAccount(Account(
-                          accountId: widget.accountId,
-                          userId: _auth.user!.uid,
-                          accountName: widget.accountName,
-                          balanceAmount: int.parse(amount.text)))
-                      .then((value) {
-                    Navigator.of(context).pop();
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const AddListOfAccount()));
-                  });
+                  _acc.deleteAccount(Account(
+                        accountId: widget.accountId,
+                        userId: _auth.user!.uid,
+                        accountName: widget.accountName,
+                        balanceAmount: int.parse(amount.text)))
+                        .then((value){
+                           Navigator.of(context).pop();
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const AddListOfAccount()));
+                        }
+                        );
+
                 }),
                 child: Text(
                   "Delete",
