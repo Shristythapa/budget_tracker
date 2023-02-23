@@ -81,6 +81,7 @@ class IncomRepository {
   }
 
   Future<bool> removeIncome(String incomeId, String userId) async {
+    print("reporeached");
     try {
       final response = await incomeRef.doc(incomeId).get();
       if (response.data()!.userId != userId) {

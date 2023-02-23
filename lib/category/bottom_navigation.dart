@@ -1,4 +1,5 @@
 import 'package:budget_tracer_practice/category/income_category_body.dart';
+import 'package:budget_tracer_practice/dashboard/main_dashboard/sidebar.dart';
 import 'package:flutter/material.dart';
 import '../common/custom_date_picker.dart';
 import 'expense_category_body.dart';
@@ -15,10 +16,11 @@ class CustomBottomNavigation extends StatefulWidget {
 class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
   int idx = 0;
   List<Widget> ReportCategorySCreen = [
+    ExpenseCategoryBody(),
     Center(
       child: Text("Overall"),
     ),
-    ExpenseCategoryBody(),
+    
     IncomeCategoryBody(),
   ];
 
@@ -27,7 +29,16 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
     return Scaffold(
         appBar: AppBar(
           backgroundColor: Color(0xFFA77ABA2),
-          leading: Icon(Icons.arrow_back),
+          leading: IconButton(
+            icon: Icon(Icons.arrow_back), onPressed: () { 
+              Navigator.pop(context);
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => sidebar()),
+                                  );
+             },
+          ),
           title: Padding(
             padding: EdgeInsets.only(left: 55),
             child: Text(

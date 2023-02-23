@@ -32,7 +32,9 @@ class IncomeViewModel with ChangeNotifier {
       notifyListeners();
     }
   }
+
   Future<void> deleteMyIncome(String incomeId,String uid) async {
+    print("this is my income id $incomeId");
     try {
       await _incomRepository.removeIncome(incomeId,uid).then(((value) {
         _incomRepository.getIncomeByAccount(uid);
@@ -44,4 +46,5 @@ class IncomeViewModel with ChangeNotifier {
       rethrow;
     }
   }
+
 }

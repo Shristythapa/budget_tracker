@@ -39,6 +39,14 @@ class _incomeState extends State<income> {
         ElevatedButton(
             child: Text('Yes'),
             onPressed: () {
+                 _income.deleteMyIncome(widget.incomeId,widget.userId).then((value){
+                         Navigator.pop(context);
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => IncomeScreen()),
+                      );
+                 });
 
             }
         )
@@ -242,14 +250,7 @@ class _incomeState extends State<income> {
               ),
               child: ElevatedButton(
                 onPressed: (() {
-                  _income.deleteMyIncome(widget.incomeId,widget.userId).then((value){
-                    Navigator.pop(context);
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => IncomeScreen()),
-                    );
-                  });
+               
                 }),
                 child: Text(
                   "Delete",

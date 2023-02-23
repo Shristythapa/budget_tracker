@@ -64,13 +64,13 @@ class _AddMyAccountState extends State<AddMyAccount> {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: MediaQuery.of(context).size.height,
-      color: Color(0xFFD9D9D9),
+      color: Colors.white,
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: PreferredSize(
           preferredSize: Size.fromHeight(100.0),
           child: AppBar(
-            backgroundColor: Color(0xFF296157),
+            backgroundColor: Color(0xFF77ABA2),
             title: Padding(
               padding: EdgeInsets.only(top: 30),
               child: Text(
@@ -82,35 +82,12 @@ class _AddMyAccountState extends State<AddMyAccount> {
                 ),
               ),
             ),
-            actions: [
-              Padding(
-                padding: EdgeInsets.only(top: 20),
-                child: InkWell(
-                  onTap: (() {
-                    Navigator.pop(context);
-                    Navigator.of(context)
-                        .pushReplacementNamed("/listOfAccount");
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const AddListOfAccount()),
-                    );
-                  }),
-                  child: Icon(
-                    Icons.cancel_outlined,
-                    color: Colors.white,
-                    size: 33,
-                  ),
-                ),
-              ),
-              Text("       ")
-            ],
           ),
         ),
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: Color(0xFFD9D9D9),
+          color: Colors.white,
           child: Padding(
             padding: EdgeInsets.all(40),
             child: Form(
@@ -166,7 +143,7 @@ class _AddMyAccountState extends State<AddMyAccount> {
                             style: TextStyle(fontSize: 25),
                           ),
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF296157),
+                              backgroundColor:Color(0xFF77ABA2),
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20)))),
@@ -192,7 +169,7 @@ class _AddMyAccountState extends State<AddMyAccount> {
                             style: TextStyle(fontSize: 25),
                           ),
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Color(0xFF296157),
+                              backgroundColor: Color(0xFF77ABA2),
                               foregroundColor: Colors.white,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20)))),

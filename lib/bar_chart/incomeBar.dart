@@ -1,0 +1,50 @@
+import 'package:flutter/cupertino.dart';
+import 'package:charts_flutter_new/flutter.dart' as charts;
+import 'expense_chart.dart';
+
+Widget IncomeBarChart(){
+   final List<BarChartModel> data= [
+    BarChartModel(
+      date: "2022-Oct",
+      financial: 250,
+      color: charts.ColorUtil.fromDartColor(Color(0xFFB6ADCA)),
+
+    ),
+    BarChartModel(
+      date: "2022-Nov",
+      financial: 300,
+      color: charts.ColorUtil.fromDartColor(Color(0xFFB6ADCA)),
+
+    ),
+    BarChartModel(
+      date: "2022-Dec",
+      financial: 100,
+      color: charts.ColorUtil.fromDartColor(Color(0xFFB6ADCA)),
+    ),
+    BarChartModel(
+      date: "2022-Jan",
+      financial: 100,
+      color: charts.ColorUtil.fromDartColor(Color(0xFFB6ADCA)),
+    ),
+
+
+  ];
+   List<charts.Series<BarChartModel, String>> series =[
+      charts.Series(
+        id:"financial",
+        data: data,
+        domainFn: (BarChartModel series, _)=>series.date,
+        measureFn: (BarChartModel series, _)=> series.financial,
+        colorFn: (BarChartModel series, _)=> series.color,
+      ),
+    ];
+   return Expanded(
+     child: Container(
+          padding: EdgeInsets.symmetric(horizontal: 10,vertical: 30),
+          child: charts.BarChart(
+            series,
+            animate: true,
+          ),
+        ),
+   );
+}

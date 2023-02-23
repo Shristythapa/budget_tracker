@@ -8,6 +8,7 @@ import 'package:flutter/src/widgets/framework.dart';
 
 import '../../accounts/addListOfAccount.dart';
 import '../../bar_chart/expense_barchart.dart';
+import '../../category/bottom_navigation.dart';
 
 class sidebar extends StatefulWidget {
   const sidebar({super.key});
@@ -99,7 +100,7 @@ class _sidebarState extends State<sidebar> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => AddListOfAccount()),
+                                        builder: (context) => CustomBottomNavigation(selected: true,)),
                                   );
                                 },
                                 child: Row(
