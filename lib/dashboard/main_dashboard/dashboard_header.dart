@@ -1,5 +1,6 @@
 
 import 'package:budget_tracer_practice/dashboard/main_dashboard/sidebar.dart';
+import 'package:budget_tracer_practice/theme%20Swatcher/userProfile.dart';
 import 'package:flutter/material.dart';
 
 class DashboardHeader extends StatefulWidget {
@@ -16,7 +17,13 @@ class _DashboardHeaderState extends State<DashboardHeader> {
       margin: EdgeInsets.only(top: MediaQuery.of(context).viewPadding.top + 10),
       child: Row(
         children: [
-          Icon(Icons.person_rounded, color: Color(0xFFA296157), size: 60),
+          InkWell(
+            onTap:(){
+    Navigator.push(context,
+    MaterialPageRoute(builder: ((context) => userprofile())));
+    },
+
+              child: Icon(Icons.person_rounded, color: Color(0xFFA296157), size: 60)),
           SizedBox(
             width: 20,
           ),

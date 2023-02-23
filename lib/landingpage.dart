@@ -17,7 +17,7 @@ class _MyLandingPageState extends State<MyLandingPage> {
   void checkLogin() async{
     await Future.delayed(Duration(seconds: 0));
     if(_authViewModel.user==null){
-       Navigator.of(context).pushReplacementNamed("/landingPage");
+       // Navigator.of(context).pushReplacementNamed("/landingPage");
     }else{
       Navigator.of(context).pushReplacementNamed("/dashboard");
     }
@@ -25,7 +25,7 @@ class _MyLandingPageState extends State<MyLandingPage> {
   @override
   void initState() {
     _authViewModel = Provider.of<AuthViewModel>(context, listen: false);
-    checkLogin();
+  //  checkLogin();
     super.initState();
   }
 
