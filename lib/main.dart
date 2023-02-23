@@ -1,9 +1,9 @@
 ﻿
-import 'package:budget_tracer_practice/viewmodels/category_viewmodel.dart';
+import  'package:budget_tracer_practice/viewmodels/expenses_category_viewmodel.dart';
+import 'package:budget_tracer_practice/viewmodels/expenses_viewmodel.dart';
 import 'package:budget_tracer_practice/viewmodels/income_viewmodel.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
-
 import 'package:loader_overlay/loader_overlay.dart';
 import 'package:provider/provider.dart';
 import 'accounts/addAccount.dart';
@@ -11,7 +11,7 @@ import 'accounts/addListOfAccount.dart';
 import 'balanceTransfer/balance_transfer_screen.dart';
 import 'dashboard/main_dashboard/dashboard_body.dart';
 import 'dashboard/main_dashboard/sidebar.dart';
-import 'expenses/addExpenses.dart';
+import 'expenses/addExpenses/addExpense.dart';
 import 'income/addIncome/addincome.dart';
 import 'income/viewIncome/view_income_screen.dart';
 import 'landingpage.dart';
@@ -40,7 +40,8 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => AccViewModel()),
         ChangeNotifierProvider(create: (_) => CategoryViewModel()),
         ChangeNotifierProvider(create: (_) => IncomeViewModel()),
-        ChangeNotifierProvider(create: (_)=> AccViewModel())
+        ChangeNotifierProvider(create: (_)=> AccViewModel()),
+        ChangeNotifierProvider(create: (_) => ExpensesViewModel()),
       ],
 
       child: GlobalLoaderOverlay(
@@ -70,11 +71,10 @@ class MyApp extends StatelessWidget {
                 "/signup": (BuildContext context) => RegisterScreen(),
                 "/main_homePage": (BuildContext context) => DashboardBody(),
                 "/side_Bar": (BuildContext context) => sidebar(),
-                "/transfer_Balance": (BuildContext context) =>
-                    BalanceTransferScreen(),
+                "/transfer_Balance": (BuildContext context) => BalanceTransferScreen(),
                 "/listOfAccount": (BuildContext context) => AddListOfAccount(),
                 "/add_account": (BuildContext context) => AddMyAccount(),
-                "/add_expense": (BuildContext context) => Expense(),
+                "/add_expense": (BuildContext context) => AddExpenses(),
                 "/add_income": (BuildContext context) => AddIncome(),
                 "/view_income": (BuildContext context) => IncomeScreen(),
                 "/dashboard": (BuildContext context) => DashboardBody(),

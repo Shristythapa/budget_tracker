@@ -5,12 +5,12 @@ import '../services/firebase_service.dart';
 
 class IncomRepository {
   CollectionReference<IncomeModel> incomeRef =
-      FirebaseService.db.collection("incomes").withConverter<IncomeModel>(
-            fromFirestore: (snapshot, _) {
-              return IncomeModel.fromFirebaseSnapshot(snapshot);
-            },
-            toFirestore: (model, _) => model.toJson(),
-          );
+  FirebaseService.db.collection("incomes").withConverter<IncomeModel>(
+    fromFirestore: (snapshot, _) {
+      return IncomeModel.fromFirebaseSnapshot(snapshot);
+    },
+    toFirestore: (model, _) => model.toJson(),
+  );
 
   Future<List<QueryDocumentSnapshot<IncomeModel>>> getAllIncomes() async {
     try {
@@ -27,19 +27,7 @@ class IncomRepository {
       String id) async {
     try {
       final response =
-          await incomeRef.where("category_id", isEqualTo: id.toString()).get();
-      var incomes = response.docs;
-      return incomes;
-    } catch (err) {
-      print(err);
-      rethrow;
-    }
-  }
-  Future<List<QueryDocumentSnapshot<IncomeModel>>> getIncomeByAccount(
-      String id) async {
-    try {
-      final response =
-          await incomeRef.where("account_id", isEqualTo: id.toString()).get();
+      await incomeRef.where("category_id", isEqualTo: id.toString()).get();
       var incomes = response.docs;
       return incomes;
     } catch (err) {
@@ -48,12 +36,28 @@ class IncomRepository {
     }
   }
 
+  Future<List<QueryDocumentSnapshot<IncomeModel>>> getIncomeByAccount(
+      String id) async {
+    print("incomeRepo");
+    print("IamuserId $id");
+    try {
+      final response =
+      await incomeRef.where("userId", isEqualTo: id).get();
+      var incomes = response.docs;
+      print("this is my incomes $incomes");
+      return incomes;
+    } catch (err) {
+      print("incomeError $err");
+      print(err);
+      rethrow;
+    }
+  }
+
   Future<List<QueryDocumentSnapshot<IncomeModel>>> getIncomeFromList(
       List<String> incomeIds) async {
     try {
-      final response = await incomeRef
-          .where(FieldPath.documentId, whereIn: incomeIds)
-          .get();
+      final response =
+      await incomeRef.where(FieldPath.documentId, whereIn: incomeIds).get();
       var incomes = response.docs;
       return incomes;
     } catch (err) {
@@ -63,10 +67,11 @@ class IncomRepository {
   }
 
   Future<List<QueryDocumentSnapshot<IncomeModel>>> getMyIncomes(
-      String userId) async {
+      String? userId) async {
     try {
+      print("incomeRepoReached");
       final response =
-          await incomeRef.where("user_id", isEqualTo: userId).get();
+      await incomeRef.where("user_id", isEqualTo: userId).get();
       var incomes = response.docs;
       return incomes;
     } catch (err) {
@@ -103,11 +108,14 @@ class IncomRepository {
   }
 
   Future<bool?> addIncomes({required IncomeModel income}) async {
+    Map<String, dynamic> jsonAccount = income.toJson();
     try {
-      final response = await incomeRef.add(income);
+      var docref = incomeRef.doc();
+      income.id=docref.id;
+      await docref.set(income);
       return true;
     } catch (err) {
-      return false;
+      rethrow;
     }
   }
 
@@ -121,13 +129,13 @@ class IncomRepository {
     }
   }
 
-  // Future<bool?> favorites({required  product}) async {
-  //   try {
-  //     final response = await productRef.add(product);
-  //     return true;
-  //   } catch (err) {
-  //     return false;
-  //     rethrow;
-  //   }
-  // }
+// Future<bool?> favorites({required  product}) async {
+//   try {
+//     final response = await productRef.add(product);
+//     return true;
+//   } catch (err) {
+//     return false;
+//     rethrow;
+//   }
+// }
 }
