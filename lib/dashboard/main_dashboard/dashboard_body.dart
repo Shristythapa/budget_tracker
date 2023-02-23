@@ -39,7 +39,7 @@ class _DashboardBodyState extends State<DashboardBody> {
               icon: Icon(Icons.person_rounded,
                   color: Color(0xFFA296157), size: 60),
               onPressed: () {
-                 Navigator.pop(context);
+                 // Navigator.pop(context);
                   Navigator.push(
                     context,
                     MaterialPageRoute(builder: (context) => userprofile()),
