@@ -27,35 +27,25 @@ class _addsavingState extends State<addsaving> {
                 borderRadius: BorderRadius.vertical(
               bottom: Radius.circular(20),
             )),
-            backgroundColor: Color(0xFF296157),
+            backgroundColor: Color(0xFF77ABA2),
             title: Padding(
               padding: EdgeInsets.only(top: 30),
               child: Text(
                 "Add Account",
                 style: TextStyle(
-                  fontWeight: FontWeight.w100,
-                  color: Color.fromARGB(255, 37, 37, 37),
+                  fontWeight: FontWeight.bold,
+                  color: Colors.black,
                   fontSize: 25,
                 ),
               ),
             ),
-            actions: [
-              Padding(
-                padding: EdgeInsets.only(top: 20),
-                child: Icon(
-                  Icons.cancel_outlined,
-                  color: Color.fromARGB(255, 37, 37, 37),
-                  size: 33,
-                ),
-              ),
-              Text("       ")
-            ],
+          
           ),
         ),
         body: Container(
           width: MediaQuery.of(context).size.width,
           height: MediaQuery.of(context).size.height,
-          color: Color(0xFFD9D9D9),
+          color:Colors.white,
           child: Padding(
             padding: EdgeInsets.all(40),
             child: Form(
@@ -106,7 +96,7 @@ class _addsavingState extends State<addsaving> {
                             fontSize: 25
                           ),),
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(255, 41, 97, 87),
+                              backgroundColor:Color(0xFF77ABA2),
                               foregroundColor: Colors.black,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20)))),
@@ -130,7 +120,7 @@ class _addsavingState extends State<addsaving> {
                           }),
                           child: Text("Cancel",style: TextStyle(fontSize: 25),),
                           style: ElevatedButton.styleFrom(
-                              backgroundColor: Color.fromARGB(255, 41, 97, 87),
+                              backgroundColor:Color(0xFF77ABA2),
                               foregroundColor: Colors.black,
                               shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(20)))),

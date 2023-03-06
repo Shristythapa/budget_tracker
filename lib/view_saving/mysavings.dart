@@ -16,14 +16,11 @@ class _addListOfSavingsState extends State<AddListOfSavings> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(20),
-            )),
+       
         backgroundColor:  Color.fromARGB(248, 133, 191, 180),
         actions: <Widget>[
           IconButton(
-              icon: const Icon(Icons.cancel_outlined,size: 32,),
+              icon: const Icon(Icons.cancel_outlined),
               tooltip: 'Cancel',
               color: Colors.black87, onPressed: () { 
                  Navigator.pop(context);
@@ -38,7 +35,7 @@ class _addListOfSavingsState extends State<AddListOfSavings> {
               
           )
         ],
-        toolbarHeight: MediaQuery.of(context).size.height / 100 * 20,
+        toolbarHeight: MediaQuery.of(context).size.height / 100 * 15,
         title: Row(
           mainAxisAlignment: MainAxisAlignment.start,
           children: [
@@ -48,8 +45,8 @@ class _addListOfSavingsState extends State<AddListOfSavings> {
                 Text(
                   "My Savings",
                   style: TextStyle(
-                    fontSize: 30,
-                    fontWeight: FontWeight.bold,
+                    fontSize: 25,
+                  
                     color: Colors.black87,
                   ),
                 ),
@@ -117,16 +114,16 @@ class _addListOfSavingsState extends State<AddListOfSavings> {
 
 Widget account(){
   return SizedBox(
-    height: 100,
-    width: 100,
+    height: 90,
+    width: 90,
     child: Card(
       
       color: Color(0xFFEFEFEF),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Text("For travel",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),),
-          Text("2020000",style: TextStyle(fontWeight: FontWeight.bold, fontSize: 30),)
+          Text("For travel",style: TextStyle( fontSize: 25),),
+          Text("2020000",style: TextStyle( fontSize: 15),)
         ],
       ),
     ),

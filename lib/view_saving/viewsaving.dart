@@ -30,7 +30,7 @@ class MySavingsDetails extends StatelessWidget {
         elevation: 0,
         // Overide the default Back button
         automaticallyImplyLeading: false,
-        leadingWidth: 100,
+     //   leadingWidth: 100,
         // leading: IconButton(
         //   onPressed: () => Navigator.of(context).pop(),
         //   icon: const Icon(
@@ -54,7 +54,7 @@ class MySavingsDetails extends StatelessWidget {
           children: [
             Text(
               "For Travel",
-              style: TextStyle(fontSize: 50, fontWeight: FontWeight.bold),
+              style: TextStyle(fontSize: 50),
             ),
             TextFormField(
               controller: amount,

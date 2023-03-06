@@ -17,10 +17,6 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
   int idx = 0;
   List<Widget> ReportCategorySCreen = [
     ExpenseCategoryBody(),
-    Center(
-      child: Text("Overall"),
-    ),
-    
     IncomeCategoryBody(),
   ];
 
@@ -53,10 +49,10 @@ class _CustomBottomNavigationState extends State<CustomBottomNavigation> {
         bottomNavigationBar: BottomNavigationBar(
             backgroundColor: Color(0xFFA77ABA2),
             items: [
-              BottomNavigationBarItem(
-                icon: SizedBox(),
-                label: "Overall",
-              ),
+              // BottomNavigationBarItem(
+              //   icon: SizedBox(),
+              //   label: "Overall",
+              // ),
               BottomNavigationBarItem(
                 icon: SizedBox(),
                 label: "Expenses",

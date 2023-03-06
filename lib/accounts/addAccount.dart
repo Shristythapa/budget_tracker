@@ -102,6 +102,7 @@ class _AddMyAccountState extends State<AddMyAccount> {
                       width: MediaQuery.of(context).size.width / 100 * 8,
                     ),
                     TextFormField(
+                      key: Key("accountName"),
                       controller: accountName,
                       keyboardType: TextInputType.text,
                       decoration: InputDecoration(
@@ -117,6 +118,7 @@ class _AddMyAccountState extends State<AddMyAccount> {
                       width: MediaQuery.of(context).size.width / 100 * 8,
                     ),
                     TextFormField(
+                      key: Key("accountAmount"),
                       controller: accountAmount,
                       keyboardType: TextInputType.number,
                       decoration: InputDecoration(
@@ -135,6 +137,7 @@ class _AddMyAccountState extends State<AddMyAccount> {
                       height: 50,
                       width: 300,
                       child: ElevatedButton(
+                         key: Key("add"),
                           onPressed: (() {
                             addAccount();
                           }),

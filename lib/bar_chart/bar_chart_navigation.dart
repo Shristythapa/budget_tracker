@@ -18,10 +18,8 @@ class _BarChartNavigationState extends State<BarChartNavigation> {
   int idx = 0;
   List<Widget> BarChartScreen = [
     IncomeBarChart(),
-    Center(
-      child: Text("Bar Chart Overall"),
-    ),
-    BarChart()
+  IncomeBarChart()
+    //()
   ];
 
   @override
@@ -53,10 +51,10 @@ class _BarChartNavigationState extends State<BarChartNavigation> {
         bottomNavigationBar: BottomNavigationBar(
             backgroundColor: Color(0xFFA77ABA2),
             items: [
-              BottomNavigationBarItem(
-                icon: SizedBox(),
-                label: "Overall",
-              ),
+              // BottomNavigationBarItem(
+              //   icon: SizedBox(),
+              //   label: "Overall",
+              // ),
               BottomNavigationBarItem(
                 icon: SizedBox(),
                 label: "Expenses",

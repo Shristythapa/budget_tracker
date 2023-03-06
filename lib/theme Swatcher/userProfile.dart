@@ -21,7 +21,9 @@ class _userprofileState extends State<userprofile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('My Profile'),
+      appBar: AppBar(
+        backgroundColor: Color(0xFF77ABA2),
+        title: const Text('My Profile'),
           actions: [
             // ThemeSwitcher(
             //   builder: (context) {
@@ -51,7 +53,7 @@ class _userprofileState extends State<userprofile> {
               const Padding(
                 padding: EdgeInsets.all(20),
                 child: Text(
-                  "My Profile",
+                  "        ",
                   style: TextStyle(
                     fontSize: 30,
                     letterSpacing: 1.5,
@@ -112,14 +114,14 @@ class _userprofileState extends State<userprofile> {
                       height: MediaQuery.of(context).size.height / 100 * 8,
                       padding: EdgeInsets.all(10),
                       decoration: BoxDecoration(
-                          color: Colors.lightBlueAccent,
+                          color: Color(0xFF77ABA2),
                           borderRadius: BorderRadius.circular(30)),
                       margin: EdgeInsets.only(right: 40),
                       child: TextButton(
                           onPressed: () {},
                           child: Text("Edit Account",
                               style: TextStyle(
-                                  color: Color(0xFF296157),
+                                  color: Colors.black,
                                   fontSize: 17,
                                   fontWeight: FontWeight.bold)))),
                   Container(
@@ -127,7 +129,7 @@ class _userprofileState extends State<userprofile> {
                       height: MediaQuery.of(context).size.height / 100 * 8,
                       padding: EdgeInsets.all(3),
                       decoration: BoxDecoration(
-                          color: Colors.lightBlueAccent,
+                          color:Color(0xFF77ABA2),
                           borderRadius: BorderRadius.circular(30)),
                       child: TextButton(
                           onPressed: () async{
@@ -142,7 +144,7 @@ class _userprofileState extends State<userprofile> {
                           child: Text(
                             "Logout",
                             style: TextStyle(
-                                color: Color(0xFF296157),
+                                color: Colors.black,
                                 fontSize: 17,
                                 fontWeight: FontWeight.bold),
                           ))),

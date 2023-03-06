@@ -37,7 +37,7 @@ class AccountRepo {
 
    Future<bool?> editAccount({required Account account, required String accountId}) async {
     try {
-      print("asdfghjhgfddfghjdasdfghhfdssdfghjshjdssdfghjdsasdfghjj");
+    
       final response = await accref.doc(accountId).set(account);
       return true;
     } catch (err) {

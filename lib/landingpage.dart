@@ -7,7 +7,7 @@ import 'package:provider/provider.dart';
 
 
 class MyLandingPage extends StatefulWidget {
-  const MyLandingPage({super.key});
+
   @override
   State<MyLandingPage> createState() => _MyLandingPageState();
 }
@@ -50,6 +50,7 @@ class _MyLandingPageState extends State<MyLandingPage> {
                       width: 230,
                       height: 70,
                       child: ElevatedButton(
+                          key: Key("JoinNow"),
                         style: ElevatedButton.styleFrom(
                             backgroundColor: Color(0xFF296157),
                             foregroundColor: Colors.white,
